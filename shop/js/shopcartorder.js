@@ -262,6 +262,31 @@ $(document).ready(function(){
 		}
 		
 
+		// 更新選擇的選項
+function updateSelectedOption() {
+	const deliveryMethod = $('input[name="delivery_method"]:checked').val();
+
+	// 根據選擇的配送方法和付款方式更新選項
+	if (deliveryMethod) {
+			if (deliveryMethod === 'convenience_store') {
+					if ($('#standard_credit_card').is(':checked')) {
+							selectedPaymentOption = '信用卡付款／超商取貨'; // 1
+					} else if ($('#standard_cash').is(':checked')) {
+							selectedPaymentOption = '貨到付款／超商取貨'; // 3
+					}
+			} else if (deliveryMethod === 'home_delivery') {
+					if ($('#standard_credit_card').is(':checked')) {
+							selectedPaymentOption = '信用卡付款／宅配到府'; // 2
+					} else if ($('#standard_cash').is(':checked')) {
+							selectedPaymentOption = '貨到付款／宅配到府'; // 4
+					}
+			}
+	}
+
+	// 更新 配送和付款方式 顯示選擇的結果
+	$('#delivery_options_show h3').text(selectedPaymentOption);
+}
+
 
 
 

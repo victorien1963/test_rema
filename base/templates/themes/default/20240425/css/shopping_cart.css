@@ -418,6 +418,7 @@ input.qtyminus {
 #credit_card_options, #cash_on_delivery_options {
     padding-left: 2rem;
     line-height: 1.2;
+    padding-bottom: .25rem;
 }
 
 #credit_card_options > label, #cash_on_delivery_options> label {
@@ -1848,6 +1849,33 @@ select#region_options {
     #total_prices > .col-1 > div {
         text-align: end;
     }
+
+    #amout_form > .amout_counts {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        font-size: 1rem;
+        font-family: inherit !important;
+    }
+
+    #amout_form > .amout_countser {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        font-family: inherit !important;
+    }
 }
 
 
@@ -1969,7 +1997,7 @@ select#region_options {
     }
 
     #recipient_info_cash_address > div, #recipient_info_credit_card_address > div, #recipient_info_overseas_form > div {
-        margin-top: 2.5rem;
+        margin-top: 1.5rem;
     }
 
     #recipient_info_overseas_form > div:nth-child(2) {
@@ -2077,8 +2105,9 @@ select#region_options {
     }
 
     .x_mark {
-        bottom: 10.5vw;
+        top: 74.5vw;
         font-size: 1.25rem;
+        left: 38.5vw;
     }
 
     #order_info_content > .col-2 > div {
@@ -2091,6 +2120,41 @@ select#region_options {
 
     #total_prices > .col-1 > div {
         text-align: end;
+    }
+
+    #amout_form > .amout_counts {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        font-size: 1rem;
+        font-family: inherit !important;
+    }
+
+    #amout_form > .amout_countser {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        font-family: inherit !important;
+    }
+
+    .region_and_post, .region_and_postal {
+        margin-top: .5rem !important;
+    }
+
+    #city_option {
+        margin-top: .5rem;
     }
 }
 
@@ -2205,7 +2269,11 @@ select#region_options {
     }
 
     #recipient_info_cash_address > div, #recipient_info_credit_card_address > div, #recipient_info_overseas_form > div {
-        margin-top: 2.5rem;
+        margin-top: 1.5rem;
+    }
+
+    #recipient_info_credit_card_address > div:nth-child(2) {
+        margin-top: 1rem;
     }
 
     #recipient_info_overseas_form > div:nth-child(2) {
@@ -2285,14 +2353,21 @@ select#region_options {
     }
 
     #order_info_content > .col-2, #order_info_content_checked > .col-2 {
-        flex: 0 0 32.5%;
-        max-width: 32.5%;
+        flex: 0 0 31%;
+        max-width: 31%;
+        padding-right: 0rem;
+    }
+
+    #order_info_content > .col-1, #order_info_content_checked > .col-1 {
+        flex: 0 0 8.5%;
+        max-width: 8.5%;
+        padding-left: 0rem;
         padding-right: 0rem;
     }
 
     #total_prices > div:nth-child(2), #total_prices_checked > div:nth-child(2) {
-        flex: 0 0 11%;
-        max-width: 11%;
+        flex: 0 0 11.5%;
+        max-width: 11.5%;
         padding-left: 0rem;
     }
 
@@ -2329,6 +2404,55 @@ select#region_options {
 
     #total_prices > .col-1 > div {
         text-align: end;
+    }
+
+    #amout_form > .amout_counts {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        font-size: 1rem;
+        font-family: inherit !important;
+    }
+
+    #amout_form > .amout_countser {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        font-family: inherit !important;
+    }
+
+    .x_mark {
+        left: 37vw;
+        font-size: 1.25rem;
+        top: 60.5vh;
+    }
+
+    #city_option {
+        margin-top: 0.5rem;
+    }
+
+    .region_and_post {
+        margin-top: .5rem !important;
+    }
+
+    .region_and_postal {
+        margin-top: .5rem !important;
+    }
+
+    #credit_card_options {
+        padding-bottom: .5rem;
     }
 }
 
