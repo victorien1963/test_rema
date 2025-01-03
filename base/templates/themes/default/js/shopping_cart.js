@@ -151,7 +151,7 @@ function handleDeliveryChange() {
     updateSelectedOption();
 }
 
-// 更新選擇的選項
+
 function updateSelectedOption() {
     const deliveryMethod = $('input[name="delivery_method"]:checked').val();
 
@@ -169,6 +169,8 @@ function updateSelectedOption() {
             } else if ($('#standard_cash').is(':checked')) {
                 selectedPaymentOption = '貨到付款／宅配到府'; // 4
             }
+        } else if (deliveryMethod === 'overseas_shipping') {
+            selectedPaymentOption = '信用卡付款／宅配到府';
         }
     }
 
@@ -176,35 +178,43 @@ function updateSelectedOption() {
     $('#delivery_options_show h3').text(selectedPaymentOption);
 }
 
-// 確保 #delivery_options_show 在點擊 #checked_continue_btn_step2 後顯示
-$('#checked_continue_btn_step2').click(function(e) {
-    e.preventDefault();
+$(document).ready(function() {
+    // 頁面加載時，隱藏 #delivery_options_show
+    $('#delivery_options_show').hide(); // 初始隱藏
 
-    // 根據選擇顯示或隱藏 #delivery_options_show
-    if (selectedPaymentOption) {
-        $('#delivery_options_show').show();
-    } else {
-        $('#delivery_options_show').hide();
-    }
+    // Step 2 繼續按鈕
+    $('#checked_continue_btn_step2').click(function(e) {
+        e.preventDefault();
 
-    // 確保有選擇第二層選項
-    const deliveryMethod = $('input[name="delivery_method"]:checked').val();
-    if (!deliveryMethod) {
-        // 如果沒有選擇，顯示警告
-        if ($('.alert-danger').length === 0) {
-            $('.options_title:first').after('<div class="alert alert-danger">請選擇配送方式</div>');
+        // 更新選擇的選項
+        updateSelectedOption(); // 確保選項根據使用者的選擇更新
+
+        // 確保選擇配送方式
+        const deliveryMethod = $('input[name="delivery_method"]:checked').val();
+
+        if (!deliveryMethod) {
+            // 如果沒有選擇配送方式，顯示警告訊息
+            if ($('.alert-danger').length === 0) {
+                $('.options_title:first').after('<div class="alert alert-danger">請選擇配送方式</div>');
+            }
+            return; // 若未選擇配送方式，阻止繼續執行
         }
-        return; // 阻止繼續進行
-    }
 
-    // 移除警告並繼續流程
-    $('.alert-danger').remove();
-    handleStep2Continue(); // 處理後續步驟
+        // 移除警告並顯示 #delivery_options_show
+        $('.alert-danger').remove();
+        console.log('顯示配送選項:', deliveryMethod); // 用來調試
+        $('#delivery_options_show').fadeIn(); // 顯示配送選項
+
+        // 繼續處理其他流程
+        handleStep2Continue(); // 繼續步驟 2 的流程
+    });
 });
+
+
 
 // 點擊 #prepage_step3 時隱藏 #delivery_options_show
 $('#prepage_step3').click(function() {
-    $('#delivery_options_show').hide(); // 隱藏選項
+    $('#delivery_options_show').fadeOut(); // 隱藏選項
 });
 
 // 重置監聽

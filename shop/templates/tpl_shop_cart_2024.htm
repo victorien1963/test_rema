@@ -6,7 +6,7 @@
 
 <!-m0->
 <div id="shopping_cart_amount">購物籃( {#tnums#} )</div>
-<div x-data="order_data_set()" x-init="order_data_init()">
+<div class="shopping_cart_flow" x-data="order_data_set()" x-init="order_data_init()">
     <div id="shopping_cart" class="">
       <!-- product items in the cart -->
         <div id="produce_items" class="row mx-0">
@@ -60,27 +60,29 @@
 
     <div id="delivery_options" style="display: none;">
       <form class="options_delivery_form">
-        <div class="options_title">付款與配送 Taiwan Shipping</div>
-        <label for="standard_credit_card" class="d-flex my-auto">
-          <input class="custom-radio my-auto" type="radio" id="standard_credit_card" name="delivery" value="1" x-model="deliveryInfo.spayid">
-          <div>信用卡付款</div>
-        </label>
-        <div id="credit_card_options"></div>
-
-        <label for="standard_cash" class="d-flex my-auto">
-          <input class="custom-radio my-auto" type="radio" id="standard_cash" name="delivery" value="2" x-model="deliveryInfo.spayid">
-          <div>貨到付款</div>
-        </label>
-        <div id="cash_on_delivery_options"></div>
-
-        <div class="options_title">海外配送 Overseas Shipping</div>
-        <label for="overseas_shipping" class="d-flex my-auto">
-          <input class="custom-radio my-auto" type="radio" id="overseas_shipping" name="delivery" value="3" x-model="deliveryInfo.spayid">
-          <div>信用卡付款</div>
-        </label>
-        <div id="overseas_shipping_options"></div>
+          <div class="options_title">付款與配送 Taiwan Shipping</div>
+          <label for="standard_credit_card" class="d-flex my-auto">
+              <input class="custom-radio my-auto" type="radio" id="standard_credit_card" name="delivery" value="1">
+              <div>信用卡付款</div>
+          </label>
+          <div id="credit_card_options"></div>
+  
+          <label for="standard_cash" class="d-flex my-auto">
+              <input class="custom-radio my-auto" type="radio" id="standard_cash" name="delivery" value="2">
+              <div>貨到付款</div>
+          </label>
+          <div id="cash_on_delivery_options"></div>
+  
+          <div class="options_title">海外配送 Overseas Shipping</div>
+          <label for="overseas_shipping" class="d-flex my-auto">
+              <input class="custom-radio my-auto" type="radio" id="overseas_shipping" name="delivery" value="3">
+              <div>信用卡付款</div>
+          </label>
+          <div id="overseas_shipping_options"></div>
       </form>
     </div>
+  
+  
 
     <div id="delivery_options_show" style="display: none;">
       <h3></h3>

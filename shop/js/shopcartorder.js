@@ -262,7 +262,7 @@ $(document).ready(function(){
 		}
 		
 
-		// 更新選擇的選項
+// 更新選擇的選項
 function updateSelectedOption() {
 	const deliveryMethod = $('input[name="delivery_method"]:checked').val();
 

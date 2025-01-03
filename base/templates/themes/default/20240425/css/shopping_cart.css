@@ -38,6 +38,10 @@ input:focus-visible, button:focus-visible, button:focus {
     text-wrap: nowrap;
 }
 
+input[type=text], select {
+    margin: 6px 0px 1px 0px;
+}
+
 /* #header {
     padding: 3% 7%;
 } */
@@ -459,7 +463,7 @@ select {
 #overseas_shipping_options > div {
     width: 10.5vw;
     border-bottom: 1px solid #000;
-    padding-top: 1.5rem;
+    padding-top: 1rem;
     font-size: 16px;
 }
 
@@ -1171,11 +1175,6 @@ select#region_options {
         left: 22vw;
     }
 
-    .x_mark {
-        right: 3%;
-        bottom: 17%;
-    }
-
     #order_info_content > .col-2 > div {
         text-align: start;
     }
@@ -1186,6 +1185,50 @@ select#region_options {
 
     #total_prices > .col-1 > div {
         text-align: end;
+    }
+
+    #amout_form > .amout_counts {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        font-size: 1rem;
+        font-family: inherit !important;
+    }
+
+    #amout_form > .amout_countser {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        font-family: inherit !important;
+    }
+
+    .x_mark {
+        left: 19.75%;
+        top: 48.25%;
+    }
+
+    .discount_code, .discount_birth {
+        width: 50% !important;
+    }
+
+    #credit_card_options > label, #cash_on_delivery_options> label {
+        padding-top: .75rem;
+    }
+
+    .shopping_cart_flow {
+        margin-top: 2.5rem;
     }
 }
 
@@ -1331,12 +1374,6 @@ select#region_options {
         left: 25vw;
     }
 
-    .x_mark {
-        right: 3%;
-        bottom: 6.75vw;
-        font-size: 1.25rem;
-    }
-
     #order_info_content > .col-2 > div {
         text-align: start;
     }
@@ -1347,6 +1384,51 @@ select#region_options {
 
     #total_prices > .col-1 > div {
         text-align: end;
+    }
+
+    #amout_form > .amout_counts {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        font-size: 1rem;
+        font-family: inherit !important;
+    }
+
+    #amout_form > .amout_countser {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        font-family: inherit !important;
+    }
+
+    .x_mark {
+        left: 22.5%;
+        top: 41.25vw;
+        font-size: 1.25rem;
+    }
+
+    .discount_code, .discount_birth {
+        width: 50% !important;
+    }
+
+    #credit_card_options > label, #cash_on_delivery_options> label {
+        padding-top: .75rem;
+    }
+
+    .shopping_cart_flow {
+        margin-top: 2.5rem;
     }
 }
 
@@ -1505,6 +1587,51 @@ select#region_options {
     #total_prices > .col-1 > div {
         text-align: end;
     }
+
+    #amout_form > .amout_counts {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        font-size: 1rem;
+        font-family: inherit !important;
+    }
+
+    #amout_form > .amout_countser {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        font-family: inherit !important;
+    }
+
+    .x_mark {
+        left: 22.5%;
+        top: 39.5vw;
+        font-size: 1.25rem;
+    }
+
+    .discount_code, .discount_birth {
+        width: 50% !important;
+    }
+
+    #credit_card_options > label, #cash_on_delivery_options> label {
+        padding-top: .75rem;
+    }
+
+    .shopping_cart_flow {
+        margin-top: 2.5rem;
+    }
 }
 
 /* macbook pro 13 inch */
@@ -1526,6 +1653,10 @@ select#region_options {
     }
     
     #recipient_info_credit_card_address > div:nth-child(5) > input {
+        padding-left: 27.5%;
+    }
+
+    #recipient_info_credit_card_address > div:nth-child(6) > input {
         padding-left: 18.5%;
     }
     
@@ -1542,7 +1673,7 @@ select#region_options {
     }
 
     #recipient_info_overseas_form > div:nth-child(1) > input {
-        padding-left: 23%;
+        padding-left: 25%;
     }
     
     #recipient_info_overseas_form > div:nth-child(4) > input {
@@ -1559,6 +1690,10 @@ select#region_options {
 
     #recipient_info_credit_card_address > div, #recipient_info_cash_address > div, #recipient_info_overseas_form > div, #recipient_info_cash_address > div:nth-child(3) {
         width: 21.5vw !important;
+    }
+
+    #recipient_info_overseas_form > div:nth-child(6) > input {
+        padding-left: 15%;
     }
 
     .post_code {
@@ -1640,6 +1775,52 @@ select#region_options {
 
     #total_prices > .col-1 > div {
         text-align: end;
+    }
+
+    #amout_form > .amout_counts {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        font-size: 1rem;
+        font-family: inherit !important;
+    }
+
+    #amout_form > .amout_countser {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        font-family: inherit !important;
+    }
+
+    .x_mark {
+        top: 44.5vw !important;
+        font-size: 1.25rem;
+        left: 22vw;
+    }
+
+    #credit_card_options > label, #cash_on_delivery_options> label {
+        padding-top: .75rem;
+    }
+
+    .shopping_cart_flow {
+        margin-top: 2.5rem;
+    }
+
+    #order_info_content > .col-1, #order_info_content_checked > .col-1 {
+        flex: 0 0 8%;
+        max-width: 8%;
     }
 }
 
@@ -2726,6 +2907,7 @@ select#region_options {
 
     #amout_form {
         padding-top: .5rem;
+        padding-bottom: .25rem;
     }
 
     #amout_form > .amout_counts {
@@ -3086,6 +3268,7 @@ select#region_options {
 
     #amout_form {
         padding-top: .5rem;
+        padding-bottom: .25rem;
     }
 
     .options_title {
