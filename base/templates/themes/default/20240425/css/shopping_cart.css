@@ -1227,9 +1227,9 @@ select#region_options {
         padding-top: .75rem;
     }
 
-    .shopping_cart_flow {
+    /* .shopping_cart_flow {
         margin-top: 2.5rem;
-    }
+    } */
 }
 
 
@@ -1427,9 +1427,9 @@ select#region_options {
         padding-top: .75rem;
     }
 
-    .shopping_cart_flow {
+    /* .shopping_cart_flow {
         margin-top: 2.5rem;
-    }
+    } */
 }
 
 
@@ -1629,9 +1629,9 @@ select#region_options {
         padding-top: .75rem;
     }
 
-    .shopping_cart_flow {
+    /* .shopping_cart_flow {
         margin-top: 2.5rem;
-    }
+    } */
 }
 
 /* macbook pro 13 inch */
@@ -1814,9 +1814,9 @@ select#region_options {
         padding-top: .75rem;
     }
 
-    .shopping_cart_flow {
+    /* .shopping_cart_flow {
         margin-top: 2.5rem;
-    }
+    } */
 
     #order_info_content > .col-1, #order_info_content_checked > .col-1 {
         flex: 0 0 8%;
