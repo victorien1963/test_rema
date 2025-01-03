@@ -1033,12 +1033,13 @@ case "itemtui" :
 		$mailbody = '<html><head>';
 		$mailbody .='<title>客戶退貨單</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body bgcolor="#ffffff">';
 		$mailbody .='<table style="display: inline-table;" border="0" cellpadding="0" cellspacing="0" width="800">';
-		$mailbody .='<tr><td><img name="n1_r1_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_top_tuiitem.png" width="800" height="208" alt=""></td></tr>';
+		//$mailbody .='<tr><td><img name="n1_r1_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_top_tuiitem.png" width="800" height="208" alt=""></td></tr>';
 		$mailbody .='<tr><td width="100%" valign="top" style="padding:0px;">';
 		$mailbody .='<table width="800" border="0" align="left" cellpadding="0" cellspacing="0"><tr><td width="80" height="250">&nbsp;</td>';
 		$mailbody .='<td width="640" style="font-family:\'微軟正黑體\',Century Gothic;vertical-align: top;font-size:17px;">'.$ordermessage.'</td>';
 		$mailbody .='<td width="80" style="vertical-align: top;">&nbsp;</td></tr></table>';
-		$mailbody .='</td></tr><tr><td><img name="n1_r3_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_bt.png" width="800" height="240" alt=""></td></tr></table>';
+		//$mailbody .='</td></tr><tr><td><img name="n1_r3_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_bt.png" width="800" height="240" alt=""></td></tr></table>';
+		$mailbody .='</td></tr></table>';
 		$mailbody .='</body></html>';
 			
 
@@ -2840,12 +2841,13 @@ case "orderformsubmit" :
 		$mailbody = '<html><head>';
 		$mailbody .='<title>'.$fromtitle.'</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body bgcolor="#ffffff">';
 		$mailbody .='<table style="display: inline-table;" border="0" cellpadding="0" cellspacing="0" width="800">';
-		$mailbody .='<tr><td><img name="n1_r1_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_top_order.png" width="800" height="208" alt=""></td></tr>';
+		//$mailbody .='<tr><td><img name="n1_r1_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_top_order.png" width="800" height="208" alt=""></td></tr>';
 		$mailbody .='<tr><td width="100%" valign="top" style="padding:0px;">';
 		$mailbody .='<table width="800" border="0" align="left" cellpadding="0" cellspacing="0"><tr><td width="80" height="250">&nbsp;</td>';
 		$mailbody .='<td width="640" style="font-family:\'微軟正黑體\',Century Gothic;vertical-align: top;font-size:17px;">'.$ordermessage.'</td>';
 		$mailbody .='<td width="80" style="vertical-align: top;">&nbsp;</td></tr></table>';
-		$mailbody .='</td></tr><tr><td><img name="n1_r3_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_bt.png" width="800" height="240" alt=""></td></tr></table>';
+		//$mailbody .='</td></tr><tr><td><img name="n1_r3_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_bt.png" width="800" height="240" alt=""></td></tr></table>';
+		$mailbody .='</td></tr></table>';
 		$mailbody .='</body></html>';
 								
 								$GLOBALS['GLOBALS']['CONF'][OrderEmail] = $GLOBALS['GLOBALS']['CONF'][OrderEmail] !=""? $GLOBALS['GLOBALS']['CONF'][OrderEmail]:$GLOBALS['GLOBALS']['CONF'][SiteEmail];
@@ -2876,12 +2878,13 @@ $ordermessage ='<div id="shoporderdetail" style="width:100%;"><div class="ordert
 		$mailbody = '<html><head>';
 		$mailbody .='<title>'.$fromtitle.'</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body bgcolor="#ffffff">';
 		$mailbody .='<table style="display: inline-table;" border="0" cellpadding="0" cellspacing="0" width="800">';
-		$mailbody .='<tr><td><img name="n1_r1_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_top_order.png" width="800" height="208" alt=""></td></tr>';
+		//$mailbody .='<tr><td><img name="n1_r1_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_top_order.png" width="800" height="208" alt=""></td></tr>';
 		$mailbody .='<tr><td width="100%" valign="top" style="padding:0px;">';
 		$mailbody .='<table width="800" border="0" align="left" cellpadding="0" cellspacing="0"><tr><td width="80" height="250">&nbsp;</td>';
 		$mailbody .='<td width="640" style="font-family:\'微軟正黑體\',Century Gothic;vertical-align: top;font-size:17px;">'.$ordermessage.'</td>';
 		$mailbody .='<td width="80" style="vertical-align: top;">&nbsp;</td></tr></table>';
-		$mailbody .='</td></tr><tr><td><img name="n1_r3_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_bt.png" width="800" height="240" alt=""></td></tr></table>';
+		//$mailbody .='</td></tr><tr><td><img name="n1_r3_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_bt.png" width="800" height="240" alt=""></td></tr></table>';
+		$mailbody .='</td></tr></table>';
 		$mailbody .='</body></html>';
 		
 		$GLOBALS['GLOBALS']['CONF'][OrderEmail] = $GLOBALS['GLOBALS']['CONF'][OrderEmail] !=""? $GLOBALS['GLOBALS']['CONF'][OrderEmail]:$GLOBALS['GLOBALS']['CONF'][SiteEmail];
@@ -2950,12 +2953,13 @@ $ordermessage ='<div id="shoporderdetail" style="width:100%;"><div class="ordert
 		$mailbody = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html><head>';
 		$mailbody .='<title>'.$fromtitle.'</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body bgcolor="#ffffff">';
 		$mailbody .='<table style="display: inline-table;" border="0" cellpadding="0" cellspacing="0" width="800">';
-		$mailbody .='<tr><td><img name="n1_r1_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_top_order.png" width="800" height="208" alt=""></td></tr>';
+		//$mailbody .='<tr><td><img name="n1_r1_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_top_order.png" width="800" height="208" alt=""></td></tr>';
 		$mailbody .='<tr><td width="100%" valign="top" style="padding:0px;">';
 		$mailbody .='<table width="800" border="0" align="left" cellpadding="0" cellspacing="0"><tr><td width="80" height="250">&nbsp;</td>';
 		$mailbody .='<td width="640" style="font-family:\'微軟正黑體\',Century Gothic;vertical-align: top;font-size:17px;">'.$ordermessage.'</td>';
 		$mailbody .='<td width="80" style="vertical-align: top;">&nbsp;</td></tr></table>';
-		$mailbody .='</td></tr><tr><td><img name="n1_r3_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_bt.png" width="800" height="240" alt=""></td></tr></table>';
+		//$mailbody .='</td></tr><tr><td><img name="n1_r3_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_bt.png" width="800" height="240" alt=""></td></tr></table>';
+		$mailbody .='</td></tr></table>';
 		$mailbody .='</body></html>';
 		
 		$mailbody = addslashes($mailbody);
@@ -2983,12 +2987,13 @@ $ordermessage ='<div id="shoporderdetail" style="width:100%;"><div class="ordert
 				$mailbody = '<html><head>';
 				$mailbody .='<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body bgcolor="#ffffff">';
 				$mailbody .='<table style="display: inline-table;" border="0" cellpadding="0" cellspacing="0" width="800">';
-				$mailbody .='<tr><td><img name="n1_r1_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_top_order.png" width="800" height="208" alt=""></td></tr>';
+				//$mailbody .='<tr><td><img name="n1_r1_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_top_order.png" width="800" height="208" alt=""></td></tr>';
 				$mailbody .='<tr><td width="100%" valign="top" style="padding:0px;">';
 				$mailbody .='<table width="800" border="0" align="left" cellpadding="0" cellspacing="0"><tr><td width="80" height="250">&nbsp;</td>';
 				$mailbody .='<td width="400" style="font-family:\'微軟正黑體\',Century Gothic;vertical-align: top;font-size:17px;">'.$message.'</td><td width="80">&nbsp;</td>';
 				$mailbody .='<td style="vertical-align: top;"><img name="n1_r3_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_right_order.png"></td></tr></table>';
-				$mailbody .='</td></tr><tr><td><img name="n1_r3_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_bt.png" width="800" height="240" alt=""></td></tr></table>';
+				//$mailbody .='</td></tr><tr><td><img name="n1_r3_c1" src="'.$GLOBALS['CONF']['SiteHttp'].'images/mail_bt.png" width="800" height="240" alt=""></td></tr></table>';
+				$mailbody .='</td></tr></table>';
 				$mailbody .='</body></html>';
 				
 				$mailbody = addslashes($mailbody);
