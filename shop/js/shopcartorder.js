@@ -1,3 +1,6 @@
+var receiptinfo=0;
+
+
 $(document).ready(function(){
 	
 	// 參考 cart.js $(".gostart").click
@@ -129,9 +132,11 @@ $(document).ready(function(){
 
 		//urlstr  就等於 jdepromocode =>是從shopcart 傳到startorder
 
-		//var sourceyun = $("#s_name").val();
+		var cityText = $('#Province option:selected').text();
+		alert('cityText' + cityText);
 
-		//alert(sourceyun);
+		$("#s_addr").val(cityText+deliveryInfo.saddr);
+
 
 		/*
 		$("#addrnote").val("0");
@@ -289,13 +294,163 @@ function updateSelectedOption() {
 
 
 
+		
+
+	if( $("#receiptinfo").val() == 1 && $("#receipt_info_first").val() == 1){
+			if($("#postpay").val() == 0 ){
+			LoadMsg("請選擇您要捐贈的社福單位！");
+			return false;
+			}
+	}
+	if( $("#receiptinfo").val() == 1 && $("#receipt_info_first").val() == 2){
+		if( $("#postnum").val() == "" )
+		{
+			LoadMsg("請輸入您要捐贈的社福愛心碼！");
+			return false;
+		}
+	}
+
+	if( $("#receiptinfo").val() == 2 && $("#receipt_info_second").val() == 2 ){
+		var p=$("#barcode-input").val();
+		var w=$("#barcode-input-2").val();
+		if(p =="" || p!=w){
+			LoadMsg("兩次輸入的手機載具條碼不一致，請檢查！");
+			return false;
+		}
+
+		var patt = /^\/[0-9A-Z.+-]{7}$/;
+        if(!patt.test(p)){
+            LoadMsg("手機載具條碼格式不符，請輸入含斜線共8碼，例如/ABC+123。");
+            return false;
+        }
+
+		$("#mobicode").val(p);
+		alert(p);
+		alert($("#mobicode").val());
+
+	}	
+	if( $("#receiptinfo").val() == 2 && $("#receipt_info_second").val() == 3 ){
+		var p=$("#cdcode").val();
+		var w=$("#recdcode").val();
+		if(p =="" || p!=w){
+			LoadMsg("兩次輸入的自然人憑證條碼不一致，請檢查！");
+			return false;
+		}
+	}
+	
+	if( $("#receiptinfo").val() == 3){
+		var cn=$("#company-input").val();
+		var cnb=$("#company-input-2").val();
+		if(cn == "")
+		{
+			LoadMsg("請輸入統一編號！");
+			return false;
+		}
+		if(cnb == "")
+		{
+			LoadMsg("請輸入發票抬頭！");
+			return false;
+		}
+		$("#invoicename").val(cnb);
+		$("#invoicenumber").val(cn);
+	}
 
 
+	if( $("#receiptinfo").val() == 2 && $("#receipt_info_second").val() == 2 )
+	{
+		var p=$("#barcode-input").val();
+		var w=$("#barcode-input-2").val();
 
-
-
-
-
+		/*檢測手機條碼正確性*/
+			$.ajax({
+				type: "POST",
+				url: PDV_RP+"shop/post.php",
+				data: "act=chkphonenum&phonenum="+encodeURIComponent(p),
+				success: function(msgs){
+					
+					if(msgs=="N"){
+						LoadMsg("您的手機條碼並未登錄在財政部電子發票平台，請選擇其他方式！");
+						return false;
+					}else{
+						
+			$('#OrderForm').ajaxSubmit({
+			url: 'post.php',
+			data: {'addrnote': addrnote},
+			success: function(msg) {
+				
+				msg = String(msg);
+				
+				if(msg.substr(0,2)=="OK"){
+					
+					//清除cookie
+					$.ajax({
+						type: "POST",
+						url:PDV_RP+"post.php",
+						data: "act=setcookie&cookietype=empty&cookiename=SHOPCART",
+						success: function(msg){
+						}
+					});
+					
+					//判斷是否付款
+					if(msg.substr(3,5)=="PAYED"){
+						var orderid=msg.substr(9);
+						$().alertwindow("訂單送出並付款成功","orderdetail.php?orderid="+orderid);
+					}else{
+						var orderid=msg.substr(3);
+						setTimeout('window.location="orderpay.php?orderid='+orderid+'";',500);
+					}
+				}else if(msg.substr(0,7)=="wayhunt"){
+					//$('div#notice').hide();
+					//LoadMsg(msg.substr(8));
+				}else if(msg=="999"){
+					LoadMsg("60秒內不能再次送出訂單");
+				}else if(msg=="1000"){
+					LoadMsg("您的購物車中沒有商品");
+				}else if(msg=="1001"){
+					LoadMsg("請選擇配送區域");
+				}else if(msg=="1002"){
+					LoadMsg("請選擇付款方法");
+				}else if(msg=="1003"){
+					LoadMsg("您尚未登入，不能從會員帳戶扣款付款訂單");
+				}else if(msg=="1004"){
+					LoadMsg("請選擇配送方法");
+				}else if(msg=="1005"){
+					LoadMsg("您尚未登入，不能送出訂單");
+				}else if(msg=="1006"){
+					LoadMsg("訂購錯誤，請洽詢客服人員為您處理！");
+				}else if(msg=="1007"){
+					LoadMsg("60秒內僅能送出訂單一次！");
+				}else{
+					/*刪除庫存不足之訂購資料*/
+					var listmsg = msg.split("_");
+					var gid = listmsg[0];
+					var fz = listmsg[1];
+					
+					$.ajax({
+						type: "POST",
+						url:PDV_RP+"post.php",
+						data: "act=setcookie&cookietype=del&cookiename=SHOPCART&gid="+gid+"&fz="+fz,
+						success: function(msg){
+							
+							msg = String(msg);
+							
+							if(msg=="OK"){
+								LoadMsgToUrl(listmsg[2],PDV_RP+'shop/cart.php');
+							}else{
+								LoadMsg("ERROR:"+msg);
+							}
+						}
+					});
+					
+				}
+			}
+		});/**/ 
+					}
+				}
+			});
+	}
+	else
+	{
 
 		$('#OrderForm').ajaxSubmit({
 			url: 'post.php',
@@ -368,6 +523,8 @@ function updateSelectedOption() {
 				}
 			}
 		});/**/
+	}
+	
 
 		return false;
 
@@ -376,6 +533,35 @@ function updateSelectedOption() {
 
 	}); 
 });
+
+$(document).ready(function() {
+    // 這裡放置你希望在 DOM 完全加載後執行的代碼
+	alert('province');
+	$.ajax({
+		type: "POST",
+		url: PDV_RP+"member/post.php",
+		data: "act=getzonelist&pid=1",
+		success: function(msg){
+			pList.data = new Array();
+			$("#zonelist").html(msg);
+			if(PDV_LAN == "en"){
+				var constr = "Please Select";
+			}else if(PDV_LAN == "zh_cn"){
+				var constr = "请选择";
+			}else{
+				var constr = "請選擇";
+			}
+			$("#Province").html("<option value='s'> "+constr+"</option>"+"<option value='t'> 測試</option>"+pList.getOptionString('s'));
+			//$('#Province').selectpicker('refresh');
+		}
+	
+ });
+
+});
+
+
+
+
 function order_data_set() {
 	return {
 	  showOrderListLayout: true,
@@ -430,4 +616,52 @@ function IndexAddrB(str)
 		}
 	}*/
 	return(sum);
+}
+
+
+
+function handleTabClick(event) {
+    const target = event.target; // 獲取被點擊的按鈕
+    const targetValue = target.getAttribute("data-target"); // 獲取 data-target 屬性值
+	
+	if(targetValue=='cloud')
+	{
+		$("#receiptinfo").val(2);
+		$("#receipt_info_second").val(1);
+	}
+	else if(targetValue=='company')
+	{
+		//var cn=$("#company-input").val();
+		//var cnb=$("#company-input-2").val();
+		$("#receiptinfo").val(3);
+		//$("#invoicename").val(cnb);
+		//$("#invoicenumber").val(cn);
+	}
+	else if(targetValue=='barcode')
+	{
+		/*
+		var p=$("#barcode-input").val();
+		var w=$("#barcode-input-2").val();
+		if(p =="" || p!=w){
+			LoadMsg("兩次輸入的手機載具條碼不一致，請檢查！");
+			return false;
+		}
+
+		var patt = /^\/[0-9A-Z.+-]{7}$/;
+        if(!patt.test(p)){
+            LoadMsg("手機載具條碼格式不符，請輸入含斜線共8碼，例如/ABC+123。");
+            return false;
+        }
+	    */
+		$("#receiptinfo").val(2);
+		$("#receipt_info_second").val(2);
+		//$("#mobicode").val(p);
+
+	}
+	else if(targetValue=='donate')
+	{
+
+	}
+
+
 }

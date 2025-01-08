@@ -868,7 +868,8 @@ function ShopCart(){
 				'depromocode' => URIAuthcode($geturlstr,"GO"),
 				'promocode2' => URIAuthcode($geturlstr2,"GO"),
 			);
-		
+
+
 		$str = ShowTplTemp($str,$var);
 		$str .= "<script>var orderList = " . json_encode($orderList, JSON_UNESCAPED_UNICODE) . ";</script>";
 		$str .= "<script>var orderInfo = " . json_encode($orderTotalInfo, JSON_UNESCAPED_UNICODE) . ";</script>";

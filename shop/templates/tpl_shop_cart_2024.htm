@@ -1,6 +1,9 @@
 <!-start->
 <link type="text/css" rel="stylesheet" href="{#TM#}20240425/css/shopping_cart.css" />
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<script language="javascript" src="{#RP#}member/js/zone.js"></script>
+<script language="javascript" src="{#RP#}member/js/memberset.js?1"></script>
 <script type=text/javascript src="{#CP#}js/shopcartorder.js?6"></script>
 <!-start->
 
@@ -133,16 +136,22 @@
         </div>
         <div id="city_option" class="d-flex city_option">
           <div class="city_option_title">城市</div>
+          <!--
           <select id="city_option" name="city_option" x-model="deliveryInfo.scity">
             <option value="桃園市" class="city_option">桃園市</option>
+          </select>-->
+          <select id="Province" onKeyUp='if(window.event.keyCode==13) document.zoneid.focus();'  onChange="provinceSelChange(newaddform.zoneid,newaddform.Province.value,'{#zoneid#}',newaddform.postcode,newaddform.addr,newaddform.Province)" name="city_option" x-model="deliveryInfo.scity">
           </select>
           <div class="text-danger place_limited">• 限本島</div>
         </div>
         <div class="d-flex region_and_post">
           <div id="the_region_options" class="d-flex">
             <div class="the_region_options_title">地區</div>
+            <!--
             <select id="the_region_options" name="the_region_options" x-model="deliveryInfo.szone">
               <option value="大園區" class="the_region_options">大園區</option>
+            </select>-->
+            <select id="zoneid" name="the_region_options" x-model="deliveryInfo.szone">
             </select>
           </div>
           <div class="d-flex post_code">
@@ -222,10 +231,10 @@
     <div class="invoice_options" style="display: none">
       <div>發票類型</div>
       <div class="tabs">
-        <button class="tab-button" data-target="cloud">雲端</button>
-        <button class="tab-button" data-target="company">公司</button>
-        <button class="tab-button" data-target="barcode">手機條碼</button>
-        <button class="tab-button" data-target="donate">捐贈</button>
+        <button class="tab-button" data-target="cloud" onclick="handleTabClick(event)">雲端</button>
+        <button class="tab-button" data-target="company" onclick="handleTabClick(event)">公司</button>
+        <button class="tab-button" data-target="barcode" onclick="handleTabClick(event)">手機條碼</button>
+        <button class="tab-button" data-target="donate" onclick="handleTabClick(event)">捐贈</button>
       </div>
 
       <div class="tab-content" id="cloud">
@@ -321,8 +330,8 @@
         <!-- <br /> -->
         <div class="text-end fw-normal small" stlye="font-size: 80%">• 含營業稅</div>
       </div>
-      </div>
     </div>
+    
 
     <div id="checked_continue" class="row">
       <div class="col-1">
@@ -358,9 +367,15 @@
         <input name="markets" type="hidden" id="markets" x-bind:value="deliveryInfo.market" />
         <input type="hidden" name="shipinfo" id="shipinfo" value="">
 
-        
-        <input type="hidden" name="receiptinfo" id="receiptinfo" value="2">
-        <input type="hidden" name="receipt_info_second" id="receipt_info_second" value="1">
+
+      
+      <input type="hidden" name="receiptinfo" id="receiptinfo" value="2">
+      <input type="hidden" name="receipt_info_first" id="receipt_info_first" value="1">
+      <input type="hidden" name="receipt_info_second" id="receipt_info_second" value="1">
+      <input type="hidden" name="mobicode" id="mobicode" value="">
+      <input type="hidden" name="invoicename" id="invoicename" value="">
+      <input type="hidden" name="invoicenumber" id="invoicenumber" value="">
+
 
 
         <input name="s_name" type="hidden" id="s_name" x-bind:value="deliveryInfo.sname" /> 
