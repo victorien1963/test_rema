@@ -573,6 +573,12 @@ function order_data_set() {
 			this.orderList[orderIndex].orderdata.acc=String(tempnum-1);
 			var tempjline =Number(this.orderList[orderIndex].orderdata.jine.replace(/,/g, ""));
 			this.orderInfo.oritjine=this.orderInfo.oritjine-tempjline;
+			
+			var gid=this.orderList[orderIndex].orderdata.gid;
+		var fz =this.orderList[orderIndex].orderdata.fz;
+		var num=this.orderList[orderIndex].orderdata.acc;
+		var getgid = gid.split("_");
+		updateShopCart(gid,fz,num,getgid,orderIndex);
 		}
 	  },
 	  addItem(orderIndex) {
@@ -746,7 +752,7 @@ function updateShopCart(gid,fz,nums,getgid,dataIndex) {
 											*/
 									});
 									
-									//window.location=PDV_RP+'shop/cart.php';
+									window.location=PDV_RP+'shop/cart.php';
 								}else if(msg=="1000"){
 									alert("訂購數量錯誤");
 									
