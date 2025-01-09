@@ -201,7 +201,7 @@ input[type=text], select {
 }
 
 .product_card > .product_info {
-    padding: 1vw;
+    padding: 1vw .75vw 1vw 1vw;
 }
 
 .p_name {
@@ -1075,16 +1075,6 @@ select#region_options {
     text-align: end;
 }
 
-.x_mark {
-    font-weight: 300;
-    position: absolute;
-    right: 3%;
-    bottom: 17%;
-    cursor: pointer;
-    font-size: 1.5rem;
-    color: #919191;
-}
-
 .produce_items_iphone_rwd {
     display: none;
 }
@@ -1099,6 +1089,22 @@ select#region_options {
 
 .small, small {
     font-size: .8em !important;
+}
+
+.x_mark_iphone_rwd {
+    display: none;
+}
+
+#Province, #zoneid {
+    border: 0px solid transparent !important;
+    width: 90% !important;
+    margin-left: 1rem;
+    padding-bottom: 0rem;
+    text-align: left;
+}
+
+#Province:focus-visible, #zoneid:focus-visible {
+    outline: none;
 }
 
 @media only screen and (min-width: 2560px) {
@@ -1214,11 +1220,6 @@ select#region_options {
         font-family: inherit !important;
     }
 
-    .x_mark {
-        left: 19.75%;
-        top: 48.25%;
-    }
-
     .discount_code, .discount_birth {
         width: 50% !important;
     }
@@ -1227,9 +1228,9 @@ select#region_options {
         padding-top: .75rem;
     }
 
-    /* .shopping_cart_flow {
-        margin-top: 2.5rem;
-    } */
+    #Province, #zoneid {
+        padding-left: 8rem;
+    }
 }
 
 
@@ -1413,12 +1414,6 @@ select#region_options {
         font-family: inherit !important;
     }
 
-    .x_mark {
-        left: 22.5%;
-        top: 41.25vw;
-        font-size: 1.25rem;
-    }
-
     .discount_code, .discount_birth {
         width: 50% !important;
     }
@@ -1427,9 +1422,9 @@ select#region_options {
         padding-top: .75rem;
     }
 
-    /* .shopping_cart_flow {
-        margin-top: 2.5rem;
-    } */
+    #Province, #zoneid {
+        padding-left: 6.5rem;
+    }
 }
 
 
@@ -1570,12 +1565,6 @@ select#region_options {
         left: 25vw;
     }
 
-    .x_mark {
-        right: 3%;
-        bottom: 8vw;
-        font-size: 1.25rem;
-    }
-
     #order_info_content > .col-2 > div {
         text-align: start;
     }
@@ -1613,12 +1602,6 @@ select#region_options {
         background: transparent;
         text-align: center;
         font-family: inherit !important;
-    }
-
-    .x_mark {
-        left: 22.5%;
-        top: 39.5vw;
-        font-size: 1.25rem;
     }
 
     .discount_code, .discount_birth {
@@ -1759,12 +1742,6 @@ select#region_options {
         left: 25vw;
     }
 
-    .x_mark {
-        right: 3%;
-        bottom: 8.75vw;
-        font-size: 1.25rem;
-    }
-
     #order_info_content > .col-2 > div {
         text-align: start;
     }
@@ -1804,19 +1781,13 @@ select#region_options {
         font-family: inherit !important;
     }
 
-    .x_mark {
-        top: 44.5vw !important;
-        font-size: 1.25rem;
-        left: 22vw;
-    }
-
     #credit_card_options > label, #cash_on_delivery_options> label {
         padding-top: .75rem;
     }
 
-    /* .shopping_cart_flow {
-        margin-top: 2.5rem;
-    } */
+    #Province, #zoneid {
+        padding-left: 5rem;
+    }
 
     #order_info_content > .col-1, #order_info_content_checked > .col-1 {
         flex: 0 0 8%;
@@ -2011,12 +1982,6 @@ select#region_options {
 
     #checked_continue > div > h7 {
         font-size: 10px !important;
-    }
-
-    .x_mark {
-        right: 3%;
-        bottom: 9.75vw;
-        font-size: 1.25rem;
     }
 
     #order_info_content > .col-2 > div {
@@ -2285,12 +2250,6 @@ select#region_options {
         max-width: 8%;
     }
 
-    .x_mark {
-        top: 74.5vw;
-        font-size: 1.25rem;
-        left: 38.5vw;
-    }
-
     #order_info_content > .col-2 > div {
         text-align: start;
     }
@@ -2336,6 +2295,10 @@ select#region_options {
 
     #city_option {
         margin-top: .5rem;
+    }
+
+    #Province, #zoneid {
+        padding-left: 8rem;
     }
 }
 
@@ -2570,11 +2533,6 @@ select#region_options {
         padding-right: 0rem;
     }
 
-    .x_mark {
-        bottom: 15vw;
-        font-size: 1.25rem;
-    }
-
     #order_info_content > .col-2 > div {
         text-align: start;
     }
@@ -2614,12 +2572,6 @@ select#region_options {
         font-family: inherit !important;
     }
 
-    .x_mark {
-        left: 37vw;
-        font-size: 1.25rem;
-        top: 60.5vh;
-    }
-
     #city_option {
         margin-top: 0.5rem;
     }
@@ -2634,6 +2586,10 @@ select#region_options {
 
     #credit_card_options {
         padding-bottom: .5rem;
+    }
+
+    #Province, #zoneid {
+        padding-left: 6.5rem;
     }
 }
 
@@ -2711,10 +2667,18 @@ select#region_options {
         display: none !important;
     }
 
-    #region_options, .postal_code {
+    #region_options {
         width: 100%;
         margin-left: 0;
         display: flex !important;
+        margin-top: .75rem !important;
+    }
+
+    .postal_code {
+        width: 100%;
+        margin-left: 0;
+        display: flex !important;
+        margin-top: 2rem !important;
     }
 
     #produce_items {
@@ -2981,14 +2945,6 @@ select#region_options {
         display: block !important;
     }
 
-    .x_mark {
-        font-weight: 500;
-        position: absolute;
-        right: 3%;
-        top: 14.5%;
-        cursor: pointer;
-    }
-
     .discount_code, .discount_birth {
         border: 1px solid #000 !important;
         height: 1.75rem;
@@ -3001,6 +2957,24 @@ select#region_options {
 
     #order_info_content > .col-1 > div {
         text-align: end;
+    }
+
+    .x_mark {
+        display: none;
+        right: 3%;
+    }
+
+    .x_mark_iphone_rwd {
+        position: absolute;
+        display: flex;
+        right: 3%;
+        font-size: 1.25rem;
+        font-weight: 200;
+        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    }
+
+    #Province, #zoneid {
+        padding-left: 4rem;
     }
 }
 
@@ -3309,14 +3283,6 @@ select#region_options {
 
     #order_finished_msg > div > br:nth-child(2) {
         display: block !important;
-    }
-
-    .x_mark {
-        font-weight: 500;
-        position: absolute;
-        right: 12%;
-        top: 1%;
-        cursor: pointer;
     }
 
     .discount_code, .discount_birth {

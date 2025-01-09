@@ -17,9 +17,11 @@
           <div class="col-3 product_card">
             <div class="product_img" style="background-image: url('')"></div>
             <div class="product_info">
-              <div class="x_mark" x-bind:id="'cartdel_' + pdItem.orderdata.gid+ pdItem.orderdata.fzspecid+ pdItem.orderdata.picgid">⨉</div>
               <input type="hidden" x-bind:id="'fz_' + pdItem.orderdata.gid+ pdItem.orderdata.fzspecid+ pdItem.orderdata.picgid"  x-bind:value="pdItem.orderdata.fz">
-              <div class="p_name" x-text="pdItem.orderdata.goodsname"></div>
+              <div class="row">
+                <div class="p_name col-10" x-text="pdItem.orderdata.goodsname"></div>
+                <div class="col-2 text-end x_mark" x-bind:id="'cartdel_' + pdItem.orderdata.gid+ pdItem.orderdata.fzspecid+ pdItem.orderdata.picgid">⛌</div>
+              </div>
               <div class="p_price" x-text="pdItem.orderdata.pricesymbol + pdItem.orderdata.jine"></div>
               <div class="p_detail" x-text="pdItem.orderdata.buysize+ ' | ' + pdItem.orderdata.colorname"></div>
               <div>
@@ -56,6 +58,7 @@
                   <input class="amout_countser" type='button' value='＋' @click="addItem(index)" />
                 </form>
               </div>
+              <div class="text-end x_mark_iphone_rwd" x-bind:id="'cartdel_' + pdItem.orderdata.gid+ pdItem.orderdata.fzspecid+ pdItem.orderdata.picgid">⨉</div>
             </div>
           </div>
           </template>
@@ -80,7 +83,7 @@
   
           <div class="options_title">海外配送 Overseas Shipping</div>
           <label for="overseas_shipping" class="d-flex my-auto">
-              <input class="custom-radio my-auto" type="radio" id="overseas_shipping" name="delivery" value="3" x-model="deliveryInfo.spayid">
+              <input class="custom-radio my-auto" type="radio" id="overseas_shipping" name="delivery" value="overseas_shipping" x-model="deliveryInfo.spayid">
               <div>信用卡付款</div>
           </label>
           <div id="overseas_shipping_options"></div>

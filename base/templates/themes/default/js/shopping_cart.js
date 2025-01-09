@@ -169,14 +169,20 @@ function updateSelectedOption() {
             } else if ($('#standard_cash').is(':checked')) {
                 selectedPaymentOption = '貨到付款／宅配到府'; // 4
             }
-        } else if (deliveryMethod === 'overseas_shipping') {
-            selectedPaymentOption = '信用卡付款／宅配到府';
         }
     }
 
     // 更新 配送和付款方式 顯示選擇的結果
     $('#delivery_options_show h3').text(selectedPaymentOption);
+
+    // 確保顯示或隱藏選項區塊
+    if (selectedPaymentOption) {
+        $('#delivery_options_show').fadeIn(); // 顯示區塊
+    } else {
+        $('#delivery_options_show').fadeOut(); // 隱藏區塊
+    }
 }
+
 
 $(document).ready(function() {
     // 頁面加載時，隱藏 #delivery_options_show
@@ -189,9 +195,17 @@ $(document).ready(function() {
         // 更新選擇的選項
         updateSelectedOption(); // 確保選項根據使用者的選擇更新
 
+        // 確認是否選擇了付款方式，若選擇了則顯示 #delivery_options_show
+        if (selectedPaymentOption) {
+            console.log('顯示配送選項:', selectedPaymentOption); // 用來調試
+            $('#delivery_options_show').fadeIn(); // 顯示配送選項
+        } else {
+            console.log('沒有選擇配送方式或付款方式'); // 用來調試
+            $('#delivery_options_show').fadeOut(); // 隱藏配送選項
+        }
+
         // 確保選擇配送方式
         const deliveryMethod = $('input[name="delivery_method"]:checked').val();
-
         if (!deliveryMethod) {
             // 如果沒有選擇配送方式，顯示警告訊息
             if ($('.alert-danger').length === 0) {
@@ -200,17 +214,11 @@ $(document).ready(function() {
             return; // 若未選擇配送方式，阻止繼續執行
         }
 
-        // 移除警告並顯示 #delivery_options_show
+        // 移除警告並繼續流程
         $('.alert-danger').remove();
-        console.log('顯示配送選項:', deliveryMethod); // 用來調試
-        $('#delivery_options_show').fadeIn(); // 顯示配送選項
-
-        // 繼續處理其他流程
         handleStep2Continue(); // 繼續步驟 2 的流程
     });
 });
-
-
 
 // 點擊 #prepage_step3 時隱藏 #delivery_options_show
 $('#prepage_step3').click(function() {
