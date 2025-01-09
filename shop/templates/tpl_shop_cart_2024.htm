@@ -17,7 +17,8 @@
           <div class="col-3 product_card">
             <div class="product_img" style="background-image: url('')"></div>
             <div class="product_info">
-              <div class="x_mark">⨉</div>
+              <div class="x_mark" x-bind:id="'cartdel_' + pdItem.orderdata.gid+ pdItem.orderdata.fzspecid+ pdItem.orderdata.picgid">⨉</div>
+              <input type="hidden" x-bind:id="'fz_' + pdItem.orderdata.gid+ pdItem.orderdata.fzspecid+ pdItem.orderdata.picgid"  x-bind:value="pdItem.orderdata.fz">
               <div class="p_name" x-text="pdItem.orderdata.goodsname"></div>
               <div class="p_price" x-text="pdItem.orderdata.pricesymbol + pdItem.orderdata.jine"></div>
               <div class="p_detail" x-text="pdItem.orderdata.buysize+ ' | ' + pdItem.orderdata.colorname"></div>
@@ -43,7 +44,8 @@
             </div>
             <div class="col-6 product_info d-flex">
               <div class="mt-auto pb-2">
-                <div class="x_mark">⨉</div>
+                <div class="x_mark" x-bind:id="'cartdel_' + pdItem.orderdata.gid+ pdItem.orderdata.fzspecid+ pdItem.orderdata.picgid">⨉</div>
+                <input type="hidden" x-bind:id="'fz_' + pdItem.orderdata.gid+ pdItem.orderdata.fzspecid+ pdItem.orderdata.picgid"  x-bind:value="pdItem.orderdata.fz">
                 <div class="p_name" x-text="pdItem.orderdata.goodsname"></div>
               <div class="p_price" x-text="pdItem.orderdata.pricesymbol + pdItem.orderdata.jine"></div>
               <div class="p_detail" x-text="pdItem.orderdata.buysize+ ' | ' + pdItem.orderdata.colorname"></div>
@@ -293,9 +295,9 @@
         <div class="t_delivery" x-text="orderInfo.pricesymbol + orderInfo.yunfei"></div>
         <div class="t_balances" x-text="'-' + orderInfo.pricesymbol + orderInfo.disaccount"></div>
         <br />
-        <div class="">- $ 100</div>
+        <div class="">- $ 0</div>
         <br />
-        <div class="">- $ 200</div>
+        <div class="">- $ 0</div>
       </div>
     </div>
 
@@ -310,7 +312,7 @@
         <div class="t_amonts_checked_value" x-text="orderInfo.pricesymbol + orderInfo.oritjine"></div>
         <div class="t_delivery_checked_value" x-text="orderInfo.pricesymbol + orderInfo.yunfei"></div>
         <div class="t_balances_checked_value" x-text="'-' + orderInfo.pricesymbol + orderInfo.disaccount"></div>
-        <div class="t_discount_checked_value">- $ 100</div>
+        <div class="t_discount_checked_value">- $ 0</div>
       </div>
     </div>
 

@@ -149,7 +149,7 @@ function IndexAddrB(str)
 
 $(document).ready(function(){
 	$('#OrderForm').submit(function(){
-		alert('送出表單');
+		/*alert('送出表單');
 		alert('s_name:' + $("#s_name")[0].value);
 		alert('s_addr:' +$("#s_addr")[0].value);
 		alert('payid:' +$("#payid")[0].value);
@@ -161,7 +161,7 @@ $(document).ready(function(){
 		alert('s_mobi:' +$("#s_mobi").val());
 		alert('act:' +$("#act").val());
 		alert('tjine:' +$("#tjine").val());
-		alert('urlstr:' +$("#urlstr").val());
+		alert('urlstr:' +$("#urlstr").val());*/
 		/*LoadMsg("送出訂單");
 		return false;*/
 		
@@ -209,17 +209,17 @@ $(document).ready(function(){
 				}
 
 				
-		alert('noa:' +noa);
+		//alert('noa:' +noa);
 		
-		alert('nob:' +nob);
+		//alert('nob:' +nob);
 				if(noa || nob){
 					$("#addrnote").val("1");
 					var addrnote = 1;
-					alert('addrnote:' + addrnote);
+					//alert('addrnote:' + addrnote);
 				}else{
 					$("#addrnote").val("0");
 					var addrnote = 0;
-					alert('addrnote0:' + addrnote);
+					//alert('addrnote0:' + addrnote);
 				}
 
 				if($("#s_mobi")[0].value==""){
@@ -387,7 +387,7 @@ if( $('input:checked[name="receiptinfo"]').length == 0 ){
 
 	if( $('input:radio:checked[name="receiptinfo"]').val() == 2 && $('input:radio:checked[name="receipt_info_second"]').val() == 2 ){
 		
-		alert('第一種');
+		//alert('第一種');
 		var p=$("#mobicode").val();
 		var w=$("#remobicode").val();
 
@@ -479,7 +479,7 @@ if( $('input:checked[name="receiptinfo"]').length == 0 ){
 				}
 			});
 	}else{
-		alert('第二種');
+		//alert('第二種');
 		$('#OrderForm').ajaxSubmit({
 			url: 'post.php',
 			data: {'addrnote': addrnote},

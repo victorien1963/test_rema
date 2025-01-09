@@ -333,8 +333,8 @@ $(document).ready(function(){
 				return false
 			}
 
-			alert(payid);
-			alert(promotype);
+			//alert(payid);
+			//alert(promotype);
 			if(promotype == 2){
 				$("#Attention2").css({display:"block"});
 				$("#autostart2").fancybox({padding:0, 'showCloseButton':false}).trigger('click');
@@ -374,7 +374,7 @@ $(document).ready(function(){
 				var sourceyun = $('input[name=sourceyun]:checked').val();
 				var sourceyunfei = $('#sourceyunfei').val();
 				var sourcediscount = $('#sourcediscount').val();
-				alert(payid);
+				//alert(payid);
 				if( payid == 2  ){
 					if(getpaytotal >0){
 						var promocode = $("#promocode2").val();
@@ -383,7 +383,7 @@ $(document).ready(function(){
 					}
 				}else{
 					var promocode = this.id;
-					alert(promocode);
+					//alert(promocode);
 				}
 					$.ajax({
 						type: "POST",

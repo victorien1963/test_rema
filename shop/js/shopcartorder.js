@@ -122,6 +122,29 @@ $(document).ready(function(){
 				});
 			}
 	*/});
+
+
+
+
+
+	$(".x_mark").click(function(){
+
+		var gid=this.id.substr(8);
+		var fz=$("#fz_"+gid)[0].value;
+		
+		var getgid = gid.split("_");
+		
+		$.ajax({
+			type: "POST",
+			url:PDV_RP+"post.php",
+			data: "act=setcookie&cookietype=del&cookiename=SHOPCART&gid="+getgid[0]+"&picgid="+getgid[2]+"&fz="+fz,
+			success: function(msg){
+				if(msg=="OK"){
+					window.location=PDV_RP+'shop/cart.php';
+				}
+			}
+		});
+	});
 	
 
 });
@@ -133,7 +156,7 @@ $(document).ready(function(){
 		//urlstr  就等於 jdepromocode =>是從shopcart 傳到startorder
 
 		var cityText = $('#Province option:selected').text();
-		alert('cityText' + cityText);
+		//alert('cityText' + cityText);
 
 		$("#s_addr").val(cityText+deliveryInfo.saddr);
 
@@ -193,11 +216,11 @@ $(document).ready(function(){
 			if(noa || nob){
 				$("#addrnote").val("1");
 				var addrnote = 1;
-				alert('addrnote:' + addrnote);
+				//alert('addrnote:' + addrnote);
 			}else{
 				$("#addrnote").val("0");
 				var addrnote = 0;
-				alert('addrnote0:' + addrnote);
+				//alert('addrnote0:' + addrnote);
 			}
 
 			if($("#s_mobi")[0].value==""){
@@ -299,8 +322,8 @@ $(document).ready(function(){
         }
 
 		$("#mobicode").val(p);
-		alert(p);
-		alert($("#mobicode").val());
+		//alert(p);
+		//alert($("#mobicode").val());
 
 	}	
 	if( $("#receiptinfo").val() == 2 && $("#receipt_info_second").val() == 3 ){
@@ -510,7 +533,7 @@ $(document).ready(function(){
 
 $(document).ready(function() {
     // 這裡放置你希望在 DOM 完全加載後執行的代碼
-	alert('province');
+	//alert('province');
 	$.ajax({
 		type: "POST",
 		url: PDV_RP+"member/post.php",
@@ -557,6 +580,15 @@ function order_data_set() {
 		this.orderList[orderIndex].orderdata.acc=String(tempnum+1);
 		var tempjline =Number(this.orderList[orderIndex].orderdata.jine.replace(/,/g, ""));
 		this.orderInfo.oritjine=this.orderInfo.oritjine+tempjline;
+
+		var gid=this.orderList[orderIndex].orderdata.gid;
+		var fz =this.orderList[orderIndex].orderdata.fz;
+		var num=this.orderList[orderIndex].orderdata.acc;
+		var getgid = gid.split("_");
+		updateShopCart(gid,fz,num,getgid,orderIndex);
+		//alert(this.orderList[orderIndex].orderdata.gid+this.orderList[orderIndex].orderdata.fzspecid+this.orderList[orderIndex].orderdata.picgid);
+		
+		//alert(this.orderList[orderIndex].orderdata.fz);
 	  }}
   }
 
@@ -665,3 +697,73 @@ function updateSelectedOption() {
 	// 更新 配送和付款方式 顯示選擇的結果
 	$('#delivery_options_show h3').text(selectedPaymentOption);
 }
+
+
+function updateShopCart(gid,fz,nums,getgid,dataIndex) {
+
+			//檢查庫存
+
+			$.ajax({
+				type: "POST",
+				url:PDV_RP+"shop/post.php",
+				data: "act=chkkucun&gid="+gid+"&nums="+nums,
+				success: function(msg){
+					if(msg=="OK"){
+						$.ajax({
+							type: "POST",
+							url:PDV_RP+"post.php",
+							data: "act=setcookie&cookietype=modi&cookiename=SHOPCART&gid="+getgid[0]+"&picgid="+getgid[2]+"&nums="+nums+"&fz="+fz,
+							success: function(msg){
+								if(msg=="OK"){
+									$.get(PDV_RP+"shop/cart.php?getdata="+getgid[0]+"&getfz="+fz, function(data) {
+										/*
+										var restr = data.split("^");
+										$("#jine_"+gid).text(restr[0]);
+										$("#chg_oritjine").text(addCommas(restr[1]));
+										$("#oritjine").val(restr[1]);
+										$("#payyunfei").text(restr[2]);
+										$("#yunfei").val(restr[2]);
+										$("#chg_disaccount").text(restr[3]);
+										$("#groupon").text(restr[4]);
+										$("#grouponadd").text(restr[5]);
+										$("#paytotal").text(restr[6]);
+										$("#tjine").val(restr[9]);
+										$("#promocode1").text(restr[7]);
+										$(".gostart").attr("id",restr[7]);
+										$("#promocode2").val(restr[8]);
+										$("#setyunprice").val(restr[10]);
+										$("#setyunprice2").val(restr[11]);
+										
+										if(parseInt(restr[6])>0){
+											$("#payment1").prop("disabled", false);
+											$("label.payment1").removeClass("disabled");
+										}else{
+											$("#payment1").prop("disabled", true);
+											$("#payment2").prop("checked", true);
+											$("label.payment1").addClass("disabled");
+											$("label.payment2").addClass("checked");
+										}
+											*/
+									});
+									
+									//window.location=PDV_RP+'shop/cart.php';
+								}else if(msg=="1000"){
+									alert("訂購數量錯誤");
+									
+								}else{
+									alert(msg);
+									
+								}
+							}
+						});
+
+					}else if(msg=="1000"){
+						alert("該商品缺貨或剩餘數量不足");
+						window.location=PDV_RP+'shop/cart.php';
+					}else{
+						alert(msg);
+					}
+				}
+			});
+}
+
