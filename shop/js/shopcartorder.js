@@ -124,10 +124,29 @@ $(document).ready(function(){
 	*/});
 
 
-
+	
 
 
 	$(".x_mark").click(function(){
+
+		var gid=this.id.substr(8);
+		var fz=$("#fz_"+gid)[0].value;
+		
+		var getgid = gid.split("_");
+		
+		$.ajax({
+			type: "POST",
+			url:PDV_RP+"post.php",
+			data: "act=setcookie&cookietype=del&cookiename=SHOPCART&gid="+getgid[0]+"&picgid="+getgid[2]+"&fz="+fz,
+			success: function(msg){
+				if(msg=="OK"){
+					window.location=PDV_RP+'shop/cart.php';
+				}
+			}
+		});
+	});
+
+	$(".x_mark_iphone_rwd").click(function(){
 
 		var gid=this.id.substr(8);
 		var fz=$("#fz_"+gid)[0].value;
@@ -548,7 +567,7 @@ $(document).ready(function() {
 			}else{
 				var constr = "請選擇";
 			}
-			$("#Province").html("<option value='s'> "+constr+"</option>"+"<option value='t'> 測試</option>"+pList.getOptionString('s'));
+			$("#Province").html("<option value='s'> "+constr+"</option>"+pList.getOptionString('s'));
 			//$('#Province').selectpicker('refresh');
 		}
 	
