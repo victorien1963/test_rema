@@ -96,79 +96,19 @@
 	<section id="popupwindow-in">		
 	</section>
 	<!--頁尾-->
-	<section id="footer">
-		<div class="foot-con">
-			<div class="email rema-col l12">
-				<div class="email-con rema-col s12">
-					<div class="rema-col l2 s5 email-word">
-						<select name="order" id="paperorder">
-							<option value="1">訂閱電子報</option>
-							<option value="0">取消電子報</option>
-						</select>
-					</div>
-
-					{#ORDERPAPER#}
-
-
-				</div>
-			</div>
-			<div class="bottom-info rema-col l12">
-				<div class="footer-info">
-					<div class="contact footer-box">
-						<div class="footer-title">聯絡我們</div>
-						<div class="footer-con">
-							{#聯絡我們#}
-						</div>
-					</div>
-					<div class="location footer-box">
-						<div class="footer-title">選擇地區</div>
-						<div class="location-con footer-con">
-							<div class="country-select-bn">
-
-								<div  class="location-item" id="lantype">台灣 NT$</div>
-
-								<div id="SelectCountry" style="display:none;">
-
-									{#LANTYPE#}
-
-								</div>
-								
-							</div>
-						</div>
-					</div>
-					<div class="service footer-box">
-						<div class="footer-title">訂購及售後服務</div>
-						<div class="service-con footer-con">
-
-							{#BTMENUTWO#}
-
-						</div>
-					</div>
-					<div class="service footer-box mobile-hidden">
-						<div class="footer-title">關注Rema</div>
-						<div class="service-con footer-con">
-
-							{#VMENU#}
-
-						</div>
-					</div>
-					<div class="follow footer-box pc-disable">
-						<div class="footer-title pc-disable">關注Rema</div>
-						<div class="follow-con footer-con">
-
-							{#VMENU#}
-
-						</div>
-					</div>
-				</div>
-			</div>
+	<footer>
+		<div class="max-width">
+			<ul class="d-flex flex-wrap">
+			{#footer#}
+			</ul>
 		</div>
+		<div class="copyright d-flex justify-content-center">
+			© 2024 REMA INC.ALL RIGHTS RESERVED
 		</div>
-
-		<div class="copyright">
-			{#BTINFO#}
-		</div>
-	</section>
+	</footer>
+	<div id="SelectCountry" style="display:none;">
+		{#LANTYPE#}
+	</div>
 	{#addbtscript#}
 </body>
 </html>
