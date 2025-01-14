@@ -49,98 +49,20 @@
                     <!-- /section -->
 <!-m3->
 
-<!-m1->
-
-			<div class="checkout-block rema-col">
-				<div clacc=" rema-col">
-					<div class="page-title font-l font-w-l">訂單成立</div>
-					
-				</div>
-				<div class="background-gray rema-col">
-					<div class="checkout-main">
-						<div class="rema-col l12 xs12">
-							<div class="half-block">
-                                <div class="address-check  border-bottom  mobile-order-margin-bottom">
-                                    <div class="address-check-title font-m font-w-l mobile-bottom-line">訂單編號</div>
-                                    <div class="cash-recheck-bm font-m ">{#OrderNo#}</div>
-                                </div>
-                                
-								<div class="address-check  border-bottom  mobile-order-margin-bottom">
-									<div class="address-recheck font-m font-w-l mobile-bottom-line">寄送地址</div>
-									<div class="address-check-con">
-										<div class="address-recheck-block">
-                                            <div class="inline address-check-break">
-                                                <div>{#s_name#}</div>
-                                            </div>
-											<div class="inline address-check-break">
-												<div>{#s_country#}</div>
-												<div>{#s_addr_a#}</div>
-												<div>{#s_addr_b#}</div>
-											</div>
-											<div class="address-check-break">
-												<div>{#s_addr_c#}</div>
-											</div>
-											<div class="address-check-break">
-												郵遞區號 {#s_postcode#}
-											</div>
-											<div class="address-check-break">
-												連絡電話 {#s_mobi#}
-											</div>
-										</div>
-										
-									</div>
-                                </div>
-                                <div class="address-check  border-bottom  mobile-order-margin-bottom">
-                                    <div class="address-recheck font-m font-w-l mobile-bottom-line">金額總計</div>
-                                    <div class="cash-recheck-bm font-m">{#pricesymbol#} {#showpaytotal#}</div>
-                                </div>
-								<div class="rema-col">
-									<div class="order-comp bn-con">
-										<a href="{#RP#}" class="shop-bn">繼續購物</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-		<!--
-			<div class="prduct-list">
-				<div class="shop-cart-block">
-					<div class="shop-cart rema-col l8 xss12">
-						<div class="padding-2vw">
-							<div class="product-list align-item-center">
-								<div class="rema-col l2">商品</div>
-								<div class="rema-col l3">
-									<div class="padding-left">名稱</div>
-								</div>
-								<div class="rema-col l7 align-center">
-									<div class="rema-col l3">顏色</div>
-									<div class="rema-col l3">尺寸</div>
-									<div class="rema-col l3">件數</div>
-									<div class="rema-col l3">金額</div>
-								</div>
-							</div>
-							{#endstr#}
-						</div>
-					</div>
-				</div>
-			</div>
-			-->	
-			<div id="delivery_options_show" style="display: none;">
+<!-m1->				
+			<div id="delivery_options_show" >
 				<h3></h3>
 			</div>
-			<div id="checked_finished_page" style="display: none;">
+			<div id="checked_finished_page" >
 				<div>
 					訂單編號：
-					<span id="order_numbers">113101340979</span>
+					<span id="order_numbers">{#OrderNo#}</span>
 				</div>
 			</div>
-			<div id="order_finished_msg" style="display: none;">
+			<div id="order_finished_msg" >
 				<div>訂購成功！</div>
 				<div>
-					系統已自動發送確認信至您的註冊信箱，請檢查收件匣。<br /><br style="display: none;" />
+					系統已自動發送確認信至您的註冊信箱，請檢查收件匣。<br /><br />
 					如果未收到，請查看垃圾郵件或確認您提供的信箱是否正確。
 				</div>
 			</div>
@@ -149,7 +71,7 @@
 <!-m1->
 
 <!-m2->
-			<div class="checkout-block rema-col">
+			<!--<div class="checkout-block rema-col">
 				<div clacc=" rema-col">
 					<div class="page-title font-l font-w-l">訂單線上付款 - {#pcenter#}</div>
 				</div>
@@ -166,6 +88,27 @@
 						</div>	
 					</div>
 				</div>
+			</div>-->
+
+			<div id="delivery_options_show" >
+				<h3></h3>
+			</div>
+			<div id="checked_finished_page" >
+				<div>
+					訂單編號：
+					<span id="order_numbers">{#OrderNo#}</span>
+				</div>
+			</div>
+			<div id="order_finished_msg" >
+				<div>訂購成功！</div>
+				<div>
+					系統已自動發送確認信至您的註冊信箱，請檢查收件匣。<br /><br />
+					如果未收到，請查看垃圾郵件或確認您提供的信箱是否正確。<br /><br />
+					{#intro#}<br /><br />
+					{#hiddenString#}
+				</div>
+			</div>
+			<div id="shipping_footer">
 			</div>
 <!-m2->
 
@@ -229,64 +172,12 @@
 				</div>
 			</div>
 
-<!--
-			<div class="prduct-list">
-				<div class="shop-cart-block">
-					<div class="shop-cart rema-col l8 xss12">
-						<div class="padding-2vw">
-							<div class="product-list align-item-center">
-								<div class="rema-col l2">商品</div>
-								<div class="rema-col l3">
-									<div class="padding-left">名稱</div>
-								</div>
-								<div class="rema-col l7 align-center">
-									<div class="rema-col l3">顏色</div>
-									<div class="rema-col l3">尺寸</div>
-									<div class="rema-col l3">件數</div>
-									<div class="rema-col l3">金額</div>
-								</div>
-							</div>
-							{#endstr#}
-						</div>
-					</div>
-				</div>
-			</div>
-			-->
+			
 <!-ok1->
 
 <!-err1-><div class="ordererr">{#ntc#}</div><!-err1->
 
-<!-menu->
-<!--
-							<div class="rema-col product-item border-top align-item-center">
-								<div class="rema-col l2 ">
-									<img src="{#srcs#}">
-								</div>
-								<div class="rema-col l3 ">
-									<div  class="padding-left">
-										<div class=" font-s title">{#goodsname#}</div>
-										<div class=" font-s">{#bn#}</div>
-									</div>
-								</div>
-								<div class="rema-col l7  align-center">
-									<div class="mobile-padding-left">
-										<div class="rema-col l3  height-24  moble-text-left  font-s">{#colorname#}</div>
-										<div class="rema-col l3  height-24  font-s">{#buysize#}</div>
-										<div class="rema-col l3  height-24  font-s">
-											<div class="product-detail-word detail-align-center">
-												<div class="font-s font-m-xs">{#acc#}</div>
-											</div>
-										</div >
-										<div class="rema-col l3  height-24 mobile-float-right">
-											<div class="product-detail-word detail-align-center mobile-detail-price">
-												<div class="font-s title">{#pricesymbol#} {#jine#}</div>
-											</div>
-										</div>
-
-									</div>
-								</div>
-							</div>
-						-->
+<!-menu->						
 <!-menu->
 
 <!-end->
