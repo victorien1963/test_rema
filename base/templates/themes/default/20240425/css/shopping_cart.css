@@ -198,6 +198,10 @@ input[type=text], select {
     height: 77%;
     background-color: #ddd;
     border-bottom: 1px solid #4b4b4b;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;
 }
 
 .product_card > .product_info {
@@ -992,7 +996,7 @@ select#region_options {
 .post_code > input {
     border: 0px solid transparent;
     width: 75% !important;
-    margin-left: 1rem;
+    margin-left: 0rem;
     padding-bottom: .5rem;
     text-align: center;
     margin-top: auto;
@@ -1228,8 +1232,12 @@ select#region_options {
         padding-top: .75rem;
     }
 
-    #Province, #zoneid {
+    #Province {
         padding-left: 8rem;
+    }
+
+    #zoneid {
+        padding-left: 3rem;
     }
 }
 
@@ -1329,6 +1337,10 @@ select#region_options {
 
     .product_card > .product_img {
         height: 77%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: center;
     }
 
     .tabs {
@@ -1422,8 +1434,12 @@ select#region_options {
         padding-top: .75rem;
     }
 
-    #Province, #zoneid {
+    #Province {
         padding-left: 6.5rem;
+    }
+
+    #zoneid {
+        padding-left: 2rem;
     }
 }
 
@@ -1523,6 +1539,10 @@ select#region_options {
 
     .product_card > .product_img {
         height: 31vw;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: center;
     }
 
     .tabs {
@@ -1708,6 +1728,10 @@ select#region_options {
 
     .product_card > .product_img {
         height: 70%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: center;
     }
 
     .tabs {
@@ -1882,6 +1906,10 @@ select#region_options {
 
     .product_card > .product_img {
         height: 71%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: center;
     }
 
     .tabs {
@@ -2297,8 +2325,12 @@ select#region_options {
         margin-top: .5rem;
     }
 
-    #Province, #zoneid {
+    #Province {
         padding-left: 8rem;
+    }
+
+    #zoneid {
+        padding-left: 3rem;
     }
 }
 
@@ -2377,6 +2409,10 @@ select#region_options {
 
     .product_card > .product_img {
         height: 72%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: center;
     }
 
     #shopping_cart_amount {
@@ -2588,8 +2624,12 @@ select#region_options {
         padding-bottom: .5rem;
     }
 
-    #Province, #zoneid {
+    #Province {
         padding-left: 6.5rem;
+    }
+
+    #zoneid {
+        padding-left: 1rem;
     }
 }
 
@@ -2695,12 +2735,20 @@ select#region_options {
 
     #produce_items_iphone_rwd > div > .product_card > .product_img {
         height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: center;
     }
 
     #produce_items_iphone_rwd > div > .product_card > .product_img:nth-child(1) {
         height: 100%;
         border-top: 1px solid #4b4b4b;
-        border-bottom: 1px solid transparent;
+        border-bottom: 0px solid transparent;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: center;
     }
 
     #produce_items_iphone_rwd > div > .product_info {
@@ -2973,8 +3021,12 @@ select#region_options {
         font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     }
 
-    #Province, #zoneid {
+    #Province {
         padding-left: 4rem;
+    }
+
+    #zoneid {
+        padding-left: 1rem;
     }
 }
 
@@ -3067,12 +3119,20 @@ select#region_options {
 
     #produce_items_iphone_rwd > div > .product_card > .product_img {
         height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: center;
     }
 
     #produce_items_iphone_rwd > div > .product_card > .product_img:nth-child(1) {
         height: 100%;
         border-top: 1px solid #4b4b4b;
         border-bottom: 1px solid transparent;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: center;
     }
 
     #produce_items_iphone_rwd > div > .product_info {
