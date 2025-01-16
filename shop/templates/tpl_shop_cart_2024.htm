@@ -15,7 +15,7 @@
         <div id="produce_items" class="row mx-0">
           <template x-for="(pdItem, index) in orderList" :key="index">
           <div class="col-3 product_card">
-            <div class="product_img" style="background-image: url('')"></div>
+            <div class="product_img" x-bind:style="`background-image: url(${pdItem.orderdata.srcs})`"></div>
             <div class="product_info">
               <input type="hidden" x-bind:id="'fz_' + pdItem.orderdata.gid+ pdItem.orderdata.fzspecid+ pdItem.orderdata.picgid"  x-bind:value="pdItem.orderdata.fz">
               <div class="row">
@@ -145,28 +145,25 @@
           <select id="city_option" name="city_option" x-model="deliveryInfo.scity">
             <option value="桃園市" class="city_option">桃園市</option>
           </select>-->
-          <select id="Province" onKeyUp='if(window.event.keyCode==13) document.zoneid.focus();'  onChange="provinceSelChange(newaddform.zoneid,newaddform.Province.value,'{#zoneid#}',newaddform.postcode,newaddform.addr,newaddform.Province)" name="city_option" x-model="deliveryInfo.scity">
+          <span id="zonelist"></span>
+          <select id="Province" onKeyUp='if(window.event.keyCode==13) document.zoneid.focus();'  onChange="provinceSelChange(zoneid,Province.value,1,postcode,addr,Province)" name="city_option" x-model="deliveryInfo.scity">
           </select>
           <div class="text-danger place_limited">• 限本島</div>
         </div>
         <div class="d-flex region_and_post">
           <div id="the_region_options" class="d-flex">
             <div class="the_region_options_title">地區</div>
-            <!--
-            <select id="the_region_options" name="the_region_options" x-model="deliveryInfo.szone">
-              <option value="大園區" class="the_region_options">大園區</option>
-            </select>-->
-            <select id="zoneid" name="the_region_options" x-model="deliveryInfo.szone">
-            </select>
+            <select id="zoneid" onChange="postSelChange(Province.value,zoneid.value,postcode,addr,Province)" name="the_region_options" x-model="deliveryInfo.szone">
+            </select>   
           </div>
           <div class="d-flex post_code">
             <label>郵遞區號</label>
-            <input type="text" name="mart_code" x-model="deliveryInfo.spostal"/>
+            <input id="postcode" type="text" name="mart_code" x-model="deliveryInfo.spostal"/>
           </div>
         </div>
         <div class="d-flex the_address">
           <label>地址</label>
-          <input type="text" name="address" placeholder="請輸入地址"  x-model="deliveryInfo.saddr">
+          <input id="addr" type="text" name="address" placeholder="請輸入地址"  x-model="deliveryInfo.saddr">
         </div>
         <div class="the_address_2 address_rwd">
           <label>地址２</label>
@@ -306,7 +303,7 @@
 
     <div id="order_info_content_checked" class="row p-3" style="display: none;">
       <div class="col-2">
-        <div class="t_amonts_checked"><span class="font-weight-bold">2</span> 商品</div>
+        <div class="t_amonts_checked"><span class="font-weight-bold">{#tnums#}</span> 商品</div>
         <div class="t_delivery_checked" x-text="'配送 (商品滿'+orderInfo.setyunfei + '免運)'"></div>
         <div class="t_balances_checked">餘額抵⽤</div>
         <div class="t_discount_checked">折扣</div>

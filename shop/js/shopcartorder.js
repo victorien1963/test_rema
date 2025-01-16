@@ -166,6 +166,31 @@ $(document).ready(function(){
 	});
 	
 
+	$("#checked_continue_btn_step1").click(function(){
+		$.ajax({
+			type: "POST",
+			url: PDV_RP+"member/post.php",
+			data: "act=getzonelist&pid=1",
+			success: function(msg){
+				pList.data = new Array();
+				$("#zonelist").html(msg);
+				//console.log('msg:'+msg);
+				if(PDV_LAN == "en"){
+					var constr = "Please Select";
+				}else if(PDV_LAN == "zh_cn"){
+					var constr = "请选择";
+				}else{
+					var constr = "請選擇";
+				}
+				$("#Province").html("<option value='s'> "+constr+"</option>"+pList.getOptionString('s'));
+				//$('#Province').selectpicker('refresh');
+			}
+		
+	 });
+
+
+	});
+
 });
 
 
@@ -174,10 +199,12 @@ $(document).ready(function(){
 
 		//urlstr  就等於 jdepromocode =>是從shopcart 傳到startorder
 
-		var cityText = $('#Province option:selected').text();
+		//var cityText = $('#Province option:selected').text();
+		var addrValue =$("#addr").val();
 		//alert('cityText' + cityText);
-
-		$("#s_addr").val(cityText+deliveryInfo.saddr);
+		//alert('deliveryInfo.saddr:'+deliveryInfo.saddr);
+		$("#s_addr").val(addrValue);
+		//alert($("#s_addr").val());
 
 
 		/*
@@ -222,14 +249,14 @@ $(document).ready(function(){
 			
 			if($("#payid")[0].value==2 && noa && Number($("#tjine")[0].value)>0){
 				LoadMsg("外離島無法使用貨到付款，請改用信用卡付款，敬請見諒。");
-				window.location=PDV_RP+'shop/cart.php';
+				//window.location=PDV_RP+'shop/cart.php';
 				return false;
 			}
 			var nob = IndexAddrB("000"+$("#s_addr")[0].value);
 			
 			if($("#payid")[0].value==2 && nob){
 				LoadMsg("偏遠地區無法使用貨到付款，請改用信用卡付款，敬請見諒。");
-				window.location=PDV_RP+'shop/cart.php';
+				//window.location=PDV_RP+'shop/cart.php';
 				return false;
 			}
 			if(noa || nob){
@@ -549,7 +576,7 @@ $(document).ready(function(){
 
 	}); 
 });
-
+/*
 $(document).ready(function() {
     // 這裡放置你希望在 DOM 完全加載後執行的代碼
 	//alert('province');
@@ -574,7 +601,7 @@ $(document).ready(function() {
  });
 
 });
-
+*/
 
 
 
