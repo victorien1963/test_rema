@@ -280,7 +280,7 @@
     </div>
     <div  id="order_info_content" class="row p-3">
       <div class="col-2">
-        <div class="t_amonts"><span class="font-weight-bold">{#tnums#}</span> 商品</div>
+        <div class="t_amont"><span class="font-weight-bold">{#tnums#}</span> 商品</div>
         <div class="t_delivery" x-text="'配送 (商品滿'+orderInfo.setyunfei + '免運)'"></div>
         <div class="t_balances">餘額抵⽤</div>
         <div class="t_discount_code">輸入折扣碼</div>
@@ -295,9 +295,9 @@
         <div class="t_delivery" x-text="orderInfo.pricesymbol + orderInfo.yunfei"></div>
         <div class="t_balances" x-text="'-' + orderInfo.pricesymbol + orderInfo.disaccount"></div>
         <br />
-        <div class="">- $ 0</div>
+        <div class="d-flex discount_code_rema">- $ 0</div>
         <br />
-        <div class="">- $ 0</div>
+        <div class="d-flex discount_code_birth">- $ 0</div>
       </div>
     </div>
 

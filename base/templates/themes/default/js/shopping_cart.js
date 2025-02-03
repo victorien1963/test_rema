@@ -24,6 +24,93 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+function validateDiscount(inputSelector) {
+    const input = document.querySelector(inputSelector);
+    const invalidMessage = input.nextElementSibling;
+
+    if (input && invalidMessage) {
+    // 初始狀態：隱藏「無效」
+    invalidMessage.style.display = "none";
+
+    input.addEventListener("input", function () {
+        if (input.value.trim() === "") {
+        invalidMessage.style.display = "none"; // 沒輸入時不顯示
+        } else {
+        // 這裡可以加入驗證邏輯，例如檢查是否符合特定折扣碼格式
+        const isValid = checkDiscountCode(input.value);
+        invalidMessage.style.display = isValid ? "none" : "inline"; // 錯誤才顯示
+        }
+    });
+    }
+}
+
+// 模擬折扣碼驗證（這裡可以改成折扣碼的邏輯）
+function checkDiscountCode(code) {
+    const validCodes = ["REMA90", "BD200"]; // 允許的折扣碼
+    return validCodes.includes(code);
+    }
+
+    validateDiscount(".discount_code");
+    validateDiscount(".discount_birth");
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    function validateDiscount(inputSelector, discountSelector) {
+      const input = document.querySelector(inputSelector);
+      const discountDisplay = document.querySelector(discountSelector);
+      const amountElement = document.querySelector(".t_amonts");
+  
+      if (input && discountDisplay && amountElement) {
+        // 預設顯示 "- $ 0" 當沒有輸入折扣碼
+        discountDisplay.textContent = "- $ 0";
+        discountDisplay.style.display = "inline"; // 顯示
+  
+        input.addEventListener("input", function () {
+          const code = input.value.trim().toUpperCase(); // 忽略大小寫
+          let discountAmount = 0;
+  
+          // 使用 setTimeout 來延遲執行，確保 t_amonts 已經渲染好
+          setTimeout(function() {
+            // 檢查是否能夠正確選擇到 .t_amonts 元素
+            console.log("Amount Element:", amountElement);
+            console.log("Amount Text:", amountElement.textContent);
+  
+            // 提取數字部分 (忽略NT$等符號)
+            const totalAmountText = amountElement.textContent.trim().replace(/[^\d.]/g, ""); // 正則表達式取所有數字和小數點
+            console.log("Extracted total amount text:", totalAmountText); // 調試信息
+  
+            const totalAmount = parseFloat(totalAmountText) || 0;
+            console.log("Parsed total amount:", totalAmount); // 調試信息
+  
+            if (code === "REMA90") {
+              discountAmount = totalAmount * 0.1; // 90% 折扣（打9折）
+            } else if (code === "BD200") {
+              discountAmount = 200; // 固定折扣 $200
+            }
+  
+            // 根據折扣金額更新顯示
+            if (discountAmount > 0) {
+              discountDisplay.textContent = `- $ ${discountAmount.toFixed(0)}`;
+            } else {
+              discountDisplay.textContent = "- $ 0"; // 如果沒有折扣顯示 $0
+            }
+          }, 500); // 延遲 500ms，確保渲染完成
+        });
+      } else {
+        console.error("Required elements not found:", input, discountDisplay, amountElement);
+      }
+    }
+  
+    // 監聽兩個折扣碼輸入框
+    validateDiscount(".discount_code", ".discount_code_rema");
+    validateDiscount(".discount_birth", ".discount_code_birth");
+  });
+    
+  
+
+
 function updateQuantity(element, delta) {
     const currentQty = parseInt(element.siblings('.qty').val()); // 假設你的數量 input 使用 class 'qty'
     const newQty = currentQty + delta;
@@ -41,9 +128,14 @@ function setupEventHandlers() {
     // Step 1 繼續
     $('#checked_continue_btn_step1').click(function(e) {
         e.preventDefault();
+        
         $shoppingCartElements.hide();
         $checkedElements.show();
+    
+        // 滾動到頁面頂部
+        $('html, body').animate({ scrollTop: 0 }, 'fast');
     });
+    
 
     // Step 2 上一頁
     $('#prepage_step2').click(function(e) {
@@ -78,8 +170,12 @@ function setupEventHandlers() {
     // Step 2 繼續按鈕
     $('#checked_continue_btn_step2').click(function(e) {
         e.preventDefault();
-        handleStep2Continue();
+        handleStep2Continue(); // 繼續執行原本的函式
+        
+        // 滾動到頁面頂部
+        $('html, body').animate({ scrollTop: 0 }, 'fast');
     });
+    
 
     // Step 3 返回按鈕
     $('#prepage_step3').click(function(e) {
@@ -343,12 +439,18 @@ $('input[name="delivery"]').change(function() {
 // Step 4
 $('#checked_continue_btn_step3').click(function(e) {
     e.preventDefault();
-    
+
+    // 隱藏不需要的元素
     $('#recipient_info_credit_card, #recipient_info_cash_on_delivery, #recipient_info_overseas, .invoice_options, #total_prices_checked, #checked_continue_step3').hide();
     
+    // 顯示完成頁面
     $('#checked_finished_page').show();
     $('#order_finished_msg').show();
+    
+    // 滾動回到頁面頂端
+    $('html, body').animate({ scrollTop: 0 }, 'fast');
 });
+
 
 
 

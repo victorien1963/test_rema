@@ -175,7 +175,7 @@ input[type=text], select {
     display: flex;
     height: 34.5vw;
     border-top: 1.75px solid #000;
-    border-bottom: .5px solid #000;
+    border-bottom: 0px solid #000;
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
@@ -304,6 +304,7 @@ input.qtyminus {
     border: 1px solid #000 !important;
     height: 1.75rem;
     width: 71% !important;
+    margin: 0px !important;
 }
 
 #checked_continue, #checked_continue_step2, #checked_continue_step3 {
@@ -447,7 +448,7 @@ select#overseas_country {
     border-radius: 3px;
     width: 87%;
     text-align: center;
-    padding-bottom: .25rem;
+    padding-bottom: .15rem;
     margin-left: 1rem;
 }
 
@@ -472,10 +473,10 @@ select {
 }
 
 .overseas_country_title {
-    padding-bottom: .25rem;
+    padding-bottom: 0.25rem;
     padding-right: 0rem;
     margin-top: auto;
-    margin-bottom: auto;
+    /* margin-bottom: auto; */
     min-width: 20%;
 }
 
@@ -1191,6 +1192,7 @@ select#region_options {
 
     #order_info_content > .col-1 > div {
         text-align: end;
+        justify-content: end;
     }
 
     #total_prices > .col-1 > div {
@@ -1393,6 +1395,7 @@ select#region_options {
 
     #order_info_content > .col-1 > div {
         text-align: end;
+        justify-content: end;
     }
 
     #total_prices > .col-1 > div {
@@ -1591,6 +1594,7 @@ select#region_options {
 
     #order_info_content > .col-1 > div {
         text-align: end;
+        justify-content: end;
     }
 
     #total_prices > .col-1 > div {
@@ -1772,6 +1776,7 @@ select#region_options {
 
     #order_info_content > .col-1 > div {
         text-align: end;
+        justify-content: end;
     }
 
     #total_prices > .col-1 > div {
@@ -2018,6 +2023,7 @@ select#region_options {
 
     #order_info_content > .col-1 > div {
         text-align: end;
+        justify-content: end;
     }
 
     #total_prices > .col-1 > div {
@@ -2284,6 +2290,7 @@ select#region_options {
 
     #order_info_content > .col-1 > div {
         text-align: end;
+        justify-content: end;
     }
 
     #total_prices > .col-1 > div {
@@ -2575,6 +2582,7 @@ select#region_options {
 
     #order_info_content > .col-1 > div {
         text-align: end;
+        justify-content: end;
     }
 
     #total_prices > .col-1 > div {
@@ -3005,6 +3013,7 @@ select#region_options {
 
     #order_info_content > .col-1 > div {
         text-align: end;
+        justify-content: end;
     }
 
     .x_mark {
@@ -3357,6 +3366,7 @@ select#region_options {
 
     #order_info_content > .col-1 > div {
         text-align: end;
+        justify-content: end;
     }
 
     #total_prices > .col-1 > div {
