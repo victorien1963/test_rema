@@ -51,4 +51,18 @@ $(document).ready(function(){
 		}); 
 		return false; 
    });
+
+   $('#eye-icon').click(function() {
+	var passwordInput = $('#password');
+	var eyeImage = $(this).find('img');
+	
+	// 如果密碼是隱藏的，顯示密碼並更換為閉眼睛圖片
+	if (passwordInput.attr('type') === 'password') {
+		passwordInput.attr('type', 'text'); // 顯示密碼
+		eyeImage.attr('src', PDV_TMRP+'20240425/images/new_eye_close.png'); // 更換為閉眼睛圖片
+	} else {
+		passwordInput.attr('type', 'password'); // 隱藏密碼
+		eyeImage.attr('src', PDV_TMRP+'20240425/images/new_eye.png'); // 恢復為正常眼睛圖片
+	}
+	});
 });

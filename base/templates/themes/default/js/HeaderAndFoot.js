@@ -97,11 +97,14 @@ function InitNav() {
 				// 依據是否為頂置選單位置的按鈕做不同處理
 
 				if ($(item).hasClass('header-icon')) {
+					/*
 					$('.dropdown.small .bi-x-lg').on('click', function() {
 						// MobileSlideIn($dropdown, $(item));
 						SlideOut($dropdown);
 					});
 					MobileSlideIn($dropdown, $(item));
+					*/
+					window.location=PDV_RP+'shop/cart.php';
 				} else {
 					MobileSlideIn(
 						$dropdown,
@@ -161,6 +164,8 @@ function InitNav() {
 
 		re_select_nav();
 	} else {
+
+		/*
 		$dropdown_nav.mouseover(function () {
 			$(this).children('.dropdown').show();
 			$(this).find('.category').addClass('active');
@@ -170,10 +175,12 @@ function InitNav() {
 			$(this).children('.dropdown').hide();
 			$(this).find('.category').removeClass('active');
 		});
-
+		*/
 		$dropdown_nav.click(function () {
-			$(this).children('.dropdown').toggle();
+			//$(this).children('.dropdown').toggle();
+			window.location=PDV_RP+'shop/cart.php';
 		});
+		
 
 		/*$(function(){ 
 
