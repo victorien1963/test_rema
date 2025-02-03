@@ -193,10 +193,10 @@
                     <div class="row shopping-produce">
                       <div class="d-flex" style="width: 55%; border-right: 1px solid #a8a8a8;">
                         <div class="produce-image">
-                          <div class="bg-darkgrey pl-2">
-                            <img :src="pdItem.srcs" width="160">
+                          <div class="bg-darkgrey pl-2" :style="{ backgroundImage: `url(${pdItem.srcs})`, backgroundSize: 'cover', backgroundPosition: 'center' }">
                           </div>
                         </div>
+                        
                         <div class="produce-content">
                           <h7 x-text="pdItem.goods" class="proce-data1"></h7>
                           <br>
@@ -422,8 +422,7 @@
                           <input type="checkbox" class="form-check-input" name="tuilist[]" :value="pdItem.itemid">
                         </div>
                       </div>
-                      <div class="bg-darkgrey">
-                        <img :src="pdItem.srcs" width="160">
+                      <div class="bg-darkgrey pl-2" :style="{ backgroundImage: `url(${pdItem.srcs})`, backgroundSize: 'cover', backgroundPosition: 'center' }">
                       </div>
                     </div>
                     <div class="produce-content-return ml-4">
@@ -734,7 +733,7 @@
               </div>
 
               <div class="row" style="border-bottom: 1px solid rgb(201 201 201)">
-                <div class="h7 my-auto py-4 pt-0 col-12" style="white-space-collapse: preserve-breaks;">
+                <div class="h7 my-auto py-4 pt-0 col-12" style="white-space: pre-line;">
                   換貨： 為了提供您更便捷的服務，我們提供以下兩種換貨方式， 並請於購買日起 10天內辦理換貨。
 
                   <span class="fw-bold text-secondary">1. 親送換貨：</span>您可將商品親自送至我們的民生店直營門市進行換貨。 選擇此方式可即時為您處理換貨事宜，確保您的需求能迅速得到滿足。
@@ -754,8 +753,7 @@
                           <input type="checkbox" class="form-check-input" name="chglist[]" :value="pdItem.itemid">
                         </div>
                       </div>
-                      <div class="bg-darkgrey">
-                        <img :src="pdItem.srcs" width="160">
+                      <div class="bg-darkgrey pl-2" :style="{ backgroundImage: `url(${pdItem.srcs})`, backgroundSize: 'cover', backgroundPosition: 'center' }">
                       </div>
                     </div>
                     <div class="produce-content-exchange ml-4">
@@ -798,28 +796,28 @@
                         </div>
                         <div class="input-group-text exchange-reason col-6">
                           <div class="form-check d-flex my-auto">
-                            <input type="radio" class="form-check-input-reason mb-0 my-auto" id="reason_3"
+                            <input type="radio" class="form-check-input-reason h7 my-auto" id="reason_3"
                               :name="`chgnote[${pdItem.itemid}]`" value="S">
                             <label class="form-check-label pl-2 h7 ms-2 my-auto" for="reason_3">S</label>
                           </div>
                         </div>
                         <div class="input-group-text exchange-reason col-6">
                           <div class="form-check d-flex my-auto">
-                            <input type="radio" class="form-check-input-reason mb-0 my-auto" id="reason_4"
+                            <input type="radio" class="form-check-input-reason h7 my-auto" id="reason_4"
                               :name="`chgnote[${pdItem.itemid}]`" value="XL">
                             <label class="form-check-label pl-2 h7 ms-2 my-auto" for="reason_4">XL</label>
                           </div>
                         </div>
                         <div class="input-group-text exchange-reason col-6">
                           <div class="form-check d-flex my-auto">
-                            <input type="radio" class="form-check-input-reason mb-0 my-auto" id="reason_5"
+                            <input type="radio" class="form-check-input-reason h7 my-auto" id="reason_5"
                               :name="`chgnote[${pdItem.itemid}]`" value="M">
                             <label class="form-check-label pl-2 h7 ms-2 my-auto" for="reason_5">M</label>
                           </div>
                         </div>
                         <div class="input-group-text exchange-reason col-6">
                           <div class="form-check d-flex my-auto">
-                            <input type="radio" class="form-check-input-reason mb-0 my-auto" id="reason_6"
+                            <input type="radio" class="form-check-input-reason h7 my-auto" id="reason_6"
                               :name="`chgnote[${pdItem.itemid}]`" value="2L">
                             <label class="form-check-label pl-2 h7 ms-2 my-auto" for="reason_6">2L</label>
                           </div>
