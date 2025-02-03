@@ -2,8 +2,12 @@
 <head>
   <link type="text/css" rel="stylesheet" href="{#TM#}20240425/css/font_login.css" />
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  
+<script language="javascript" src="{#RP#}member/js/zone.js"></script>
+<script language="javascript" src="{#RP#}member/js/memberset.js?1"></script>
   <script type=text/javascript src="{#CP#}js/order.js?6"></script>
   <script language="javascript" src="{#CP#}js/ordertuidetail.js?6"></script>
+  
   <script>
     document.addEventListener('DOMContentLoaded', (event) => {
       // 顯示特定頁面並隱藏其他頁面
@@ -25,10 +29,10 @@
           // 根據按鈕 ID 切換頁面
           if (targetId === 'btn_exchanges') {
             orderTitle.textContent = '訂單查詢 > 申請換貨';
-            showPage('shopping_exchange'); // 顯示換貨頁面
+            //showPage('shopping_exchange'); // 顯示換貨頁面
           } else if (targetId === 'btn_returns') {
             orderTitle.textContent = '訂單查詢 > 申請退貨';
-            showPage('shopping_return'); // 顯示退貨頁面
+            //showPage('shopping_return'); // 顯示退貨頁面
           // } else if (targetId === 'back_to_order') {
           //   orderTitle.textContent = '訂單查詢';
           //   showPage('shopping_content'); // 顯示主要頁面
@@ -41,8 +45,10 @@
       if (isSafari) {
         document.body.classList.add('safari');
       }
+
   
       // Modal 彈出框的邏輯
+      
       $('#exampleModal').on('shown.bs.modal', function () {
         const saveAddressBtn = document.getElementById('saveAddressBtn');
         const inputAddress = document.getElementById('inputAddress');
@@ -80,8 +86,8 @@
 <!-start->
 <!-list->
 <div class="list-content" x-data="order_data_set()" x-init="order_data_init()">
-  <template x-if="showOrderListLayout">
-  </template>
+  <!--<template x-if="showOrderListLayout">
+  </template>-->
 
   <div id="shopping_flow" class="flex">
     <div id="shopping_content" class="col-shopping-content"
@@ -512,9 +518,9 @@
                 </div>
 
                 <div class="row" style="border-top: 1.5px dashed rgb(201 201 201)">
-                  <input name="s_addr" :value="orderList[{#orderIndex#}].orderdata.s_addr" type="hidden">
-                  <input name="s_name" :value="orderList[{#orderIndex#}].orderdata.s_name" type="hidden">
-                  <input name="s_mobi" :value="orderList[{#orderIndex#}].orderdata.s_mobi" type="hidden">
+                  <input id="faddr" name="s_addr" :value="orderList[{#orderIndex#}].orderdata.s_addr" type="hidden">
+                  <input id="fname" name="s_name" :value="orderList[{#orderIndex#}].orderdata.s_name" type="hidden">
+                  <input id="fmobi" name="s_mobi" :value="orderList[{#orderIndex#}].orderdata.s_mobi" type="hidden">
                   <template x-if="orderList[{#orderIndex#}].orderdata.editContact === false">
                     <div x-text="orderList[{#orderIndex#}].orderdata.s_addr" class="h7 py-4 col-5">
                     </div>
@@ -546,13 +552,13 @@
                     </div>
                   </template>
 
-                  <button id="editAddressBtn"
-                  class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal">
+                  <button id="editAddressBtn_{#orderIndex#}"
+                  class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal" onclick="editContactNew(this)">
                   <img src="{#TM#}20240425/images/icon_pen.svg" width="17" class="pr-1">
                 </button>
                   <!--<template x-if="orderList[{#orderIndex#}].orderdata.editContact === false">
-                    <button @click="orderList[{#orderIndex#}].orderdata.editContact = true" id="editAddressBtn"
-                      class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal">
+                    <button @click="orderList[{#orderIndex#}].orderdata.editContact = true" id="editAddressBtn_{#orderIndex#}"
+                      class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal" onclick="editContactNew(this)">
                       <img src="{#TM#}20240425/images/icon_pen.svg" width="17" class="pr-1">
                     </button>
                   </template>
@@ -589,13 +595,13 @@
                     </div>
                   </template>
 
-                  <button id="editAddressBtn"
-                      class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal">
+                  <button id="editAddressBtn_{#orderIndex#}"
+                      class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal" onclick="editContactNew(this)">
                       <img src="{#TM#}20240425/images/icon_pen.svg" width="17" class="pr-1">
                     </button>
                   <!--<template x-if="orderList[{#orderIndex#}].orderdata.editContact === false">
-                    <button @click="orderList[{#orderIndex#}].orderdata.editContact = true" id="editAddressBtn"
-                      class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal">
+                    <button @click="orderList[{#orderIndex#}].orderdata.editContact = true" id="editAddressBtn_{#orderIndex#}"
+                      class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal" onclick="editContactNew(this)">
                       <img src="{#TM#}20240425/images/icon_pen.svg" width="17" class="pr-1">
                     </button>
                   </template>
@@ -625,7 +631,7 @@
                         x-model="orderList[{#orderIndex#}].orderdata.editName" type="text">
                     </div>
                   </template>
-                  <!-- <button id="editAddressBtn" class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal">
+                  <!-- <button id="editAddressBtn_{#orderIndex#}" class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal" onclick="editContactNew(this)">
                     <img src="./images/icon_pen.svg" width="17" class="pr-1">
                   </button> -->
                 </div>
@@ -643,7 +649,7 @@
                         x-model="orderList[{#orderIndex#}].orderdata.editMobi" type="text">
                     </div>
                   </template>
-                  <!-- <button id="editAddressBtn" class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal">
+                  <!-- <button id="editAddressBtn_{#orderIndex#}" class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal" onclick="editContactNew(this)">
                     <img src="./images/icon_pen.svg" width="17" class="pr-1">
                   </button> -->
                 </div>
@@ -880,13 +886,13 @@
                     </div>
                   </template>
 
-                  <button id="editAddressBtn"
-                  class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal">
+                  <button id="editAddressBtn_{#orderIndex#}"
+                  class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal" onclick="editContactNew(this)">
                   <img src="{#TM#}20240425/images/icon_pen.svg" width="17" class="pr-1">
                 </button>
                   <!--<template x-if="orderList[{#orderIndex#}].orderdata.editContact === false">
-                    <button @click="orderList[{#orderIndex#}].orderdata.editContact = true" id="editAddressBtn"
-                      class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal">
+                    <button @click="orderList[{#orderIndex#}].orderdata.editContact = true" id="editAddressBtn_{#orderIndex#}"
+                      class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal" onclick="editContactNew(this)">
                       <img src="{#TM#}20240425/images/icon_pen.svg" width="17" class="pr-1">
                     </button>
                   </template>
@@ -922,14 +928,14 @@
                   </template>
 
 
-                  <button id="editAddressBtn"
-                      class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal">
+                  <button id="editAddressBtn_{#orderIndex#}"
+                      class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal" onclick="editContactNew(this)">
                       <img src="{#TM#}20240425/images/icon_pen.svg" width="17" class="pr-1">
                     </button>
                   <!--
                   <template x-if="orderList[{#orderIndex#}].orderdata.editContact === false">
-                    <button @click="orderList[{#orderIndex#}].orderdata.editContact = true" id="editAddressBtn"
-                      class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal">
+                    <button @click="orderList[{#orderIndex#}].orderdata.editContact = true" id="editAddressBtn_{#orderIndex#}"
+                      class="h7 col-1 text-end btn-black-icon" data-toggle="modal" data-target="#exampleModal" onclick="editContactNew(this)">
                       <img src="{#TM#}20240425/images/icon_pen.svg" width="17" class="pr-1">
                     </button>
                   </template>
@@ -995,6 +1001,7 @@
 
   <!-- Modal -->
 <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <input name="whAddr" id="whAddr" value="" type="hidden">
   <div class="modal-dialog">
     <div class="modal-content">
       <!-- Modal Header -->
@@ -1012,18 +1019,24 @@
           <div class="form-group">
             <div class="row">
               <div class="col pr-0">
-                <select class="form-control">
-                  <option>臺灣</option>
+                <select name="country" class="form-control" id="selcountry">
+                  <option value=""> 請選擇</option>
+                  <option value="臺灣_1"> 臺灣</option>
+                  <option value="中國_2"> 中國</option>
+                  <option value="香港_3"> 香港</option>
+                  <option value="澳門_561"> 澳門</option>
+                  <option value="新加坡_4"> 新加坡</option>
+                  <option value="馬來西亞_565"> 馬來西亞</option>
+                  <option value="美國_568"> 美國</option>
                 </select>
               </div>
               <div class="col px-1">
-                <select class="form-control">
-                  <option>基隆市</option>
+                <span id="zonelist"></span>
+                <select id="Province" onKeyUp='if(window.event.keyCode==13) document.zoneid.focus();'  onChange="provinceSelChange(zoneid,Province.value,1,postcode,addr,Province)" name="city_option" >
                 </select>
               </div>
               <div class="col pl-0">
-                <select class="form-control">
-                  <option>仁愛區</option>
+                <select id="zoneid" onChange="postSelChange(Province.value,zoneid.value,postcode,addr,Province)" name="the_region_options" >
                 </select>
               </div>
             </div>
@@ -1031,26 +1044,26 @@
 
           <!-- Address Input -->
           <div class="form-group">
-            <input type="text" class="form-control" id="inputAddress" placeholder="地址">
+            <input type="text" class="form-control" id="addr" placeholder="地址" >
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="郵遞區號">
+            <input id="postcode"  type="text" class="form-control" placeholder="郵遞區號">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="姓名">
+            <input id="editName" type="text" class="form-control" placeholder="姓名">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="手機電話">
+            <input id="editPhone" type="text" class="form-control" placeholder="手機電話">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="其他電話">
+            <input id="editTell" type="text" class="form-control" placeholder="其他電話">
           </div>
         </form>
       </div>
 
       <!-- Modal Footer -->
       <div class="modal-footer m-auto pb-5">
-        <button id="confirmButton" type="button" class="btn-black-filled py-2">確認修改</button>
+        <button id="confirmButton" type="button" class="btn-black-filled py-2" @click="testwh()">確認修改</button>
       </div>
     </div>
   </div>

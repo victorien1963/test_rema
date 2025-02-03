@@ -3,6 +3,8 @@
 //訂單查詢
 $(document).ready(function(){
 
+	
+
 	/*$("img.paystat").each(function(){
 		var oldsrc=$(this)[0].src;
 		var imgname=oldsrc.substr((oldsrc.length-6),2);
@@ -47,6 +49,9 @@ $(document).ready(function(){
 			$("#key").css({color:'#505050'});
 		}
 	});*/
+	$(document).on('click', '#editAddressBtn', function() {
+		$('#exampleModal').modal('show');
+	});
 	
 	$(".delchk").click(function(){
 		var getdelid = this.id.substr(7);
@@ -174,8 +179,56 @@ function order_data_set() {
 		  this.orderList[orderIndex].orderdata.editMobi;
 		this.orderList[orderIndex].orderdata.editContact = false;
 	  },
+	  testwh() {
+		
+		var testvalue = $('#whAddr').val();
+		var editAddr = $('#addr').val().trim();
+		var editName = $('#editName').val().trim();
+		var editPhone = $('#editPhone').val().trim();
+		var editTell = $('#editTell').val().trim();
+		/*
+		var faddr = $('#faddr').val().trim();
+		var fname = $('#fname').val().trim();
+		var fmobi = $('#fmobi').val().trim();
+		*/
+		if (editAddr !== "") {
+			
+		this.orderList[testvalue].orderdata.s_addr =editAddr;
+		$('#faddr').val(editAddr);
+		} 
+		if (editName !== "") {
+			
+		this.orderList[testvalue].orderdata.s_name =editName;
+		$('#fname').val(editName);
+		} 
+		if (editPhone !== "") {
+			
+		this.orderList[testvalue].orderdata.s_mobi =editPhone;
+		$('#fmobi').val(editPhone);
+		} 
+		$('#exampleModal').modal('hide');
+		//var faddr = $('#faddr').val().trim();
+		//var fname = $('#fname').val().trim();
+		//var fmobi = $('#fmobi').val().trim();
+		
+    	//alert('faddr: ' + faddr);
+    	//alert('fname: ' + fname);
+    	//alert('fmobi: ' + fmobi);
+	  }
 	};
   }
   
   function order_data_init() {}
+
+
+  function editContactNew(button){
+	let id = button.id;
+    // 使用 split() 方法分割字串並取得數字部分
+    let number = id.split('_')[1];
+	$('#whAddr').val(number);
+	var testvalue = $('#whAddr').val();
+	$('#exampleModal').modal('show');
+    //alert('whAddr: ' + testvalue);
+
+  }
 
