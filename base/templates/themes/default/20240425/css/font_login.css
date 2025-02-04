@@ -2650,6 +2650,37 @@ select.form-control, input.form-control {
     padding: 8px;
 }
 
+#editAddressForm > div > div > div > select, #editAddressForm > div > .form-control  {
+    border: 1px solid #a8a8a8 !important;
+    height: 38px !important;
+}
+
+#editAddressForm > .form-group {
+    margin-bottom: .5rem !important;
+}
+
+#editAddressForm > .form-group:nth-child(1) {
+    margin-bottom: .75rem !important;
+}
+
+.close {
+    border: none !important;
+    background: transparent !important;
+}
+
+.modal-header .close {
+    margin: -1.75rem 0rem -1rem auto !important;
+}
+
+.close > span {
+    font-weight: 200;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif !important;
+}
+
+#confirmButton {
+    padding: .5rem 1.5rem !important;
+}
+
 .shopping-produce:nth-child(1) {
     padding-top: 1.25rem;
 }
