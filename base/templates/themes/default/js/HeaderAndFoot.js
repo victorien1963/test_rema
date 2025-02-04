@@ -346,3 +346,32 @@ $(document).ready(function () {
 		$('body').loading();
 	});
 });
+
+
+let lastScrollTop = 0; // 上次滾動的Y坐標
+
+
+window.addEventListener("scroll", function() {
+	const header = document.getElementById("index-header");
+	let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+	//console.log("當前滾動位置：", currentScroll);
+	//console.log("前次滾動位置：", lastScrollTop);
+	if (currentScroll > lastScrollTop && currentScroll > header.offsetHeight) {
+		// 向下滾動，隱藏標頭
+		//header.style.top = "-120px";
+		header.style.top = "30px";
+	} 
+	
+	else if(currentScroll <= 0)
+		{
+	
+			header.style.top = "30px";
+		}
+	else if (currentScroll < lastScrollTop ) {
+		// 向上滾動或回到頂端，顯示標頭
+		//header.style.top = "30px";
+		header.style.top = "-150px";
+	}
+	
+	lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // 防止負數
+});
