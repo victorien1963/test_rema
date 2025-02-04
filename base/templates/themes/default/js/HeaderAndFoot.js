@@ -359,19 +359,31 @@ window.addEventListener("scroll", function() {
 	if (currentScroll > lastScrollTop && currentScroll > header.offsetHeight) {
 		// 向下滾動，隱藏標頭
 		//header.style.top = "-120px";
+		$('a.totop').fadeOut(300);  
 		header.style.top = "30px";
 	} 
 	
 	else if(currentScroll <= 0)
 		{
-	
+	//回到頂端，顯示標頭
+			$('a.totop').fadeOut(300); 
 			header.style.top = "30px";
 		}
 	else if (currentScroll < lastScrollTop ) {
-		// 向上滾動或回到頂端，顯示標頭
+		// 向上滾動
 		//header.style.top = "30px";
+		$('a.totop').fadeIn(300);  
 		header.style.top = "-150px";
 	}
 	
 	lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // 防止負數
+});
+
+
+$(document).ready(function() {
+	$('a.totop').on('click',function(){
+		$('html, body').animate({scrollTop: 0}, 1500);
+		return false;
+	  }) 
+
 });

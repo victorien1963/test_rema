@@ -1,5 +1,7 @@
 //距離400px時出現To Top, Header加上陰影
-$(window).scroll(function(){      
+/*   
+$(window).scroll(function(){   
+	
 	var $window =  $(window).scrollTop();
   
 	if($window > 300){
@@ -8,16 +10,18 @@ $(window).scroll(function(){
 	} else{
 	  $('a.totop').fadeOut(300);  
 	}
+	  
 })	
-
+*/
 $(function(){
 
-	//To top effect   
+	//To top effect  
+	/* 
 	$('a.totop').on('click',function(){
 	  $('html, body').animate({scrollTop: 0}, 1500);
 	  return false;
 	}) 
-
+	*/
 
 
 	//表格RWD 收折效果

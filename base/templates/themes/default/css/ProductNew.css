@@ -683,8 +683,10 @@ body {
   z-index: 1500;
   border-radius: 50%;
 }
+
 .bk-layout .totop img {
   width: fit-content;
+  margin: 10;
 }
 .bk-layout .fix-nav {
   display: none;
