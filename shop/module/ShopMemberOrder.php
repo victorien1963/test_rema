@@ -443,8 +443,8 @@ function ShopMemberOrder()
 			$msg = $fsql->f('msg');
 			$itemtui = $fsql->f('itemtui');
 
-			$getsubpic = $tsql->getone("select src from {P}_shop_con where id='$gid'");
-			$src = $getsubpic["src"];
+			$getsubpic = $tsql->getone("select colorpic from {P}_shop_con where id='$gid'");
+			$src = $getsubpic["colorpic"];
 			$srcs = dirname($src) . "/sp_" . basename($src);
 			$srcs = ROOTPATH . $srcs;
 
