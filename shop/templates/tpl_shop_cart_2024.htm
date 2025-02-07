@@ -312,10 +312,10 @@
         <div class="t_discount_checked">折扣</div>
       </div>
       <div class="col-1 text-right">
-        <div class="t_amonts_checked_value" x-text="orderInfo.pricesymbol + orderInfo.tjine"></div>
+        <div class="t_amonts_checked_value" x-text="orderInfo.pricesymbol + orderInfo.oritjine"></div>
         <div class="t_delivery_checked_value" x-text="orderInfo.pricesymbol + orderInfo.yunfei"></div>
         <div class="t_balances_checked_value" x-text="'-' + orderInfo.pricesymbol + orderInfo.disaccount"></div>
-        <div class="t_discount_checked_value">- $ 0</div>
+        <div class="t_discount_checked_value" x-text="'-' + orderInfo.pricesymbol +orderInfo.promoprice"></div>
       </div>
     </div>
 
