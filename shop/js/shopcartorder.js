@@ -612,6 +612,7 @@ function order_data_set() {
 	  orderInfo: orderInfo,
 	  deliveryInfo: deliveryInfo,
 	  jdepromocode :jdepromocode,
+	  cuspromocode :cuspromocode,
 	  minusItem(orderIndex) {
 		if(this.orderList[orderIndex].orderdata.acc>1)
 		{

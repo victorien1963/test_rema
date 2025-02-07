@@ -28,18 +28,32 @@ document.addEventListener("DOMContentLoaded", function () {
 function validateDiscount(inputSelector) {
     const input = document.querySelector(inputSelector);
     const invalidMessage = input.nextElementSibling;
-
+    const form = document.querySelector("#promoCode");
+    const amountElement = document.querySelector(".discount_code_rema");
+    const totalAmountText = amountElement.textContent.trim().replace(/[^\d.]/g, "");
+    const totalAmount = parseFloat(totalAmountText) || 0;
+    let timeout;
     if (input && invalidMessage) {
     // 初始狀態：隱藏「無效」
     invalidMessage.style.display = "none";
+    if(totalAmount==0 && input.value.trim() !== "")
+    {
+        invalidMessage.style.display = "inline";
+    }
 
     input.addEventListener("input", function () {
         if (input.value.trim() === "") {
         invalidMessage.style.display = "none"; // 沒輸入時不顯示
         } else {
+
         // 這裡可以加入驗證邏輯，例如檢查是否符合特定折扣碼格式
-        const isValid = checkDiscountCode(input.value);
-        invalidMessage.style.display = isValid ? "none" : "inline"; // 錯誤才顯示
+        clearTimeout(timeout);
+        timeout=setTimeout(function() {
+            form.submit();
+            
+        }, 2000);
+
+
         }
     });
     }
@@ -55,7 +69,7 @@ function checkDiscountCode(code) {
     validateDiscount(".discount_birth");
 });
 
-
+/*
 document.addEventListener("DOMContentLoaded", function () {
     function validateDiscount(inputSelector, discountSelector) {
       const input = document.querySelector(inputSelector);
@@ -104,10 +118,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   
     // 監聽兩個折扣碼輸入框
-    validateDiscount(".discount_code", ".discount_code_rema");
-    validateDiscount(".discount_birth", ".discount_code_birth");
+    //validateDiscount(".discount_code", ".discount_code_rema");
+    //validateDiscount(".discount_birth", ".discount_code_birth");
   });
-    
+    */
   
 
 

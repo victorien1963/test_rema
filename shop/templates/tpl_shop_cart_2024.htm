@@ -284,8 +284,11 @@
         <div class="t_delivery" x-text="'配送 (商品滿'+orderInfo.setyunfei + '免運)'"></div>
         <div class="t_balances">餘額抵⽤</div>
         <div class="t_discount_code">輸入折扣碼</div>
-        <input type='text' name='discount_code' value='' class='discount_code' />
+        <form  class="form-inline" id="promoCode" method="post" action="/shop/cart.php">
+        <input type='text' name='promocode' x-bind:value="cuspromocode" class='discount_code' />
         <span class="text-danger small my-auto">無效</span>
+        <input type="hidden" name="promochk" value="1" />
+        </form>
         <div class="t_discount_birth">生日折扣碼</div>
         <input type='text' name='discount_birth' value='' class='discount_birth' />
         <span class="text-danger small my-auto">無效</span>
@@ -295,7 +298,7 @@
         <div class="t_delivery" x-text="orderInfo.pricesymbol + orderInfo.yunfei"></div>
         <div class="t_balances" x-text="'-' + orderInfo.pricesymbol + orderInfo.disaccount"></div>
         <br />
-        <div class="d-flex discount_code_rema">- $ 0</div>
+        <div class="d-flex discount_code_rema" x-text="'-' + orderInfo.pricesymbol +orderInfo.promoprice"></div>
         <br />
         <div class="d-flex discount_code_birth">- $ 0</div>
       </div>
@@ -309,7 +312,7 @@
         <div class="t_discount_checked">折扣</div>
       </div>
       <div class="col-1 text-right">
-        <div class="t_amonts_checked_value" x-text="orderInfo.pricesymbol + orderInfo.oritjine"></div>
+        <div class="t_amonts_checked_value" x-text="orderInfo.pricesymbol + orderInfo.tjine"></div>
         <div class="t_delivery_checked_value" x-text="orderInfo.pricesymbol + orderInfo.yunfei"></div>
         <div class="t_balances_checked_value" x-text="'-' + orderInfo.pricesymbol + orderInfo.disaccount"></div>
         <div class="t_discount_checked_value">- $ 0</div>
@@ -319,7 +322,7 @@
     <div id="total_prices" class="row">
       <div class="col-2 h5 font-weight-bolder">總金額</div>
       <div class="col-1 text-right h5 font-weight-bolder">
-        <div class="text-end fw-bolder" x-text="orderInfo.pricesymbol + (orderInfo.oritjine+orderInfo.yunfei-orderInfo.disaccount)"></div>
+        <div class="text-end fw-bolder" x-text="orderInfo.pricesymbol + (orderInfo.oritjine+orderInfo.yunfei-orderInfo.disaccount-orderInfo.promoprice)"></div>
         <!-- <br /> -->
         <div class="text-end fw-normal small" stlye="font-size: 80%">• 含營業稅</div>
       </div>

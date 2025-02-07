@@ -121,6 +121,7 @@ function ShopCart(){
 		$orderTotalInfo=array();
 		$deliveryInfo=array();
 		$jdepromocode ='';
+		$customPromocode='';
 		$tjine=0;
 		$kk=0;
 		
@@ -310,6 +311,7 @@ function ShopCart(){
 		$_POST[promocode] = addslashes($_POST[promocode]);
 		if($_POST[promochk] || $promocode){
 			
+			$customPromocode=$_POST[promocode]? $_POST[promocode]:$promocode;
 			$promocode = $_POST[promocode]? $_POST[promocode]:$promocode;
 			
 			foreach($gidslist AS $gva){
@@ -875,6 +877,7 @@ function ShopCart(){
 		$str .= "<script>var orderInfo = " . json_encode($orderTotalInfo, JSON_UNESCAPED_UNICODE) . ";</script>";
 		$str .= "<script>var deliveryInfo = " . json_encode($deliveryInfo, JSON_UNESCAPED_UNICODE) . ";</script>";
 		$str .= "<script>var jdepromocode = " . json_encode($jdepromocode, JSON_UNESCAPED_UNICODE) . ";</script>";
+		$str .= "<script>var cuspromocode = " . json_encode($customPromocode, JSON_UNESCAPED_UNICODE) . ";</script>";
 		return $str;
 
 }
