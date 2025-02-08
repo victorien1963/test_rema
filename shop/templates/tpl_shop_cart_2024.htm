@@ -83,10 +83,20 @@
   
           <div class="options_title">海外配送 Overseas Shipping</div>
           <label for="overseas_shipping" class="d-flex my-auto">
-              <input class="custom-radio my-auto" type="radio" id="overseas_shipping" name="delivery" value="overseas_shipping" x-model="deliveryInfo.spayid">
+              <input class="custom-radio my-auto" type="radio" id="overseas_shipping" name="delivery" value="3" x-model="deliveryInfo.spayid">
               <div>信用卡付款</div>
           </label>
-          <div id="overseas_shipping_options"></div>
+          <div id="overseas_shipping_options">
+            <select name="country" class="form-control" id="selcountry2">
+              <option value=""> 請選擇</option>
+              <option value="中國_2"> 中國</option>
+              <option value="香港_3"> 香港</option>
+              <option value="澳門_561"> 澳門</option>
+              <option value="新加坡_4"> 新加坡</option>
+              <option value="馬來西亞_565"> 馬來西亞</option>
+              <option value="美國_568"> 美國</option>
+            </select>
+          </div>
       </form>
     </div>
   
@@ -187,20 +197,18 @@
         </div>
         <div id="city_options" class="d-flex">
           <div class="city_options_title">City</div>
-          <select id="city_options" name="city_options" x-model="deliveryInfo.scity">
-            <option value="Hong_Kong" class="city_options"></option>
+          <select class="form-control" id="sProvince" onKeyUp='if(window.event.keyCode==13) document.szoneid.focus();'  onChange="provinceSelChange(szoneid,sProvince.value,1,spostcode,saddr,sProvince)" name="sProvince">
           </select>
         </div>
         <div class="d-flex region_and_postal">
           <div id="region_options" class="d-flex">
             <div class="region_options_title">Region</div>
-            <select id="region_options" name="region_options" x-model="deliveryInfo.szone">
-              <option value="region" class="region_options"></option>
+            <select id="szoneid" name="szoneid"  class="form-control" onChange="postSelChange(sProvince.value,szoneid.value,spostcode,saddr,sProvince)">
             </select>
           </div>
           <div class="d-flex postal_code">
             <label>Postal Code</label>
-            <input type="text" name="mart_code" x-model="deliveryInfo.spostal"/>
+            <input id="spostcode" type="text" name="mart_code" x-model="deliveryInfo.spostal"/>
           </div>
         </div>
       <!-- for iphone -->
@@ -217,7 +225,7 @@
       <!-- for iphone -->
         <div class="d-flex overseas_address">
           <label>Address</label>
-          <input type="text" name="mart_address" placeholder="Enter Address" x-model="deliveryInfo.saddr">
+          <input id="saddr"  type="text" name="mart_address" placeholder="Enter Address" x-model="deliveryInfo.saddr">
         </div>
         <div class="overseas_address_2 address_rwd">
           <label>Address 2</label>
@@ -331,7 +339,7 @@
     <div id="total_prices_checked" class="row" style="display: none;">
       <div class="col-2 h5 font-weight-bolder">總金額</div>
       <div class="col-1 text-right h5 font-weight-bolder" ">
-        <div class="text-end fw-bolder" x-text="orderInfo.pricesymbol + (orderInfo.oritjine+orderInfo.yunfei-orderInfo.disaccount)"></div>
+        <div class="text-end fw-bolder" x-text="orderInfo.pricesymbol + (orderInfo.oritjine+orderInfo.yunfei-orderInfo.disaccount-orderInfo.promoprice)"></div>
         <!-- <br /> -->
         <div class="text-end fw-normal small" stlye="font-size: 80%">• 含營業稅</div>
       </div>
@@ -390,7 +398,7 @@
         <input name="s_mobi" type="hidden" id="s_mobi"  x-bind:value="deliveryInfo.sphone" />
         <input name="s_tel" type="hidden" id="s_tel" x-bind:value="deliveryInfo.stel" />
         <input name="act" type="hidden" id="act" value="orderformsubmit">
-        <input type="hidden" id="tjine" x-bind:value='(orderInfo.oritjine+orderInfo.yunfei-orderInfo.disaccount)' >
+        <input type="hidden" id="tjine" x-bind:value='(orderInfo.oritjine+orderInfo.yunfei-orderInfo.disaccount-orderInfo.promoprice)' >
         <input type="hidden" name="payid" id="payid" x-bind:value="deliveryInfo.spayid">
         <input type="hidden" name="urlstr" id="urlstr" x-bind:value="jdepromocode">
         <input type="hidden" name="postpayname" id="postpayname" value="">

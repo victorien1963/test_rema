@@ -165,7 +165,7 @@ $(document).ready(function(){
 		});
 	});
 	
-
+	/*
 	$("#checked_continue_btn_step1").click(function(){
 		$.ajax({
 			type: "POST",
@@ -190,6 +190,7 @@ $(document).ready(function(){
 
 
 	});
+	*/
 
 });
 
@@ -201,6 +202,7 @@ $(document).ready(function(){
 
 		//var cityText = $('#Province option:selected').text();
 		var addrValue =$("#addr").val();
+		var overseaAddrValue=$("#saddr").val();
 		//alert('cityText' + cityText);
 		//alert('deliveryInfo.saddr:'+deliveryInfo.saddr);
 		$("#s_addr").val(addrValue);
@@ -214,13 +216,58 @@ $(document).ready(function(){
 
 		const deliveryMethod = $('input[name="delivery_method"]:checked').val();
 
+		const deliveryMethodALL = $('input[name="delivery"]:checked').attr('id');
     	// 根據選擇的配送方法和付款方式更新選項
-    	if (deliveryMethod) {
-        if (deliveryMethod === 'convenience_store') {
-            $("#shipinfo").val("2");
-        } else if (deliveryMethod === 'home_delivery') {
-            $("#shipinfo").val("1");
-        }
+		if(deliveryMethodALL)
+		{
+			if (deliveryMethodALL === 'overseas_shipping'){
+				$("#s_addr").val(overseaAddrValue);
+				var overseaCountryValue = $('#selcountry2').val();
+				let overseaparts = overseaCountryValue.split("_");
+				$("#s_country").val(overseaparts[0]);
+				var noa = IndexAddr("000"+$("#s_addr")[0].value);
+				if($("#s_name")[0].value==""){
+					if(PDV_LAN == "en"){
+						LoadMsg("Please fill in your name.");
+					}else if(PDV_LAN == "zh_cn"){
+						LoadMsg("请填写收货人姓名");
+					}else{
+						LoadMsg("請填寫收貨人姓名");
+					}
+					return false;
+				}
+				
+				if($("#s_addr")[0].value==""){
+					if(PDV_LAN == "en"){
+						LoadMsg("Please fill in your address.");
+					}else if(PDV_LAN == "zh_cn"){
+						LoadMsg("请填写收货人地址");
+					}else{
+						LoadMsg("請填寫收貨人地址");
+					}
+					return false;
+				}
+				if($("#s_mobi")[0].value==""){
+				
+					if(PDV_LAN == "en"){
+						LoadMsg("Please fill in the contact number.");
+					}else if(PDV_LAN == "zh_cn"){
+						LoadMsg("请填写联络电话");
+					}else{
+						LoadMsg("請填寫聯絡電話");
+					}
+					return false;
+				}
+
+			}
+			else{
+    			if (deliveryMethod) {
+        			if (deliveryMethod === 'convenience_store') {
+            			$("#shipinfo").val("2");
+        			} 
+					else if (deliveryMethod === 'home_delivery') {
+            		$("#shipinfo").val("1");
+        			}
 
 		if( $("#shipinfo").val() == 1 ){
 			var noa = IndexAddr("000"+$("#s_addr")[0].value);
@@ -315,9 +362,17 @@ $(document).ready(function(){
 
 
 
-    	}
-		else{
-			LoadMsg("請選擇配送資訊！");
+    			}
+				else{
+					LoadMsg("請選擇配送資訊！");
+						return false;
+				}
+			}
+
+		}
+		else
+		{
+			LoadMsg("請選擇配送方式！");
 				return false;
 		}
 
@@ -333,6 +388,9 @@ $(document).ready(function(){
 		if($("#payid")[0].value==""){
 			LoadMsg("請選擇付款方式");
 			return false;
+		}
+		if($("#payid")[0].value=="3"){
+			$("#payid").val("1");
 		}
 		
 

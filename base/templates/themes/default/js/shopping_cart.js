@@ -184,6 +184,7 @@ function setupEventHandlers() {
     // Step 2 繼續按鈕
     $('#checked_continue_btn_step2').click(function(e) {
         e.preventDefault();
+        updateSelectedOption();
         handleStep2Continue(); // 繼續執行原本的函式
         
         // 滾動到頁面頂部
@@ -214,7 +215,8 @@ function handleDeliveryChange() {
     selectedPaymentOption = ''; // 在每次改變時重置
 
     // 清空現有選項
-    $('#credit_card_options, #cash_on_delivery_options, #overseas_shipping_options').empty();
+    //$('#credit_card_options, #cash_on_delivery_options, #overseas_shipping_options').empty();
+    $('#credit_card_options, #cash_on_delivery_options').empty();
 
     if (isOverseas) {
         // 海外配送選擇
@@ -224,6 +226,7 @@ function handleDeliveryChange() {
 
         // 設定「海外配送」的付款方式
         selectedPaymentOption = '信用卡付款／宅配到府';
+        /*
         $('#overseas_shipping_options').append(`
             <div class="d-flex">
                 <div class="overseas_country_title">國家</div>
@@ -231,7 +234,7 @@ function handleDeliveryChange() {
                     <option value="hongkong">香港 Hong Kong</option>
                 </select>
             </div>
-        `);
+        `);*/
     } else {
         // 台灣境內配送選擇
         $('.t_delivery_checked').text('配送 (商品滿2,500免運)');
@@ -250,6 +253,32 @@ function handleDeliveryChange() {
                 <label><input class="custom-checkbox" type="radio" name="delivery_method" value="home_delivery"> 宅配到府</label>
             `);
         }
+
+
+
+
+        $.ajax({
+			type: "POST",
+			url: PDV_RP+"member/post.php",
+			data: "act=getzonelist&pid=1",
+			success: function(msg){
+				pList.data = new Array();
+				$("#zonelist").html(msg);
+				//console.log('msg:'+msg);
+				if(PDV_LAN == "en"){
+					var constr = "Please Select";
+				}else if(PDV_LAN == "zh_cn"){
+					var constr = "请选择";
+				}else{
+					var constr = "請選擇";
+				}
+				$("#Province").html("<option value='s'> "+constr+"</option>"+pList.getOptionString('s'));
+				//$('#Province').selectpicker('refresh');
+			}
+		
+	    });
+
+
     }
 
     // 確保每次選擇的配送方式被監聽
@@ -293,7 +322,7 @@ function updateSelectedOption() {
     }
 }
 
-
+/*
 $(document).ready(function() {
     // 頁面加載時，隱藏 #delivery_options_show
     $('#delivery_options_show').hide(); // 初始隱藏
@@ -329,6 +358,7 @@ $(document).ready(function() {
         handleStep2Continue(); // 繼續步驟 2 的流程
     });
 });
+*/
 
 // 點擊 #prepage_step3 時隱藏 #delivery_options_show
 $('#prepage_step3').click(function() {
@@ -350,6 +380,24 @@ function handleStep2Continue() {
             $('.options_title:first').after('<div class="alert alert-danger">請選擇配送方式</div>');
         }
         return; // 沒有選擇配送方式時，終止繼續執行
+    }
+    else
+    {
+        if (deliveryMethod === 'overseas_shipping'){
+        var overseaCountryValue = $('#selcountry2').val();  // 獲取選中的選項值
+        if (overseaCountryValue === "") {  // 如果選擇的是 "請選擇"
+            if ($('.alert-danger').length === 0) {
+                $('.options_title:first').after('<div class="alert alert-danger">請選擇海外配送國家</div>');
+            }
+            else
+            {
+                $('.alert-danger').remove();
+                $('.options_title:first').after('<div class="alert alert-danger">請選擇海外配送國家</div>');
+            }
+            return; 
+        }
+    }
+
     }
 
     // 移除警告視窗（如果存在）

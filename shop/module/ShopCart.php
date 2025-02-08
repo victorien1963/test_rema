@@ -831,7 +831,7 @@ function ShopCart(){
 
 		$var=array(
 			'sname' => '',
-			'market' => '',
+			'market' => '7_11',
 			'marketname' => '',
 			'marketaddr' => '',
 			'sphone' => '',
