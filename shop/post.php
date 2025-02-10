@@ -1054,6 +1054,193 @@ case "itemtui" :
 	echo "OK";
 	exit();
 	break;
+	case "itemchg":
+		$orderid = $_POST["orderid"];
+		$chglists = $_POST["chglist"];
+
+		$chgnote = $_POST["chgnote"];
+
+		$s_addr = $_POST["s_addr"];
+		$s_name = $_POST["s_name"];
+		$s_mobi = $_POST["s_mobi"];
+
+
+		//check exchange pd & size
+		if (empty($chglists)) {
+			exit("請選擇要換貨的商品");
+		}
+		$missingItems = [];
+		foreach ($chglists as $item) {
+			if (!array_key_exists($item, $chgnote) || empty($chgnote[$item])) {
+				$missingItems[] = $item;
+			}
+		}
+		if (!empty($missingItems)) {
+			exit("請選擇要換貨的尺寸");
+		}
+		//check exchange pd & size
+
+
+		foreach ($chglists as $lists) {
+			$chglist .= $chglist ? "," . $lists : $lists;
+		}
+
+		$chgtime = time();
+
+		if (!$chglist) {
+			exit("操作有誤！請重新申請");
+		}
+
+
+		//exit("修改中-----退貨項目ID:".$tuilist."/理由:".$tuireason);
+
+		$fsql->query("UPDATE {P}_shop_order SET ifchg='1',chgtime='$chgtime',chg_store='1',s_addr='$s_addr',s_name='$s_name',s_mobi='$s_mobi' WHERE orderid='{$orderid}'");
+		$fsql->query("UPDATE {P}_shop_orderitems SET ifchg='1',chgtime='$chgtime' WHERE orderid='{$orderid}' AND id IN($chglist)");
+
+		/*換貨尺寸*/
+		foreach ($chglists as $chgItemId) {
+			$fsql->query("UPDATE {P}_shop_orderitems SET chg_size='{$chgnote[$chgItemId]}' WHERE id='$chgItemId'");
+		}
+
+		/*換貨數量*/
+		if ($chgmums == "") {
+			$fsql->query("UPDATE {P}_shop_orderitems SET itemchgnums=nums WHERE orderid='{$orderid}' AND ifchg='1'");
+		} else {
+			$getlist = explode(",", $chglist);
+			foreach ($getlist as $vv) {
+				$fsql->query("UPDATE {P}_shop_orderitems SET itemchgnums='{$chgmums[$vv]}' WHERE orderid='{$orderid}' AND id='$vv'");
+			}
+		}
+
+		/**/
+		$fsql->query("SELECT * FROM {P}_shop_order WHERE orderid='{$orderid}'");
+		if ($fsql->next_record()) {
+			$memname = $fsql->f("name");
+			$OrderNo = $fsql->f("OrderNo");
+			$paytype = $fsql->f("paytype");
+			$paytotal = $fsql->f("paytotal");
+			$membermail = $fsql->f("email");
+			/**/
+			$user = $fsql->f("user");
+			$tel = $fsql->f("tel");
+			$mobi = $fsql->f("mobi");
+			$s_name = $fsql->f("s_name");
+			$s_mobi = $fsql->f("s_mobi");
+			$s_postcode = $fsql->f("s_postcode");
+			$s_tel = $fsql->f("s_tel");
+			$s_addr = $fsql->f("s_addr");
+		}
+		$fsql->query("SELECT * FROM {P}_shop_orderitems WHERE orderid='{$orderid}' AND id IN($chglist)");
+		while ($fsql->next_record()) {
+			$goods = $fsql->f("goods");
+			$bn = $fsql->f("bn");
+			$colorname = $fsql->f("colorname");
+			list($size) = explode("^", $fsql->f("fz"));
+			/**/
+			$price = $fsql->f("price");
+			$nums = $fsql->f("nums");
+			$jine = $fsql->f("jine");
+			/**寄送換貨單使用**/
+			$items_html .= '<tr bgcolor="#FFFFFF">';
+			$items_html .= '<td width="75" align="center" bgcolor="#FFFFFF" >' . $bn . '</td>';
+			$items_html .= '<td height="20" align="center" >' . $goods . '</td>';
+			$items_html .= '<td width="80" align="center" bgcolor="#FFFFFF" >' . $price . '</td>';
+			$items_html .= '<td width="50" align="center" bgcolor="#FFFFFF" >' . $nums . '</td>';
+			$items_html .= '<td width="50" align="center" bgcolor="#FFFFFF" >' . $size . '-' . $colorname . '</td>';
+			$items_html .= '<td width="80" align="center" bgcolor="#FFFFFF" >' . $jine . '</td>';
+			$items_html .= '</tr>';
+			/****/
+
+			$items .= $items ? "、" . $bn . " " . $goods . "(" . $colorname . " " . $size . ")" : $bn . " " . $goods . "(" . $colorname . "/" . $size . ")";
+		}
+
+		include_once(ROOTPATH . "includes/ebmail.inc.php");
+		$msql->query("SELECT * FROM {P}_shop_mailtemp WHERE tid='8' AND status='1'");
+		if ($msql->next_record()) {
+			$smsg = $memname . "|" . $GLOBALS['GLOBALS']['CONF'][SiteName] . "|" . time() . "|" . $OrderNo . "|" . $items . "|" . $paytotal . "|" . $GLOBALS['GLOBALS']['CONF'][SiteHttp];
+			$from = $GLOBALS['GLOBALS']['CONF'][SiteEmail];
+			$tuito = $GLOBALS['GLOBALS']['CONF'][TuiEmail];
+
+
+			$ordermessage .= '<div id="shoporderdetail" style="width:100%;">';
+			$ordermessage .= '<div class="ordertitle">';
+			$ordermessage .= '<div style="float:right;font:bold 14px/35px 微軟正黑體,Verdana, Arial, Helvetica, sans-serif;">';
+			$ordermessage .= '訂單號：' . $OrderNo . ' &nbsp; </div>';
+			$ordermessage .= '客戶換貨單</div><div class="tit" style="line-height:2.5em">訂購人訊息</div>';
+			$ordermessage .= '<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#ddeeff" >';
+			$ordermessage .= '<tr >';
+			$ordermessage .= '<td height="25" align="center" valign="top" class="itemname">訂 購 人</td>';
+			$ordermessage .= '<td valign="top" bgcolor="#ffffff" >' . $memname . '</td>';
+			$ordermessage .= '<td align="center"  class="itemname">會員帳號</td>';
+			$ordermessage .= '<td height="25" valign="top" bgcolor="#ffffff" >' . $user . ' </td>';
+			$ordermessage .= '</tr>';
+			$ordermessage .= '<tr >';
+			$ordermessage .= '<td width="80" height="25" align="center" valign="top" class="itemname">聯絡電話</td>';
+			$ordermessage .= '<td width="220" valign="top" bgcolor="#ffffff" >' . $tel . '</td>';
+			$ordermessage .= '<td width="80" align="center"  class="itemname">手機號碼</td>';
+			$ordermessage .= '<td height="25" valign="top" bgcolor="#ffffff" >' . $mobi . '</td>';
+			$ordermessage .= '</tr>';
+			$ordermessage .= '<tr >';
+			$ordermessage .= '<td height="25" align="center" valign="top" class="itemname">電子郵箱</td>';
+			$ordermessage .= '<td height="25" colspan="3" valign="top" bgcolor="#ffffff" >' . $membermail . '</td>';
+			$ordermessage .= '</tr>';
+			$ordermessage .= '</table>';
+			$ordermessage .= '<div class="tit" style="line-height:2.5em">收貨人訊息</div>';
+			$ordermessage .= '<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#ddeeff" >';
+			$ordermessage .= '<tr >';
+			$ordermessage .= '<td width="80" height="25" align="center" class="itemname">收 貨 人</td>';
+			$ordermessage .= '<td width="220" valign="top" bgcolor="#FFFFFF" >' . $s_name . '</td>';
+			$ordermessage .= '<td width="80" align="center" valign="top"  class="itemname">手機號碼</td>';
+			$ordermessage .= '<td height="25" valign="top" bgcolor="#FFFFFF" >' . $s_mobi . '</td>';
+			$ordermessage .= '</tr>';
+			$ordermessage .= '<tr >';
+			$ordermessage .= '<td height="25" align="center" class="itemname">郵遞區號</td>';
+			$ordermessage .= '<td width="220" valign="top" bgcolor="#FFFFFF" >';
+			$ordermessage .= '<span class="itemname">' . $s_postcode . '</span></td>';
+			$ordermessage .= '<td align="center" valign="top"  class="itemname">聯絡電話</td>';
+			$ordermessage .= '<td height="25" valign="top" bgcolor="#FFFFFF" >' . $s_tel . '</td>';
+			$ordermessage .= '</tr>';
+			$ordermessage .= '<tr>';
+			$ordermessage .= '<td height="25" align="center" class="itemname">詳細地址</td>';
+			$ordermessage .= '<td height="25" colspan="3" valign="top" bgcolor="#FFFFFF" ><span class="itemname">' . $s_addr . '</span></td>';
+			$ordermessage .= '</tr>';
+			$ordermessage .= '</table>';
+			$ordermessage .= '<div class="tit" style="line-height:2.5em"換貨清單</div>';
+			$ordermessage .= '<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#ddeeff" style="margin-bottom:10px">';
+			$ordermessage .= '<tr valign="top">';
+			$ordermessage .= '<td width="75" align="center"  class="itemname">商品編號</td>';
+			$ordermessage .= '<td height="25" align="center"  class="itemname" >商品名稱</td>';
+			$ordermessage .= '<td width="80" align="center"  class="itemname">單價 (元)</td>';
+			$ordermessage .= '<td width="50" align="center"  class="itemname">數量</td>';
+			$ordermessage .= '<td width="50" align="center"  class="itemname">單位</td>';
+			$ordermessage .= '<td width="80" align="center"  class="itemname">小計 (元)</td>';
+			$ordermessage .= '</tr>' . $items_html . '</table>';
+			$ordermessage .= '</div>';
+
+			$mailbody = '<html><head>';
+			$mailbody .= '<title>客戶換貨單</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body bgcolor="#ffffff">';
+			$mailbody .= '<table style="display: inline-table;" border="0" cellpadding="0" cellspacing="0" width="800">';
+			$mailbody .= '<tr><td><img name="n1_r1_c1" src="' . $GLOBALS['CONF']['SiteHttp'] . 'images/mail_top_tuiitem.png" width="800" height="208" alt=""></td></tr>';
+			$mailbody .= '<tr><td width="100%" valign="top" style="padding:0px;">';
+			$mailbody .= '<table width="800" border="0" align="left" cellpadding="0" cellspacing="0"><tr><td width="80" height="250">&nbsp;</td>';
+			$mailbody .= '<td width="640" style="font-family:\'微軟正黑體\',Century Gothic;vertical-align: top;font-size:17px;">' . $ordermessage . '</td>';
+			$mailbody .= '<td width="80" style="vertical-align: top;">&nbsp;</td></tr></table>';
+			$mailbody .= '</td></tr><tr><td><img name="n1_r3_c1" src="' . $GLOBALS['CONF']['SiteHttp'] . 'images/mail_bt.png" width="800" height="240" alt=""></td></tr></table>';
+			$mailbody .= '</body></html>';
+
+
+			//寄給管理員
+			ebmail($tuito, $from, "您的網站有一筆換貨申請，請儘速處理!", $mailbody);
+
+			//寄給客戶
+			shopmail($membermail, $from, $smsg, "8");
+		}
+
+
+		echo "OK";
+		exit();
+		break;
+	
 case "chkphonenum" :
 	$phonenum = urlencode($_POST["phonenum"]);
 	$str = "N";
