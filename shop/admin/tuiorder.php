@@ -234,6 +234,8 @@ if( $showoktui!="ALL" && $showoktui>0 ){
 
  $scl .= " and orderid>'5297'";
 
+ $scl .= " or (ifchg='1') ";
+
 $msql->query( "select count(orderid) from {P}_shop_order where {$scl} order by tuitime desc" );
 if ( $msql->next_record( ) )
 {

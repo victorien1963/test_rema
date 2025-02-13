@@ -529,7 +529,7 @@ $(function(){
 
 $(function(){
 	$(".address-member-edit").on("click", ()=>{
-		LoadInPagePopup("edit-adress","showeditadress");
+		LoadInPagePopup("edit-adress","showaddadress");
 	})
 });
 
