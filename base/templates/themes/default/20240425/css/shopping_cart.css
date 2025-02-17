@@ -1989,6 +1989,7 @@ select#region_options {
 
     .place_limited {
         left: 25.5vw;
+        top: 28.5%;
     }
 
     .options_delivery_form > .options_title:nth-child(1) {
@@ -2341,8 +2342,672 @@ select#region_options {
     }
 }
 
+
+/* ipad air */
+@media only screen and (min-width: 1023px) and (max-width: 1180px) {
+
+    #company-input, #company-input-2 {
+        margin-top: 3px !important;
+        color: #000 !important;
+    }
+
+    #barcode > div > div > input {
+        margin-top: 3px !important;
+        color: #000 !important;
+    }
+
+    .address_rwd {
+        display: none;
+    }
+
+    #recipient_info_credit_card_address > div:nth-child(1) > input {
+        padding-left: 20%;
+    }
+    
+    #recipient_info_credit_card_address > div:nth-child(3) > input {
+        padding-left: 14%;
+    }
+    
+    #recipient_info_credit_card_address > div:nth-child(4) > input {
+        padding-left: 27%;
+    }
+    
+    #recipient_info_credit_card_address > div:nth-child(5) > input {
+        padding-left: 27%;
+    }
+    
+    #recipient_info_cash_address > div:nth-child(1) > input {
+        padding-left: 19.5%;
+    }
+    
+    #recipient_info_cash_address > div:nth-child(4) > input {
+        padding-left: 19.5%;
+    }
+    
+    #recipient_info_cash_address > div:nth-child(6) > input {
+        padding-left: 20%;
+    }
+
+    #recipient_info_overseas_form > div:nth-child(1) > input {
+        padding-left: 23%;
+    }
+    
+    #recipient_info_overseas_form > div:nth-child(6) > input {
+        padding-left: 14.5%;
+    }
+    
+    #recipient_info_overseas_form > div:nth-child(8) > input {
+        padding-left: 8%;
+    }
+
+    #recipient_info_overseas_form > div:nth-child(1) > input::placeholder {
+        text-align: left !important;
+    }
+
+    .img-logo {
+        left: 5%;
+        top: 2.75%;
+        height: 55px;
+    }
+
+    .img-select-black, .bg_img_a01 > img {
+        display: none;
+    }
+
+    body > #login-form {
+        padding: 13.5% 11% 4% 9% !important;
+    }
+
+    #produce_items {
+        height: 62.5vw;
+    }
+
+    #produce_items > .col-3 {
+        flex: 0 0 41%;
+        max-width: 41%;
+    }
+
+    .product_card > .product_img {
+        height: 77%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: center;
+    }
+
+    #shopping_cart_amount {
+        padding-left: 15vw;
+    }
+
+    .tabs {
+        width: 75%;
+    }
+
+    .tab-button {
+        height: 3.5rem;
+        font-size: 14px;
+        color: #000 !important;
+    }
+
+    #overseas_shipping_options > div {
+        width: 31vw;
+    }
+
+    #recipient_info_credit_card_address > div, #recipient_info_cash_address > div, #recipient_info_cash_address > div:nth-child(3), #recipient_info_overseas_form > div, #recipient_info_overseas_form > div:nth-child(3) {
+        width: 50vw !important;
+    }
+
+    #recipient_info_credit_card_address > div:nth-child(3), #recipient_info_cash_address > div:nth-child(4), #recipient_info_overseas_form > div:nth-child(4), #recipient_info_overseas_form > div:nth-child(6) {
+        width: 70vw !important;
+    }
+
+    .place_limited {
+        left: 41vw;
+        top: 30.25%;
+    }
+
+    #recipient_info_cash_address, #recipient_info_credit_card_address, #recipient_info_overseas_form {
+        padding: 1rem 4rem 4rem 2rem;
+    }
+
+    #recipient_info_cash_address > div, #recipient_info_credit_card_address > div, #recipient_info_overseas_form > div {
+        margin-top: 1.5rem;
+    }
+
+    #recipient_info_credit_card_address > div:nth-child(2) {
+        margin-top: 1rem;
+    }
+
+    #recipient_info_overseas_form > div:nth-child(2) {
+        margin-top: 1.5rem;
+    }
+
+    #mart_options {
+        margin-top: 1rem;
+    }
+
+    #the_region_options, #city_options, #region_options {
+        margin-top: .75rem;
+    }
+
+    #company > div > div:nth-child(1) {
+        width: 24.5%;
+        height: 3vw;
+    }
+
+    #company > div > div:nth-child(2) {
+        width: 38.5%;
+        height: 3vw;
+    }
+
+    #barcode> div > div:nth-child(1), #barcode> div > div:nth-child(2) {
+        width: 22%;
+        height: 3vw;
+    }
+
+    .invoice_options {
+        padding: 1rem 1.5rem 2rem 2rem;
+        border-bottom: 1.5px solid transparent;
+    }
+
+    .tab-content > .small {
+        padding-bottom: .75rem;
+        padding-top: 2rem;
+    }
+
+    .forms-alert {
+        font-size: 77%;
+        padding-top: 1rem;
+    }
+
+    .invoice_options > div:nth-child(4) {
+        padding: 1.5rem 1.5rem 2rem 0rem;
+    }
+
+    .invoice_options > div:nth-child(5) {
+        padding: .5rem 1.5rem 0rem 0rem;
+    }
+
+    .product_card > .product_info {
+        padding: 1.5vw 1.5vw;
+    }
+
+    .p_name {
+        font-size: 16px;
+    }
+
+    .p_price {
+        font-size: 14px;
+    }
+
+    .p_detail {
+        padding-top: .75rem;
+        font-size: 14px;
+    }
+
+    #amout_form {
+        padding-top: .75rem;
+    }
+
+    #checked_continue_step2 > div:nth-child(2) {
+        flex: 0 0 16%;
+        max-width: 16%;
+    }
+
+    #order_info_content > .col-2, #order_info_content_checked > .col-2 {
+        flex: 0 0 31%;
+        max-width: 31%;
+        padding-right: 0rem;
+    }
+
+    #order_info_content > .col-1, #order_info_content_checked > .col-1 {
+        flex: 0 0 8.5%;
+        max-width: 8.5%;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    #total_prices > div:nth-child(2), #total_prices_checked > div:nth-child(2) {
+        flex: 0 0 11.5%;
+        max-width: 11.5%;
+        padding-left: 0rem;
+    }
+
+    #total_prices > .col-2, #total_prices_checked > .col-2 {
+        flex: 0 0 29%;
+        max-width: 29%;
+        padding-left: 1rem;
+    }
+
+    #checked_continue > .col-1, #checked_continue_step2 > .col-1, #checked_continue_step3 > .col-1 {
+        flex: 0 0 15%;
+        max-width: 15%;
+        padding-right: 0rem;
+    } 
+
+    #checked_continue > .col-2, #checked_continue_step2 > div:nth-child(2), #checked_continue_step3 > div:nth-child(2) {
+        flex: 0 0 26%;
+        max-width: 26%;
+        padding-right: 0rem;
+    }
+
+    #order_info_content > .col-2 > div {
+        text-align: start;
+    }
+
+    #order_info_content > .col-1 > div {
+        text-align: end;
+        justify-content: end;
+    }
+
+    #total_prices > .col-1 > div {
+        text-align: end;
+    }
+
+    #amout_form > .amout_counts {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        font-size: 1rem;
+        font-family: inherit !important;
+    }
+
+    #amout_form > .amout_countser {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        font-family: inherit !important;
+        border-radius: 0 !important;
+    }
+
+    #city_option {
+        margin-top: 0.5rem;
+    }
+
+    .region_and_post {
+        margin-top: .5rem !important;
+    }
+
+    .region_and_postal {
+        margin-top: .5rem !important;
+    }
+
+    #credit_card_options {
+        padding-bottom: .5rem;
+    }
+
+    #Province {
+        padding-left: 6.5rem;
+    }
+
+    #zoneid {
+        padding-left: 1rem;
+    }
+
+    #Province {
+        padding-left: 6.75rem;
+    }
+
+    #recipient_info_cash_address > div:nth-child(4) > input {
+        padding-left: 22.5%;
+    }
+
+    #recipient_info_credit_card_address > div:nth-child(3) > input {
+        padding-left: 16.5%;
+    }
+
+    #recipient_info_overseas_form > div:nth-child(6) > input {
+        padding-left: 16.5%;
+    }
+
+    #recipient_info_credit_card_address > div, #recipient_info_cash_address > div, #recipient_info_cash_address > div:nth-child(3), #recipient_info_overseas_form > div, #recipient_info_overseas_form > div:nth-child(3) {
+        width: 35vw !important;
+    }
+    
+    #recipient_info_credit_card_address > div:nth-child(3), #recipient_info_cash_address > div:nth-child(4), #recipient_info_overseas_form > div:nth-child(4), #recipient_info_overseas_form > div:nth-child(6) {
+        width: 42vw !important;
+    }
+
+}
+
+@media only screen and (min-width: 820px) and (max-width: 1023px) {
+    #shopping_cart_amount {
+        padding-top: 240px !important;
+    }
+
+    #delivery_options {
+        padding-top: 150px !important;
+    }
+
+    #delivery_options_show {
+        padding-top: 200px !important;
+    }
+
+    #company-input, #company-input-2 {
+        margin-top: 3px !important;
+        color: #000 !important;
+    }
+
+    #barcode > div > div > input {
+        margin-top: 3px !important;
+        color: #000 !important;
+    }
+
+    .address_rwd {
+        display: none;
+    }
+
+    #recipient_info_credit_card_address > div:nth-child(1) > input {
+        padding-left: 20%;
+    }
+    
+    #recipient_info_credit_card_address > div:nth-child(3) > input {
+        padding-left: 14%;
+    }
+    
+    #recipient_info_credit_card_address > div:nth-child(4) > input {
+        padding-left: 27%;
+    }
+    
+    #recipient_info_credit_card_address > div:nth-child(5) > input {
+        padding-left: 27%;
+    }
+    
+    #recipient_info_cash_address > div:nth-child(1) > input {
+        padding-left: 19.5%;
+    }
+    
+    #recipient_info_cash_address > div:nth-child(4) > input {
+        padding-left: 19.5%;
+    }
+    
+    #recipient_info_cash_address > div:nth-child(6) > input {
+        padding-left: 20%;
+    }
+
+    #recipient_info_overseas_form > div:nth-child(1) > input {
+        padding-left: 23%;
+    }
+    
+    #recipient_info_overseas_form > div:nth-child(6) > input {
+        padding-left: 14.5%;
+    }
+    
+    #recipient_info_overseas_form > div:nth-child(8) > input {
+        padding-left: 8%;
+    }
+
+    #recipient_info_overseas_form > div:nth-child(1) > input::placeholder {
+        text-align: left !important;
+    }
+
+    .img-logo {
+        left: 5%;
+        top: 2.75%;
+        height: 55px;
+    }
+
+    .img-select-black, .bg_img_a01 > img {
+        display: none;
+    }
+
+    body > #login-form {
+        padding: 13.5% 11% 4% 9% !important;
+    }
+
+    #produce_items {
+        height: 70.5vw;
+    }
+
+    #produce_items > .col-3 {
+        flex: 0 0 41%;
+        max-width: 41%;
+    }
+
+    .product_card > .product_img {
+        height: 72%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-position-x: center;
+    }
+
+    #shopping_cart_amount {
+        padding-left: 15vw;
+    }
+
+    .tabs {
+        width: 75%;
+    }
+
+    .tab-button {
+        height: 3.5rem;
+        font-size: 14px;
+        color: #000 !important;
+    }
+
+    #overseas_shipping_options > div {
+        width: 31vw;
+    }
+
+    #recipient_info_credit_card_address > div, #recipient_info_cash_address > div, #recipient_info_cash_address > div:nth-child(3), #recipient_info_overseas_form > div, #recipient_info_overseas_form > div:nth-child(3) {
+        width: 50vw !important;
+    }
+
+    #recipient_info_credit_card_address > div:nth-child(3), #recipient_info_cash_address > div:nth-child(4), #recipient_info_overseas_form > div:nth-child(4), #recipient_info_overseas_form > div:nth-child(6) {
+        width: 70vw !important;
+    }
+
+    .place_limited {
+        left: 58vw;
+    }
+
+    #recipient_info_cash_address, #recipient_info_credit_card_address, #recipient_info_overseas_form {
+        padding: 1rem 4rem 4rem 2rem;
+    }
+
+    #recipient_info_cash_address > div, #recipient_info_credit_card_address > div, #recipient_info_overseas_form > div {
+        margin-top: 1.5rem;
+    }
+
+    #recipient_info_credit_card_address > div:nth-child(2) {
+        margin-top: 1rem;
+    }
+
+    #recipient_info_overseas_form > div:nth-child(2) {
+        margin-top: 1.5rem;
+    }
+
+    #mart_options {
+        margin-top: 1rem;
+    }
+
+    #the_region_options, #city_options, #region_options {
+        margin-top: .75rem;
+    }
+
+    #company > div > div:nth-child(1) {
+        width: 24.5%;
+        height: 3vw;
+    }
+
+    #company > div > div:nth-child(2) {
+        width: 38.5%;
+        height: 3vw;
+    }
+
+    #barcode> div > div:nth-child(1), #barcode> div > div:nth-child(2) {
+        width: 22%;
+        height: 3vw;
+    }
+
+    .invoice_options {
+        padding: 1rem 1.5rem 2rem 2rem;
+        border-bottom: 1.5px solid transparent;
+    }
+
+    .tab-content > .small {
+        padding-bottom: .75rem;
+        padding-top: 2rem;
+    }
+
+    .forms-alert {
+        font-size: 77%;
+        padding-top: 1rem;
+    }
+
+    .invoice_options > div:nth-child(4) {
+        padding: 1.5rem 1.5rem 2rem 0rem;
+    }
+
+    .invoice_options > div:nth-child(5) {
+        padding: .5rem 1.5rem 0rem 0rem;
+    }
+
+    .product_card > .product_info {
+        padding: 1.5vw 1.5vw;
+    }
+
+    .p_name {
+        font-size: 16px;
+    }
+
+    .p_price {
+        font-size: 14px;
+    }
+
+    .p_detail {
+        padding-top: .75rem;
+        font-size: 14px;
+    }
+
+    #amout_form {
+        padding-top: .75rem;
+    }
+
+    #checked_continue_step2 > div:nth-child(2) {
+        flex: 0 0 16%;
+        max-width: 16%;
+    }
+
+    #order_info_content > .col-2, #order_info_content_checked > .col-2 {
+        flex: 0 0 31%;
+        max-width: 31%;
+        padding-right: 0rem;
+    }
+
+    #order_info_content > .col-1, #order_info_content_checked > .col-1 {
+        flex: 0 0 8.5%;
+        max-width: 8.5%;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+
+    #total_prices > div:nth-child(2), #total_prices_checked > div:nth-child(2) {
+        flex: 0 0 11.5%;
+        max-width: 11.5%;
+        padding-left: 0rem;
+    }
+
+    #total_prices > .col-2, #total_prices_checked > .col-2 {
+        flex: 0 0 29%;
+        max-width: 29%;
+        padding-left: 1rem;
+    }
+
+    #checked_continue > .col-1, #checked_continue_step2 > .col-1, #checked_continue_step3 > .col-1 {
+        flex: 0 0 15%;
+        max-width: 15%;
+        padding-right: 0rem;
+    } 
+
+    #checked_continue > .col-2, #checked_continue_step2 > div:nth-child(2), #checked_continue_step3 > div:nth-child(2) {
+        flex: 0 0 26%;
+        max-width: 26%;
+        padding-right: 0rem;
+    }
+
+    #order_info_content > .col-2 > div {
+        text-align: start;
+    }
+
+    #order_info_content > .col-1 > div {
+        text-align: end;
+        justify-content: end;
+    }
+
+    #total_prices > .col-1 > div {
+        text-align: end;
+    }
+
+    #amout_form > .amout_counts {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        font-size: 1rem;
+        font-family: inherit !important;
+    }
+
+    #amout_form > .amout_countser {
+        width: 40px;
+        height: 35px;
+        padding: 0px;
+        border: 1px solid #000;
+        margin-top: 0;
+        margin-top: 0;
+        background: transparent;
+        text-align: center;
+        font-family: inherit !important;
+        border-radius: 0 !important;
+    }
+
+    #city_option {
+        margin-top: 0.5rem;
+    }
+
+    .region_and_post {
+        margin-top: .5rem !important;
+    }
+
+    .region_and_postal {
+        margin-top: .5rem !important;
+    }
+
+    #credit_card_options {
+        padding-bottom: .5rem;
+    }
+
+    #Province {
+        padding-left: 6.5rem;
+    }
+
+    #zoneid {
+        padding-left: 1rem;
+    }
+    
+}
+
 /* ipad */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 819px) {
     .address_rwd {
         display: none;
     }
