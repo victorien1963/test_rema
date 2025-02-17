@@ -3960,6 +3960,75 @@ select.form-control, input.form-control {
     }
 }
 
+@media only screen and (min-width: 768px) and (max-width: 824px) {
+    #order-lists {
+        padding-left: 5%;
+    }
+
+    #shopping_content {
+        width: 95%;
+    }
+
+    .col-shopping:nth-child(2) {
+        width: 20% !important;
+    }
+
+    .col-shopping:nth-child(3) {
+        width: 10% !important;
+    }
+
+    .btn-black, .btn-grey {
+        width: 80px !important;
+    }
+
+    body.safari .progress-container {
+        width: 40rem;
+    }
+
+    body.safari .progress-line {
+        width: 30rem;
+    }
+
+    .produce-price {
+        padding-top: .15rem !important;
+    }
+
+    body.safari .produce-content {
+        padding-top: .025rem !important
+    }
+
+    body.safari .produce-image {
+        padding-top: 0.25rem;
+    }
+
+    .col-shopping-content {
+        width: 95% !important;
+    }
+
+    #shopping_return > form > div {
+        padding-right: 1rem !important;
+        padding-left: 1rem !important;
+    }
+
+    #shopping_exchange > form > div {
+        padding-right: 1rem !important;
+        padding-left: 1rem !important;
+    }
+
+    .produce-content-return {
+        padding-left: 0.5rem !important;
+    }
+
+    body.safari .produce-image {
+        width: 34% !important;
+    }
+
+    #exchange-reason-ques {
+        margin-left: 0.5rem !important;
+    }
+
+}
+
 @media only screen and (min-width: 636px) and (max-width: 724px) {
     .h7, h7 {
         font-size: .875rem !important;
