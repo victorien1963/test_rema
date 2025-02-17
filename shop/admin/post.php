@@ -604,6 +604,13 @@ case "canceltui" :
 		echo "OK";
 		exit( );
 		break;
+case "cancelchg" :
+	needauth( 327 );
+	$itemid = $_POST['itemid'];
+	$fsql->query( "update {P}_shop_orderitems set ifchg='0' where id='{$itemid}'" );
+	echo "OK";
+	exit( );
+	break;
 case "dountui" :
 		needauth( 327 );
 		$orderid = $_POST['orderid'];
@@ -624,6 +631,26 @@ case "dountui" :
 		echo "OK";
 		exit( );
 		break;
+case "dounchg" :
+			needauth( 327 );
+			$orderid = $_POST['orderid'];
+			$fsql->query( "select * from {P}_shop_orderitems where ifchg='1' and orderid='$orderid'" );
+			if($fsql->next_record()){
+				echo "1001";
+				exit( );
+			}
+			$fsql->query( "select * from {P}_shop_order where orderid='$orderid'" );
+			if($fsql->next_record()){
+				$fsql->query( "update {P}_shop_order set ifchg='0' where orderid='{$orderid}'" );
+				echo "OK";
+				exit( );
+			}else{
+				echo "1000";
+				exit( );
+			}
+			echo "OK";
+			exit( );
+			break;
 	//讀取左側選單組
 	case "menugrouplist" :
 		$coltype = $_POST['coltype'];

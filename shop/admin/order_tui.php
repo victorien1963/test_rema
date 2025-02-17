@@ -22,6 +22,8 @@ if ( $fsql->next_record( ) )
 {
 		$oiftui = $fsql->f( "iftui" );
 		$oifok = $fsql->f( "ifok" );
+		$oifchg = $fsql->f( "ifchg" );
+		$hiddenButton = false;
 		$clicktuipos = $fsql->f( "clicktuipos" );
 		$tuireason = $fsql->f( "tui_reason" );
 		
@@ -32,8 +34,16 @@ if ( $fsql->next_record( ) )
 		}
 		else
 		{
+				if($oifchg)
+				{
+					$hiddenButton =true;
+
+				}
+				else
+				{
 				$tuithis = "歸入退訂訂單";
 				$tuithisclass = "dotuithis";
+				}
 		}
 }
 if($oifok=="0"){
@@ -61,6 +71,8 @@ while ( $msql->next_record( ) )
 		$gid = $msql->f( "gid" );
 		$bn = $msql->f( "bn" );
 		$goods = $msql->f( "goods" );
+		$changegoods = $msql->f( "goods" );
+		$changesize = $msql->f( "chg_size" );
 		$price = $msql->f( "price" );
 		$weight = $msql->f( "weight" );
 		$nums = $msql->f( "nums" );
@@ -68,6 +80,7 @@ while ( $msql->next_record( ) )
 		$jine = $msql->f( "jine" );
 		$cent = $msql->f( "cent" );
 		$iftui = $msql->f( "iftui" );
+		$ifchg = $msql->f( "ifchg" );
 		$ifyun = $msql->f( "ifyun" );
 		$yuntime = $msql->f( "yuntime" );
 		$msg = $msql->f( "msg" );
@@ -80,8 +93,17 @@ while ( $msql->next_record( ) )
 		$fz = $msql->f( "fz" );
 		list($size, $money, $specid) = explode("^",$fz);
 		
+		if ( $ifchg == "1" )
+		{
+			$goods = $ifchg? $goods."(".$colorname."/".$size.")<span style=\"color:red\"><申請換貨></span> <button class=\"button cancelchg\" id=\"ttid_".$itemid."\">取消換貨</button>":$goods."(".$colorname."/".$size.")";
+			$changeitems.=$changeitems? "<br />".$changegoods."(".$colorname."/".$changesize.")":$changegoods."(".$colorname."/".$changesize.")";
+		}
+		else
+		{
+			$goods = $itemtui? $goods."(".$colorname."/".$size.")<span style=\"color:red\"><申請退貨></span> <button class=\"button canceltui\" id=\"ttid_".$itemid."\">取消退貨</button>":$goods."(".$colorname."/".$size.")";
 		
-		$goods = $itemtui? $goods."(".$colorname."/".$size.")<span style=\"color:red\"><申請退貨></span> <button class=\"button canceltui\" id=\"ttid_".$itemid."\">取消退貨</button>":$goods."(".$colorname."/".$size.")";
+		}
+		//$goods = $itemtui? $goods."(".$colorname."/".$size.")<span style=\"color:red\"><申請退貨></span> <button class=\"button canceltui\" id=\"ttid_".$itemid."\">取消退貨</button>":$goods."(".$colorname."/".$size.")";
 		/*--------------------------------------*/
 		
 		if ( $iftui == "1" )
@@ -91,8 +113,16 @@ while ( $msql->next_record( ) )
 		}
 		else
 		{
+			if ( $ifchg == "1" )
+			{
+				$yunimg = "toolbar_ok.gif";
+				$yuntext = "換貨";
+			}
+			else
+			{
 				$yunimg = "toolbar_ok.gif";
 				$yuntext = "退訂";
+			}
 		}
 		echo "<tr>
     <td width=\"3\" height=\"25\">&nbsp;</td>
@@ -115,19 +145,23 @@ while ( $msql->next_record( ) )
 <table width="100%" border="0" cellpadding="3" cellspacing="0">
   <tr>
     <td width="3" height="23" class="biaoti">&nbsp;</td>
-	<td height="23" class="biaoti">退貨理由</td>
+	<td height="23" class="biaoti" <?php echo $hiddenButton ? 'hidden' : ''; ?>>退貨理由</td>
+	<td height="23" class="biaoti" <?php echo $hiddenButton ? '' : 'hidden'; ?>>換貨尺寸</td>
   </tr>
   <tr>
   	<td width="3" height="25">&nbsp;</td>
-	<td height="25"><?php echo $tuireason; ?></td>
+	<td height="25" style="display: <?php echo $hiddenButton ? 'none' : 'inline'; ?>"><?php echo $tuireason; ?></td>
+	<td height="25" style="display: <?php echo $hiddenButton ? 'inline' : 'none'; ?>"><?php echo $changeitems; ?></td>
   </tr>
 </table>
 </div>
 <?php }?>
 	<!--div style="float:left;width:120px;margin-left: 10px;"><input name="posdin" id="posdin_<?php echo $orderid;?>" type="button" class="posdin" value="產生POS訂貨單" /></div-->
-	<div style="float:right;width:200px;"><input name="postui" id="postui_<?php echo $orderid;?>" type="button" class="postui" value="點選回傳 ERP退貨(曾點選<?php echo $clicktuipos;?>次)" /></div>
-		<div style="margin:0px 20px 10px 10px;width:120px;float:left;"><input name="tuithis" id="dountui_<?php echo $orderid;?>" type="button" class="dountui" value="取消訂單退訂註記" /></div>
-	<div style="margin:0px 60px 10px 10px;width:120px;float:right;"><input name="tuithis" id="dotuithis_<?php echo $orderid;?>" type="button" class="<?php echo $tuithisclass;?>" value="<?php echo $tuithis;?>" /></div>
+	<div style="float:right;width:200px;"><input name="postui" id="postui_<?php echo $orderid;?>" type="button" class="postui" value="點選回傳 ERP退貨(曾點選<?php echo $clicktuipos;?>次)" style="display: <?php echo $hiddenButton ? 'none' : 'inline'; ?>"/></div>
+		<div style="margin:0px 20px 10px 10px;width:120px;float:left;display: <?php echo $hiddenButton ? 'none' : 'inline'; ?>"><input name="tuithis" id="dountui_<?php echo $orderid;?>" type="button" class="dountui" value="取消訂單退訂註記" /></div>
+		
+		<div style="margin:0px 20px 10px 10px;width:120px;float:left;display: <?php echo $hiddenButton ? 'inline' : 'none'; ?>"><input name="tuithis" id="dounchg_<?php echo $orderid;?>" type="button" class="dounchg" value="取消訂單換貨註記" /></div>
+	<div style="margin:0px 60px 10px 10px;width:120px;float:right;"><input name="tuithis" id="dotuithis_<?php echo $orderid;?>" type="button" class="<?php echo $tuithisclass;?>" value="<?php echo $tuithis;?>" style="display: <?php echo $hiddenButton ? 'none' : 'inline'; ?>"/></div>
 <p>&nbsp;</p>
 </body>
 </html>

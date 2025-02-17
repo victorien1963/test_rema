@@ -335,10 +335,11 @@ while ( $msql->next_record( ) )
 		
 		$items=$itemifpays="";
 		$tuitjine="0";
-		$fsql->query( "SELECT bn,iftui,ifpay,id,goods,nums,tuitime,fz,colorname,jine FROM {P}_shop_orderitems WHERE orderid='$orderid' and itemtui='1'" );
+		$fsql->query( "SELECT bn,iftui,ifpay,ifchg,id,goods,nums,tuitime,fz,colorname,jine FROM {P}_shop_orderitems WHERE orderid='$orderid' and (itemtui='1' or ifchg='1')" );
 		while( $fsql->next_record() ){
 			$itid = $fsql->f("id");
 			$iftui = $fsql->f("iftui");
+			$ifchg = $fsql->f("ifchg");
 			$itemifpay = $fsql->f("ifpay");
 			$bn = $fsql->f("bn");
 			$goods = $fsql->f("goods");
@@ -356,7 +357,15 @@ while ( $msql->next_record( ) )
 				$items .= $items? "<br /><span style=\"color:red\"><退></span><del>".$goods."(".$nums.")</del>":"<span style=\"color:red\"><退></span><del>".$goods."(".$nums.")</del>";
 				$tuitjine = $tuitjine+$jine;
 			}else{
+				if($ifchg)
+				{
+					$items .= $items? "<br /><span style=\"color:blue\"><換></span><del>".$goods."(".$nums.")</del>":"<span style=\"color:blue\"><換></span><del>".$goods."(".$nums.")</del>";
+
+				}
+				else
+				{
 				$items .= $items? "<br />".$goods:$goods;
+				}
 			}
 			
 			$itemifpays += $itemifpay;

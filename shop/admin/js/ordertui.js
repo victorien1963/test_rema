@@ -229,6 +229,35 @@ $(".canceltui").click(function(){
 	}
 });
 
+//取消換貨
+$(".cancelchg").click(function(){
+		
+	var answer = confirm("是否取消退訂?")
+if (answer){
+	var itemid=this.id.substr(5);
+	$.ajax({
+		type: "POST",
+		url:"post.php",
+		data: "act=cancelchg&itemid="+itemid,
+		success: function(msg){
+			if(msg=="OK"){
+				window.location.reload();
+			}else if(msg=="1000"){
+				alert("訂單不存在");
+			}else if(msg=="1001"){
+				alert("訂單已付款，不能退訂");
+			}else if(msg=="1002"){
+				alert("訂單已配送，不能退訂");
+			}else{
+				alert(msg);
+			}
+		}
+	});
+}else{
+	return false;
+}
+});
+
 //取消退訂
 $(".dountui").click(function(){
 		
@@ -255,6 +284,34 @@ $(".dountui").click(function(){
 	}else{
 		return false;
 	}
+});
+
+//取消換貨
+$(".dounchg").click(function(){
+		
+	var answer = confirm("是否取消換貨註記?")
+if (answer){
+	var orderid=this.id.substr(8);
+	$.ajax({
+		type: "POST",
+		url:"post.php",
+		data: "act=dounchg&orderid="+orderid,
+		success: function(msg){
+			if(msg=="OK"){
+				parent.location.reload();
+				parent.$.unblockUI();
+			}else if(msg=="1000"){
+				alert("訂單不存在");
+			}else if(msg=="1001"){
+				alert("訂單中仍有換貨商品，不能取消換貨");
+			}else{
+				alert(msg);
+			}
+		}
+	});
+}else{
+	return false;
+}
 });
 
 });
