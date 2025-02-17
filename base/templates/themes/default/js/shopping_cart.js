@@ -322,7 +322,7 @@ function updateSelectedOption() {
     }
 }
 
-/*
+
 $(document).ready(function() {
     // 頁面加載時，隱藏 #delivery_options_show
     $('#delivery_options_show').hide(); // 初始隱藏
@@ -358,7 +358,7 @@ $(document).ready(function() {
         handleStep2Continue(); // 繼續步驟 2 的流程
     });
 });
-*/
+
 
 // 點擊 #prepage_step3 時隱藏 #delivery_options_show
 $('#prepage_step3').click(function() {
