@@ -466,10 +466,27 @@ select {
 }
 
 #overseas_shipping_options > div {
-    width: 10.5vw;
+    width: 56.5vw;
     border-bottom: 1px solid #000;
-    padding-top: 1rem;
+    padding-top: .75rem;
     font-size: 16px;
+}
+
+
+#overseas_shipping_options > div > select {
+    width: 31vw;
+    border: none;
+    vertical-align: middle;
+    text-align: center;
+    padding-right: 2.5rem;
+    padding-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+#overseas_shipping_options > div > div {
+    min-width: 40px;
+    margin-top: auto;
+    padding-bottom: 5px;
 }
 
 .overseas_country_title {
@@ -848,6 +865,23 @@ select#the_region_options {
     color: #989898 !important;
 }
 
+#city_options > select {
+    border: none;
+    vertical-align: middle;
+    text-align: center;
+    padding-right: 8.5rem;
+    padding-bottom: 0rem;
+    font-size: 13px;
+}
+
+#szoneid {
+    border: none;
+    vertical-align: middle;
+    text-align: center;
+    padding-bottom: 0rem;
+    font-size: 13px;
+}
+
 .city_options_title {
     padding-bottom: 0rem;
     padding-right: 1rem;
@@ -874,7 +908,7 @@ select#city_options {
 
 .region_options_title {
     padding-bottom: 0rem;
-    padding-right: 1rem;
+    padding-right: .5rem;
     margin-top: auto;
 }
 
@@ -1113,6 +1147,15 @@ select#region_options {
 }
 
 @media only screen and (min-width: 2560px) {
+    #recipient_info_overseas_form > div:nth-child(2) {
+        margin-top: 1.5rem !important;
+    }
+
+    #city_options > select {
+        padding-left: 7.5rem;
+        text-align: left;
+    }
+
     .address_rwd {
         display: none;
     }
@@ -1241,10 +1284,29 @@ select#region_options {
     #zoneid {
         padding-left: 3rem;
     }
+
+    #overseas_shipping_options > div {
+        width: 9.75vw;
+    }
+
+    #overseas_shipping_options > div > select {
+        width: 9.75vw;
+        border: none;
+        vertical-align: middle;
+        text-align: center;
+        text-align: center;
+        padding-right: 2.5rem;
+        padding-bottom: 0.25rem;
+        font-weight: 600;
+    }
 }
 
 
 @media only screen and (min-width: 1976px) and (max-width: 2272px) {
+    #city_options > select {
+        padding-left: 0rem;
+    }
+
     .address_rwd {
         display: none;
     }
@@ -1298,7 +1360,18 @@ select#region_options {
     }
 
     #overseas_shipping_options > div {
-        width: 12vw;
+        width: 11vw !important;
+    }
+
+    #overseas_shipping_options > div > select {
+        width: 11vw;
+        border: none;
+        vertical-align: middle;
+        text-align: center;
+        text-align: center;
+        padding-right: 2.5rem;
+        padding-bottom: 0.25rem;
+        font-weight: 600;
     }
 
     #recipient_info_credit_card_address > div, #recipient_info_cash_address > div, #recipient_info_overseas_form > div, #recipient_info_cash_address > div:nth-child(3) {
@@ -2064,6 +2137,10 @@ select#region_options {
 
 /* ipad pro */
 @media only screen and (min-width: 1024px) and (max-width: 1365px) {
+    #city_options > select {
+        padding-left: 3rem;
+    }
+
     .address_rwd {
         display: none;
     }
@@ -2158,7 +2235,17 @@ select#region_options {
     }
 
     #overseas_shipping_options > div {
-        width: 23vw;
+        width: 24vw !important;
+    }
+
+    #overseas_shipping_options > div > select {
+        width: 24vw;
+        border: none;
+        vertical-align: middle;
+        text-align: center;
+        padding-right: 2.5rem;
+        padding-bottom: 0.25rem;
+        font-weight: 600;
     }
 
     #recipient_info_credit_card_address > div, #recipient_info_cash_address > div, #recipient_info_cash_address > div:nth-child(3), #recipient_info_overseas_form > div, #recipient_info_overseas_form > div:nth-child(3) {
@@ -2345,6 +2432,9 @@ select#region_options {
 
 /* ipad air */
 @media only screen and (min-width: 1023px) and (max-width: 1180px) {
+    #city_options > select {
+        padding-left: 2rem;
+    }
 
     #company-input, #company-input-2 {
         margin-top: 3px !important;
@@ -2450,7 +2540,18 @@ select#region_options {
     }
 
     #overseas_shipping_options > div {
-        width: 31vw;
+        width: 21vw;
+    }
+
+    #overseas_shipping_options > div > select {
+        width: 21vw;
+        border: none;
+        vertical-align: middle;
+        text-align: center;
+        text-align: center;
+        padding-right: 2.5rem;
+        padding-bottom: 0.25rem;
+        font-weight: 600;
     }
 
     #recipient_info_credit_card_address > div, #recipient_info_cash_address > div, #recipient_info_cash_address > div:nth-child(3), #recipient_info_overseas_form > div, #recipient_info_overseas_form > div:nth-child(3) {
@@ -2799,7 +2900,17 @@ select#region_options {
     }
 
     #overseas_shipping_options > div {
-        width: 31vw;
+        width: 30vw;
+    }
+
+    #overseas_shipping_options > div > select {
+        width: 30vw;
+        border: none;
+        vertical-align: middle;
+        text-align: center;
+        padding-right: 2.5rem;
+        padding-bottom: 0.25rem;
+        font-weight: 600;
     }
 
     #recipient_info_credit_card_address > div, #recipient_info_cash_address > div, #recipient_info_cash_address > div:nth-child(3), #recipient_info_overseas_form > div, #recipient_info_overseas_form > div:nth-child(3) {
@@ -3008,6 +3119,10 @@ select#region_options {
 
 /* ipad */
 @media only screen and (min-width: 768px) and (max-width: 819px) {
+    #city_options > select {
+        padding-left: 2rem;
+    }
+
     .address_rwd {
         display: none;
     }
@@ -3102,6 +3217,16 @@ select#region_options {
 
     #overseas_shipping_options > div {
         width: 31vw;
+    }
+
+    #overseas_shipping_options > div > select {
+        width: 31vw;
+        border: none;
+        vertical-align: middle;
+        text-align: center;
+        padding-right: 2.5rem;
+        padding-bottom: 0.25rem;
+        font-weight: 600;
     }
 
     #recipient_info_credit_card_address > div, #recipient_info_cash_address > div, #recipient_info_cash_address > div:nth-child(3), #recipient_info_overseas_form > div, #recipient_info_overseas_form > div:nth-child(3) {
@@ -3308,6 +3433,14 @@ select#region_options {
 
 /* iphone pro max */
 @media only screen and (min-width: 430px) and (max-width: 767px) {
+    #city_options {
+        margin-top: 1.5rem !important;
+    }
+
+    #city_options > select {
+        padding-left: 0rem;
+    }
+
     .address_rwd {
         display: flex;
     }
@@ -3531,7 +3664,18 @@ select#region_options {
     }
 
     #overseas_shipping_options > div {
+        width: 56.5vw;
+    }
+
+    #overseas_shipping_options > div > select {
         width: 55vw;
+        border: none;
+        vertical-align: middle;
+        text-align: center;
+        text-align: center;
+        padding-right: 2.5rem;
+        padding-bottom: 0.25rem;
+        font-weight: 600;
     }
 
     .place_limited {
@@ -3915,7 +4059,18 @@ select#region_options {
     }
 
     #overseas_shipping_options > div {
+        width: 56.5vw;
+    }
+
+    #overseas_shipping_options > div > select {
         width: 55vw;
+        border: none;
+        vertical-align: middle;
+        text-align: center;
+        text-align: center;
+        padding-right: 2.5rem;
+        padding-bottom: 0.25rem;
+        font-weight: 600;
     }
 
     .place_limited {
