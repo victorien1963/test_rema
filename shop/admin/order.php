@@ -1487,6 +1487,7 @@ while ( $msql->next_record( ) )
 		$ifyun = $msql->f( "ifyun" );
 		$ifok = $msql->f( "ifok" );
 		$iftui = $msql->f( "iftui" );
+		$ifchg = $msql->f( "ifchg" );
 		$itemtui = $msql->f( "itemtui" );
 		$dtime = $msql->f( "dtime" );
 		$paytime = $msql->f( "paytime" );
@@ -1628,6 +1629,9 @@ while ( $msql->next_record( ) )
 		$tuinote = "";
 		if($itemtui){
 			$tuinote = "<span style='color:red;'>(此筆訂單有申請退貨)</span>";
+		}
+		if($ifchg){
+			$tuinote = "<span style='color:red;'>(此筆訂單有申請換貨)</span>";
 		}
 		echo "<tr class=\"list\" id=\"tr_".$orderid."\" >
              <td width=\"65\" valign=\"top\"  style=\"padding-left:10px\">".$OrderNo." </td>

@@ -553,6 +553,40 @@ case "orderitemtuilist" :
 		echo "OK";
 		exit( );
 		break;
+
+case "orderitemchglist" :
+	needauth( 327 );
+	$itemid = $_POST['itemid'];
+	$msql->query( "select * from {P}_shop_orderitems where id='{$itemid}'" );
+		if ( $msql->next_record( ) )
+		{
+				$orderid = $msql->f( "orderid" );
+			}
+			else
+			{
+					echo "1000";
+					exit( );
+			}
+	
+		/*修改總訂單項目*/
+		$fsql->query( "SELECT ifchg,id,goods,nums FROM {P}_shop_orderitems WHERE orderid='{$orderid}'" );
+		while( $fsql->next_record() ){
+			$itid = $fsql->f("id");
+			$ifchg = $fsql->f("ifchg");
+			$goods = $fsql->f("goods");
+			$nums = $fsql->f("nums");			
+			if(!$ifchg){
+				$items .= $items? "\r\n".$goods."(".$nums.")":$goods."(".$nums.")";
+			}else{
+				$items .= $items? "\r\n<span style=\"color:blue\"><換貨></span>".$goods."(".$nums.")":"<span style=\"color:blue\"><換貨></span>".$goods."(".$nums.")";
+			}
+		}
+		$uptime = time( );
+		$fsql->query( "update {P}_shop_order set uptime='{$uptime}',items='{$items}' where orderid='{$orderid}'" );
+
+		echo "OK";
+		exit( );
+		break;
 case "dotuithis" :
 		needauth( 327 );
 		$orderid = $_POST['orderid'];

@@ -234,7 +234,7 @@ if( $showoktui!="ALL" && $showoktui>0 ){
 
  $scl .= " and orderid>'5297'";
 
- $scl .= " or (ifchg='1') ";
+ $scl .= " or (ifchg='1'  and chgtime>{$starttime} and chgtime<{$endtime} ) ";
 
 $msql->query( "select count(orderid) from {P}_shop_order where {$scl} order by tuitime desc" );
 if ( $msql->next_record( ) )
@@ -299,6 +299,7 @@ while ( $msql->next_record( ) )
 		$ifgettui = $msql->f( "ifgettui" );
 		$ifok = $msql->f( "ifok" );
 		$iftui = $msql->f( "iftui" );
+		$ifchg = $msql->f("ifchg");
 		$dtime = $msql->f( "dtime" );
 		$paytime = $msql->f( "paytime" );
 		$yuntime = $msql->f( "yuntime" );
@@ -327,15 +328,26 @@ while ( $msql->next_record( ) )
 		
 		
 		$tuitime = date( "y-m-d H:i:s",  $msql->f( "tuitime" ) );
+		$chgtime = date( "y-m-d H:i:s",  $msql->f( "chgtime" ) );
+		if($ifchg)
+		{
+			if( $msql->f( "chgtime" )<$msql->f( "uptime" ) ){
+				$uptime = date( "y-m-d H:i:s",  $msql->f( "uptime" ) );
+			}else{
+				$uptime = "---";
+			}
+		}
+		else
+		{
 		if( $msql->f( "tuitime" )<$msql->f( "uptime" ) ){
 			$uptime = date( "y-m-d H:i:s",  $msql->f( "uptime" ) );
 		}else{
 			$uptime = "---";
 		}
-		
+		}
 		$items=$itemifpays="";
 		$tuitjine="0";
-		$fsql->query( "SELECT bn,iftui,ifpay,ifchg,id,goods,nums,tuitime,fz,colorname,jine FROM {P}_shop_orderitems WHERE orderid='$orderid' and (itemtui='1' or ifchg='1')" );
+		$fsql->query( "SELECT bn,iftui,ifpay,ifchg,id,goods,nums,tuitime,chgtime,fz,colorname,jine FROM {P}_shop_orderitems WHERE orderid='$orderid' and (itemtui='1' or ifchg='1')" );
 		while( $fsql->next_record() ){
 			$itid = $fsql->f("id");
 			$iftui = $fsql->f("iftui");
@@ -351,6 +363,7 @@ while ( $msql->next_record( ) )
 			$colorname = $fsql->f("colorname");
 			list($size) = explode("^",$fsql->f("fz"));
 			$tuitime = date( "y-m-d H:i:s",  $fsql->f( "tuitime" ) );
+			$chgtime = date( "y-m-d H:i:s",  $fsql->f( "chgtime" ) );
 			$goods = $bn." ".$goods."(".$colorname."/".$size."/".$nums.")";
 			
 			if($iftui){
@@ -360,7 +373,7 @@ while ( $msql->next_record( ) )
 				if($ifchg)
 				{
 					$items .= $items? "<br /><span style=\"color:blue\"><換></span><del>".$goods."(".$nums.")</del>":"<span style=\"color:blue\"><換></span><del>".$goods."(".$nums.")</del>";
-
+					$tuitime=$chgtime;
 				}
 				else
 				{

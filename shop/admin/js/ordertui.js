@@ -51,7 +51,40 @@ $(document).ready(function(){
 					}
 				});
 
-		}else{
+		}
+		else if(nowstat=="換貨")
+		{
+			$.ajax({
+				type: "POST",
+				url:"post.php",
+				data: "act=orderitemchglist&itemid="+itemid,
+				success: function(msg){
+					if(msg=="OK"){
+						$("#tuistat_"+itemid)[0].src="images/toolbar_no.gif";
+						$("#dotui_"+itemid)[0].value="訂貨";
+					}else if(msg=="1006"){
+						alert("訂單尚未收款，請先操作付款確認！");
+					}else if(msg=="1000"){
+						alert("訂購商品不存在");
+					}else if(msg=="1001"){
+						alert("商品已發貨，不能進行換貨");
+					}else if(msg=="1002"){
+						alert("訂單已完成，不能進行換貨");
+					}else if(msg=="1003"){
+						alert("訂單已經完全換貨，不能進行單商品換貨");
+					}else if(msg=="1004"){
+						alert("訂單不存在");
+					}else if(msg=="1005"){
+						$("#tuistat_"+itemid)[0].src="images/toolbar_no.gif";
+						$("#dotui_"+itemid)[0].value="訂貨";
+					}else{
+						alert(msg);
+					}
+					return false;
+				}
+			});
+		}
+		else{
 				$.ajax({
 					type: "POST",
 					url:"post.php",
@@ -232,7 +265,7 @@ $(".canceltui").click(function(){
 //取消換貨
 $(".cancelchg").click(function(){
 		
-	var answer = confirm("是否取消退訂?")
+	var answer = confirm("是否取消換貨?")
 if (answer){
 	var itemid=this.id.substr(5);
 	$.ajax({
@@ -247,7 +280,7 @@ if (answer){
 			}else if(msg=="1001"){
 				alert("訂單已付款，不能退訂");
 			}else if(msg=="1002"){
-				alert("訂單已配送，不能退訂");
+				alert("訂單已配送，不能換貨");
 			}else{
 				alert(msg);
 			}
