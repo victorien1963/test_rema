@@ -7269,6 +7269,14 @@ select.form-control, input.form-control {
         padding-right: 1rem !important;
     }
 
+    .col-shopping:nth-child(2) {
+        width: 27% !important;
+    }
+
+    .col-shopping:nth-child(3) {
+        width: 0% !important;
+    }
+
 }
 
 .modal {
@@ -7308,8 +7316,112 @@ select.form-control, input.form-control {
     top: 0 !important;
     bottom: 0 !important;
   }
-  
-  
+
+@media only screen and (min-width: 389px) and (max-width: 390px) {
+    .progress-container, body.safari .progress-container {
+        width: 19rem;
+    }
+
+    .progress-line {
+        width: 14rem;
+    }
+
+    .step > div {
+        font-size: 13px;
+    }
+
+    .col-shopping:nth-child(2) {
+        width: 29% !important;
+    }
+
+    .produce-image {
+        width: 50% !important;
+    }
+
+    body.safari .col-shopping:nth-child(2) {
+        width: 29% !important;
+    }
+}
+
+
+@media only screen and (min-width: 375px) and (max-width: 389px) {
+    .progress-container, body.safari .progress-container {
+        width: 19rem;
+    }
+
+    .progress-line {
+        width: 14rem;
+    }
+
+    .step > div {
+        font-size: 12px;
+    }
+
+    .col-shopping:nth-child(2) {
+        width: 29% !important;
+    }
+
+    .produce-image {
+        width: 50% !important;
+    }
+
+    .col-shopping:nth-child(2) {
+        width: 29% !important;
+    }
+}
+
+@media only screen and (min-width: 360px) and (max-width: 374px) {
+    .col-shopping:nth-child(1) {
+        font-size: 12px !important;
+        width: 47% !important;
+        padding-left: 0 !important;
+    }
+
+    .col-shopping:nth-child(2) {
+        font-size: 12px !important;
+        width: 24% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .col-shopping:nth-child(3) {
+        font-size: 12px !important;
+        width: 0% !important;
+    }
+
+    .col-shopping:nth-child(2), body.safari .col-shopping:nth-child(2) {
+        width: 29% !important;
+    }
+
+    .produce-image {
+        width: 50% !important;
+    }
+
+    .progress-container, body.safari .progress-container {
+        width: 19rem;
+    }
+
+    .progress-line {
+        width: 14rem;
+    }
+
+    .step > div {
+        font-size: 12px;
+    }
+
+    #exchange-reason-ques {
+        width: 90% !important;
+    }
+
+    .details {
+        width: 100%;
+    }
+
+    #user_address_rwd_phone > .row > .col-3 {
+        padding-left: 0 !important;
+        /* align-self: center; */
+    }
+}
 
 @media (min-width: 576px) {
     .modal-dialog {
