@@ -7317,34 +7317,12 @@ select.form-control, input.form-control {
     bottom: 0 !important;
   }
 
-@media only screen and (min-width: 389px) and (max-width: 390px) {
-    .progress-container, body.safari .progress-container {
-        width: 19rem;
+
+  @media only screen and (min-width: 391px) and (max-width: 429px) {
+    #shopping-state > .row:nth-child(1) {
+        border-top: 1px solid rgb(201 201 201);
     }
 
-    .progress-line {
-        width: 14rem;
-    }
-
-    .step > div {
-        font-size: 13px;
-    }
-
-    .col-shopping:nth-child(2) {
-        width: 29% !important;
-    }
-
-    .produce-image {
-        width: 50% !important;
-    }
-
-    body.safari .col-shopping:nth-child(2) {
-        width: 29% !important;
-    }
-}
-
-
-@media only screen and (min-width: 375px) and (max-width: 389px) {
     .progress-container, body.safari .progress-container {
         width: 19rem;
     }
@@ -7365,12 +7343,90 @@ select.form-control, input.form-control {
         width: 50% !important;
     }
 
+    body.safari .col-shopping:nth-child(2) {
+        width: 29% !important;
+    }
+
+    .col-shopping:nth-child(1) {
+        width: 50% !important;
+    }
+}
+
+
+@media only screen and (min-width: 389px) and (max-width: 390px) {
+    #shopping-state > .row:nth-child(1) {
+        border-top: 1px solid rgb(201 201 201);
+    }
+
+    .progress-container, body.safari .progress-container {
+        width: 19rem;
+    }
+
+    .progress-line {
+        width: 14rem;
+    }
+
+    .step > div {
+        font-size: 12px;
+    }
+
     .col-shopping:nth-child(2) {
         width: 29% !important;
+    }
+
+    .produce-image {
+        width: 50% !important;
+    }
+
+    body.safari .col-shopping:nth-child(2) {
+        width: 29% !important;
+    }
+
+    .col-shopping:nth-child(1) {
+        width: 50% !important;
+    }
+}
+
+
+@media only screen and (min-width: 375px) and (max-width: 389px) {
+    #shopping-state > .row:nth-child(1) {
+        border-top: 1px solid rgb(201 201 201);
+    }
+
+    .progress-container, body.safari .progress-container {
+        width: 19rem;
+    }
+
+    .progress-line {
+        width: 14rem;
+    }
+
+    .step > div {
+        font-size: 12px;
+    }
+
+    .col-shopping:nth-child(2) {
+        width: 29% !important;
+    }
+
+    .produce-image {
+        width: 50% !important;
+    }
+
+    .col-shopping:nth-child(2), body.safari .col-shopping:nth-child(2) {
+        width: 29% !important;
+    }
+
+    .col-shopping:nth-child(1) {
+        width: 50% !important;
     }
 }
 
 @media only screen and (min-width: 360px) and (max-width: 374px) {
+    #shopping-state > .row:nth-child(1) {
+        border-top: 1px solid rgb(201 201 201);
+    }
+
     .col-shopping:nth-child(1) {
         font-size: 12px !important;
         width: 47% !important;
