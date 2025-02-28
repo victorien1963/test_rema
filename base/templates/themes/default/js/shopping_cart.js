@@ -221,7 +221,32 @@ function handleDeliveryChange() {
     if (isOverseas) {
         // 海外配送選擇
         $('.t_delivery_checked').text('配送 (商品滿4,000免運)');
-        $('.t_delivery_checked_value').text('$ 115');
+        
+        var getyunfei = $("#yunfei").val();
+        var getpaytotal = $("#tjine").val();
+        let numtotal = Number(getpaytotal);
+        if(numtotal<4000)
+        {
+            $('.t_delivery_checked_value').text('NT$ 115');
+            
+        $('#ftd').text('NT$ 115');
+        if( getyunfei != 0){
+            var newpay=numtotal+30;
+            $("#tjine").val(newpay);
+            $('#tjone').text('NT$'+newpay);
+            $('#tjtwo').text('NT$'+newpay);
+            $("#yunfei").val(115);
+        }
+        else
+        {
+            var newpay=numtotal+115;
+            $("#tjine").val(newpay);
+            $('#tjone').text('NT$'+newpay);
+            $('#tjtwo').text('NT$'+newpay);
+            
+            $("#yunfei").val(115);
+        }
+        }
         $('.checked-info-text').text('USD$ 71.25').addClass('nowrap font-weight-bold text-danger h4_5 pt-1');
 
         // 設定「海外配送」的付款方式
@@ -238,7 +263,36 @@ function handleDeliveryChange() {
     } else {
         // 台灣境內配送選擇
         $('.t_delivery_checked').text('配送 (商品滿2,500免運)');
-        $('.t_delivery_checked_value').text('$ 85');
+        var getyunfei = $("#yunfei").val();
+        var getpaytotal = $("#tjine").val();
+        let numtotal = Number(getpaytotal);
+        if(numtotal<2500)
+            {
+                
+        $('.t_delivery_checked_value').text('NT$ 85');
+        $('#ftd').text('NT$ 85');
+            if( getyunfei != 0){
+                let addyun=0;
+                if(getyunfei!='85')
+                    {addyun=addyun-30;}
+
+                var newpay=numtotal+addyun;
+                $("#tjine").val(newpay);
+                $('#tjone').text('NT$'+newpay);
+                $('#tjtwo').text('NT$'+newpay);
+                
+            $("#yunfei").val(85);
+            }
+            else
+            {
+                var newpay=numtotal+85;
+                $("#tjine").val(newpay);
+                $('#tjone').text('NT$'+newpay);
+                $('#tjtwo').text('NT$'+newpay);
+                
+            $("#yunfei").val(85);
+            }
+            }
         $('.checked-info-text').text('• 含營業稅').removeClass('font-weight-bold text-danger h4_5');
 
         // 判斷第一層選擇

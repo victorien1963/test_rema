@@ -306,7 +306,7 @@
       </div>
       <div class="col-1 text-right">
         <div class="t_amonts" x-text="orderInfo.pricesymbol + orderInfo.oritjine"></div>
-        <div class="t_delivery" x-text="orderInfo.pricesymbol + orderInfo.yunfei"></div>
+        <div id="ftd" class="t_delivery" x-text="orderInfo.pricesymbol + orderInfo.yunfei"></div>
         <div class="t_balances" x-text="'-' + orderInfo.pricesymbol + orderInfo.disaccount"></div>
         <br />
         <div class="d-flex discount_code_rema" x-text="'-' + orderInfo.pricesymbol +orderInfo.promoprice"></div>
@@ -333,7 +333,7 @@
     <div id="total_prices" class="row">
       <div class="col-2 h5 font-weight-bolder">總金額</div>
       <div class="col-1 text-right h5 font-weight-bolder">
-        <div class="text-end fw-bolder" x-text="orderInfo.pricesymbol + (orderInfo.oritjine+orderInfo.yunfei-orderInfo.disaccount-orderInfo.promoprice)"></div>
+        <div id="tjone" class="text-end fw-bolder" x-text="orderInfo.pricesymbol + (orderInfo.oritjine+orderInfo.yunfei-orderInfo.disaccount-orderInfo.promoprice)"></div>
         <!-- <br /> -->
         <div class="text-end fw-normal small" stlye="font-size: 80%">• 含營業稅</div>
       </div>
@@ -342,12 +342,13 @@
     <div id="total_prices_checked" class="row" style="display: none;">
       <div class="col-2 h5 font-weight-bolder">總金額</div>
       <div class="col-1 text-right h5 font-weight-bolder" ">
-        <div class="text-end fw-bolder" x-text="orderInfo.pricesymbol + (orderInfo.oritjine+orderInfo.yunfei-orderInfo.disaccount-orderInfo.promoprice)"></div>
+        <div id="tjtwo" class="text-end fw-bolder" x-text="orderInfo.pricesymbol + (orderInfo.oritjine+orderInfo.yunfei-orderInfo.disaccount-orderInfo.promoprice)"></div>
         <!-- <br /> -->
         <div class="text-end fw-normal small" stlye="font-size: 80%">• 含營業稅</div>
       </div>
     </div>
     
+		<input type="hidden" name="yunfei" id="yunfei" x-bind:value="orderInfo.yunfei" />
 
     <div id="checked_continue" class="row">
       <div class="col-1">
