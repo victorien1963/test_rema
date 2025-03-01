@@ -695,6 +695,10 @@ body > #shopping_flow {
     display: none;
 } */
 
+.exchange-reason {
+    padding-bottom: 0 !important;
+}
+
 @media only screen and (min-width: 2240px) {
         #web_footer {
             padding-top: 35vh;
@@ -735,7 +739,7 @@ body > #shopping_flow {
         }
 
         .col-shopping-content {
-            width: 70.75% !important;
+            width: 71.75% !important;
         }
 
         .produce-image {
@@ -3024,7 +3028,7 @@ select.form-control, input.form-control {
     }
 
     .col-shopping-content {
-        width: 89.5%;
+        width: 85.5%;
         padding-top: 0rem;
         margin-left: auto;
         margin-right: auto;
@@ -3049,7 +3053,7 @@ select.form-control, input.form-control {
     .shopping-produce > div:nth-child(1) {
         width: 55% !important;
         height: 100%;
-        padding: 1rem 0.5rem 3.25rem .5rem;
+        padding: 1rem 0.5rem 2.5rem .5rem;
     }
 
     .shopping-produce > div:nth-child(2) {
@@ -3111,7 +3115,7 @@ select.form-control, input.form-control {
     }
 
     .order-title{
-        padding-left: 5rem;
+        padding-left: 4.5rem;
     }
 
     #shopping_content > div > div > .row {
@@ -6087,7 +6091,7 @@ select.form-control, input.form-control {
     /* shopping flow */
 
     .bg-darkgrey {
-        height: 150px;
+        /* height: 150px; */
         padding-top: 0rem !important;
     }
 
@@ -6253,9 +6257,9 @@ select.form-control, input.form-control {
         font-size: 1.6vw !important;
     }
 
-    .bg-darkgrey {
+    /* .bg-darkgrey {
         height: 17vw;
-    }
+    } */
 
     .bg-darkgrey > img {
         width: 12vw;
@@ -6293,8 +6297,8 @@ select.form-control, input.form-control {
 
     .bg-darkgrey {
         padding-left: 0rem;
-        height: 130px !important;
-        width: 100px !important;
+        height: 153.59px !important;
+        width: 128px !important;
     }
 
     .produce-price-rwd-ipad {
@@ -6668,8 +6672,8 @@ select.form-control, input.form-control {
     }
 
     .bg-darkgrey {
-        height: 150px !important;
-        width: 120px !important;
+        height: 140px !important;
+        width: 115px !important;
         margin-left: 0rem;
         padding-top: 0rem;
         padding-left: 0rem;
@@ -7014,7 +7018,7 @@ select.form-control, input.form-control {
     }
 
     .produce-image {
-        width: 41% !important;
+        width: 34% !important;
         padding-top: .5rem;
         padding-bottom: 0rem;
     }
@@ -7157,7 +7161,7 @@ select.form-control, input.form-control {
 
     .exchange-reason {
         line-height: 1 !important;
-        padding: .2rem .75rem !important;
+        padding: 0rem .75rem !important;
     }
 
     .modal-dialog {
