@@ -80,7 +80,36 @@
         });
       };
     });
-  </script> 
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      function enforceSingleTotalPrice() {
+        const totalPriceElements = document.querySelectorAll('#total-price');
+
+        if (totalPriceElements.length > 1) {
+          totalPriceElements.forEach((el, index) => {
+            if (index > 0) {
+              el.remove(); // 強制刪除多餘的元素
+            }
+          });
+        }
+      }
+
+      // 初次執行，確保一開始就只有一個 `#total-price`
+      enforceSingleTotalPrice();
+
+      // 使用 MutationObserver 監聽 DOM 變化
+      const observer = new MutationObserver(() => {
+        enforceSingleTotalPrice();
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+      });
+    });
+
+  </script>
 </head>
 
 <!-start->
